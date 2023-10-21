@@ -5,7 +5,7 @@ import {BrowserRouter, Routes, Route} from "react-router-dom";
 import App from './components/App';
 import Register from './components/Register';
 import Login from './components/Login';
-import Redefine from './components/Redefinir';
+import Redefine from './components/Redefine';
 import User from './components/User';
 import {store, persistor} from './store.js';
 import { PersistGate } from 'redux-persist/integration/react';

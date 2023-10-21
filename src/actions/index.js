@@ -64,6 +64,19 @@ export const CheckAuth = (token) => async dispatch => {
 
 };
 
+export const AuthGoogle = (googleUser) => async dispatch => {
+
+    await api.post('/auth/google/signin', {
+        name: googleUser.profileObj.name,
+        googleID: googleUser.googleId
+    }).then(function(response){
+        dispatch({ type: 'LOGIN_USER', payload: response.data.token });
+    }).catch(function(err){
+        console.log(err)
+    })
+
+};
+
 export const LogoutUser = () => async dispatch => {
 
     await dispatch({ type: 'LOGIN_USER', payload: null });

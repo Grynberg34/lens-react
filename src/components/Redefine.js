@@ -1,6 +1,6 @@
 import React from 'react';
-import RedefinirForm from './RedefinirForm';
-import NovaSenhaForm from './NovaSenhaForm';
+import RedefineForm from './RedefineForm';
+import NewPassForm from './NewPassForm';
 import { RedefinePassword } from '../actions';
 import { DefineNewPassword } from '../actions';
 import { connect } from 'react-redux';
@@ -8,7 +8,7 @@ import { CheckAuth } from '../actions';
 import { store } from '../store';
 import { Link, Navigate } from "react-router-dom";
 
-function Redefinir(props) {
+function Redefine(props) {
 
   function submitEmail (values) {
 
@@ -39,7 +39,7 @@ function Redefinir(props) {
   } else if (newpass === true) {
     return (
       <div>
-        <h1>Senha alterada com sucesso</h1>
+        <h1>New password created</h1>
         <Link to="/login">Login</Link>
     </div>
     )
@@ -48,7 +48,7 @@ function Redefinir(props) {
       <div>
         <span id={props.newpass.toString()}></span>
         <h1>{props.failNewpass}</h1>
-        <NovaSenhaForm   onSubmit={submitNewPassword}  />
+        <NewPassForm   onSubmit={submitNewPassword}  />
       </div>
     )
 
@@ -57,7 +57,7 @@ function Redefinir(props) {
     return (
       <div>
         <h1>{props.failRedefine}</h1>
-        <RedefinirForm onSubmit={submitEmail} />
+        <RedefineForm onSubmit={submitEmail} />
       </div>
     )
   }
@@ -77,5 +77,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps
-)(Redefinir);
+)(Redefine);
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 
-let NewFormForm = props => {
+let NewPassForm = props => {
 
 
   const { handleSubmit } = props
@@ -26,8 +26,8 @@ let NewFormForm = props => {
   )
 }
 
-NewFormForm = reduxForm({
-  form: 'NewFormForm'
-})(NewFormForm)
+NewPassForm = reduxForm({
+  form: 'NewPassForm'
+})(NewPassForm)
 
-export default NewFormForm
+export default NewPassForm
