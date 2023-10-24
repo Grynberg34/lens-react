@@ -6,7 +6,7 @@ import App from './components/App';
 import Register from './components/Register';
 import Login from './components/Login';
 import Redefine from './components/Redefine';
-import User from './components/User';
+import Studio from './components/Studio';
 import {store, persistor} from './store.js';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -22,7 +22,7 @@ ReactDOM.render(
           <Route path="register" element={<Register />}></Route>
           <Route path="login" element={<Login />}></Route>
           <Route path="redefine" element={<Redefine />}></Route>
-          <Route path="user" element={<User />}></Route>
+          <Route path="studio" element={<Studio />}></Route>
         </Routes>
       </BrowserRouter>
     </PersistGate>

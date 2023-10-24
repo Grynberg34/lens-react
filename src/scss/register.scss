@@ -1,0 +1,65 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#register {
+    background-color: $azul-escuro;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.register {
+    padding-bottom: 10vw;
+
+    .register__logo {
+        display: block;
+        margin-top: 2.5vw;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .register__msg {
+        font-size: 16px;
+        color: $amarelo;
+        font-weight: 400;
+        margin-top: 2vw;
+        text-align: center;
+    }
+
+    .register__link {
+        margin-top: 2vw;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        color: $azul-claro;
+        text-decoration: none;
+
+        &:hover {
+            color: $amarelo;
+        }
+    }
+
+    .register__google {
+        display: block;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        padding: 0.5vw;
+        margin-top: 2vw;
+        color: $preto;
+        background-color: $branco;
+        outline: none;
+        border: none;
+        margin-bottom: 1vw;
+    
+        .register__google__img {
+            display: inline-block;
+            width: 7%;
+            margin-right: 0.5vw;
+        }
+    }
+
+}

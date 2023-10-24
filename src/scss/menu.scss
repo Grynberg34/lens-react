@@ -1,0 +1,46 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+.menu {
+    padding-top: 2vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
+
+    .menu__logo {
+        width: 50%;
+    }
+
+    .menu__link {
+        display: block;
+        margin-top: 1vw;
+        font-size: 20px;
+        color: $azul-claro;
+        font-weight: 400;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover {
+            color: $amarelo;
+        }
+    }
+
+    .menu__button {
+        margin-top: 1vw;
+        font-size: 20px;
+        color: $azul-claro;
+        font-weight: 400;
+        text-align: center;
+        text-decoration: none;
+        border: none;
+        outline: none;
+        background: none;
+
+        &:hover {
+            color: $amarelo;
+        }
+    }
+    
+    .active {
+        color: $amarelo;
+    }
+}

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import "../scss/redefineForm.scss";
 
 let NewPassForm = props => {
 
@@ -8,20 +9,20 @@ let NewPassForm = props => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="code">Código</label>
-        <Field name="code" component="input" type="text" />
+    <form className="redefineForm" onSubmit={handleSubmit}>
+      <div className="redefineForm__field">
+        <label className="redefineForm__field__label" htmlFor="code">code</label>
+        <Field className="redefineForm__field__input" name="code" component="input" type="text" />
       </div>
-      <div>
-        <label htmlFor="password">Senha</label>
-        <Field name="password" component="input" type="password" />
+      <div className="redefineForm__field">
+        <label className="redefineForm__field__label" htmlFor="password">password</label>
+        <Field className="redefineForm__field__input" name="password" component="input" type="password" />
       </div>
-      <div>
-        <label htmlFor="repeatpassword">Repetir Senha</label>
-        <Field name="repeatpassword" component="input" type="password" />
+      <div className="redefineForm__field">
+        <label className="redefineForm__field__label" htmlFor="repeatpassword">repeat</label>
+        <Field className="redefineForm__field__input" name="repeatpassword" component="input" type="password" />
       </div>
-      <button type="submit">Submit</button>
+      <button className="redefineForm__button" type="submit">create new password</button>
     </form>
   )
 }

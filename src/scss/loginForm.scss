@@ -1,0 +1,51 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+
+.loginForm {
+    margin-top: 2vw;
+
+    .loginForm__field {
+        margin-bottom: 2vw;
+
+        .loginForm__field__label {
+            display: block;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 0.5vw;
+            font-weight: 400;
+            color: $azul-claro;
+        }
+
+        .loginForm__field__input {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            outline: none;
+            border: none;
+            width: 50%;
+
+        }
+
+    }
+
+    .loginForm__button {
+        display: block;
+        margin-top: 2.5vw;
+        margin-bottom: 2vw;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 0.5vw;
+        background-color: $amarelo;
+        color: $azul-escuro;
+        font-size: 20px;
+        font-weight: 700;
+        width: 50%;
+        border: none;
+        outline: none;
+        
+        &:hover {
+            background-color: $azul-claro
+        }
+    }
+}

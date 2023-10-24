@@ -1,0 +1,64 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#redefine {
+    background-color: $azul-escuro;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+
+.redefine {
+    .redefine__logo {
+        display: block;
+        margin-top: 10vw;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .redefine__msg {
+        font-size: 16px;
+        color: $amarelo;
+        font-weight: 400;
+        margin-top: 2vw;
+        text-align: center;
+    }
+
+    .redefine__link {
+        margin-top: 2vw;
+        display: block;
+        text-align: center;
+        font-size: 30px;
+        color: $azul-claro;
+        text-decoration: none;
+
+        &:hover {
+            color: $amarelo;
+        }
+    }
+
+    .redefine__google {
+        display: block;
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        padding: 0.5vw;
+        margin-top: 2vw;
+        color: $preto;
+        background-color: $branco;
+        outline: none;
+        border: none;
+        margin-bottom: 1vw;
+    
+        .redefine__google__img {
+            display: inline-block;
+            width: 7%;
+            margin-right: 0.5vw;
+        }
+    }
+
+}

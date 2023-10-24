@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import "../scss/redefineForm.scss";
 
 let RedefineForm = props => {
 
@@ -8,12 +9,12 @@ let RedefineForm = props => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <Field name="email" component="input" type="text" required min="1" />
+    <form className='redefineForm' onSubmit={handleSubmit}>
+      <div className='redefineForm__field'>
+        <label className='redefineForm__field__label' htmlFor="email">email</label>
+        <Field className='redefineForm__field__input' name="email" component="input" type="text" required min="1" />
       </div>
-      <button type="submit">Submit</button>
+      <button className='redefineForm__button' type="submit">submit</button>
     </form>
   )
 }

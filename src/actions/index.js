@@ -7,7 +7,7 @@ export const LogInUser = (user) => async dispatch => {
     await api.post('/login', user).then(function(response){
         dispatch({ type: 'LOGIN_USER', payload: response.data.token });
     }).catch(function(err){
-        console.log(err.response);
+        console.log(err);
         dispatch({ type: 'FAIL_LOGIN', payload: err.response.data.message});
     })
     
@@ -19,7 +19,7 @@ export const RegisterUser = (user) => async dispatch => {
         dispatch({ type: 'REGISTER_USER', payload: true });
     }).catch(function(err){
         console.log(err);
-        dispatch({ type: 'FAIL_REGISTER', payload: err.response.data.message});
+        dispatch({ type: 'FAIL_REGISTER', payload: err.response.data});
     })
     
 };
@@ -41,7 +41,7 @@ export const DefineNewPassword = (newpass) => async dispatch => {
         dispatch({ type: 'DEFINE_PASSWORD', payload: true });
     }).catch(function(err){
         console.log(err)
-        dispatch({ type: 'FAIL_PASSWORD', payload: err.response.data.menssage});
+        dispatch({ type: 'FAIL_PASSWORD', payload: err.response.data.message});
     })
 
 };
@@ -52,11 +52,10 @@ export const CheckAuth = (token) => async dispatch => {
         headers: {
           'Authorization': `Bearer ${token}` 
         }
-    }).then(function(response){
-        if (response.data.tipo_conta === 'user') {
-            var auth = true;
-            dispatch({ type: 'CHECK_AUTH', payload: auth});
-        } 
+    }).then(function(){
+        var auth = true;
+        dispatch({ type: 'CHECK_AUTH', payload: auth});
+
     })
     .catch(function(err){
         console.log(err)

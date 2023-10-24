@@ -2,6 +2,12 @@ import { connect } from 'react-redux';
 import { CheckAuth } from '../actions';
 import { store } from '../store';
 import { Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import "../scss/app.scss";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 function App(props) {
 
@@ -13,11 +19,35 @@ function App(props) {
 
   if (auth === true) {
     return (
-      <Navigate to="/user" />
+      <Navigate to="/studio" />
     )
   } else {
     return (
-      <div>
+      <div id='home' className="home" style={{backgroundImage: `url('/images/background.png')`}}>
+        
+        <Container fluid>
+          <Row>
+            <Col md={4}></Col>
+
+            <Col md={4}>
+             <img className="home__logo" src="/images/logo/logo.png" alt="" />
+             <Container fluid>
+                <Row>
+
+                  <Col md={6}>
+                    <Link className='home__link' to="/register">register</Link>
+                  </Col>
+
+                  <Col md={6}>
+                    <Link className='home__link' to="/login">login</Link>
+                  </Col>
+
+                </Row>
+             </Container>
+            </Col>
+          </Row>
+        </Container>
+
       </div>
     );
   }

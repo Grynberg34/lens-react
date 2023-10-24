@@ -7,6 +7,11 @@ import { connect } from 'react-redux';
 import { CheckAuth } from '../actions';
 import { store } from '../store';
 import { Link, Navigate } from "react-router-dom";
+import "../scss/redefine.scss";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+
 
 function Redefine(props) {
 
@@ -34,30 +39,60 @@ function Redefine(props) {
 
   if (auth === true) {
     return (
-      <Navigate to="/user" />
+      <Navigate to="/studio" />
     )
   } else if (newpass === true) {
     return (
-      <div>
-        <h1>New password created</h1>
-        <Link to="/login">Login</Link>
+      <div id='redefine' className="redefine" style={{backgroundImage: `url('/images/background.png')`}}>
+
+        <Container fluid>
+          <Row>
+            <Col md={4}></Col>
+
+            <Col md={4}>
+              <Link to="/"><img className="redefine__logo" src="/images/logo/logo.png" alt="" /></Link>
+              <h1 className='redefine__msg'>New password created</h1>
+              <Link className="redefine__link" to="/login">Login</Link>
+            </Col>
+          </Row>
+        </Container>
     </div>
     )
   } else if (redefine === true){
     return (
-      <div>
-        <span id={props.newpass.toString()}></span>
-        <h1>{props.failNewpass}</h1>
-        <NewPassForm   onSubmit={submitNewPassword}  />
+      <div id='redefine' className="redefine" style={{backgroundImage: `url('/images/background.png')`}}> 
+
+        <Container fluid>
+          <Row>
+            <Col md={4}></Col>
+
+            <Col md={4}>
+              <Link to="/"><img className="redefine__logo" src="/images/logo/logo.png" alt="" /></Link>
+              <span id={props.newpass.toString()}></span>
+              <h1 className='redefine__msg'>{props.failNewpass}</h1>
+              <NewPassForm  onSubmit={submitNewPassword}  />
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
 
   } else {
 
     return (
-      <div>
-        <h1>{props.failRedefine}</h1>
-        <RedefineForm onSubmit={submitEmail} />
+      <div id='redefine' className="redefine" style={{backgroundImage: `url('/images/background.png')`}}>
+        <Container fluid>
+          <Row>
+            <Col md={4}></Col>
+
+            <Col md={4}>
+              <Link to="/"><img className="redefine__logo" src="/images/logo/logo.png" alt="" /></Link>
+              <h1 className='redefine__msg'>{props.failRedefine}</h1>
+              <RedefineForm onSubmit={submitEmail} />
+            </Col>
+          </Row>
+        </Container>
+
       </div>
     )
   }

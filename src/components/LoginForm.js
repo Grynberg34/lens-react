@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import "../scss/loginForm.scss";
 
 let LoginForm = props => {
 
@@ -8,16 +9,16 @@ let LoginForm = props => {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Email</label>
-        <Field name="email" component="input" type="text" />
+    <form className='loginForm' onSubmit={handleSubmit}>
+      <div className='loginForm__field' >
+        <label className='loginForm__field__label' htmlFor="email">email</label>
+        <Field className='loginForm__field__input' name="email" component="input" type="text" />
       </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <Field name="password" component="input" type="password" />
+      <div className='loginForm__field'>
+        <label className='loginForm__field__label' htmlFor="password">password</label>
+        <Field className='loginForm__field__input' name="password" component="input" type="password" />
       </div>
-      <button type="submit">Submit</button>
+      <button className='loginForm__button' type="submit">login</button>
     </form>
   )
 }

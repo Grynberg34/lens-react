@@ -7,6 +7,10 @@ import { connect } from 'react-redux';
 import { store } from '../store';
 import { Link, Navigate } from "react-router-dom";
 import GoogleLogin from 'react-google-login';
+import "../scss/register.scss";
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 function Register(props) {
 
@@ -31,7 +35,7 @@ function Register(props) {
 
   if (auth === true) {
     return (
-      <Navigate to="/user" />
+      <Navigate to="/studio" />
     )
   } else if (register === true) {
     return (
@@ -41,17 +45,29 @@ function Register(props) {
   else {
 
     return (
-      <div>
-        <h1>{props.failRegister}</h1>
-        <RegisterForm onSubmit={submit} />
-        <GoogleLogin
-          clientId= "390518303780-jh735t86sg11luhqg21vm52q66r4qcha.apps.googleusercontent.com"
-          buttonText="Cadastre-se com a conta Google"
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-        />
-        <br></br>
-        <Link to="/login">Login</Link>
+      <div id='register' className="register" style={{backgroundImage: `url('/images/background.png')`}}>
+        <Container fluid>
+          <Row>
+            <Col md={4}></Col>
+
+            <Col md={4}>
+              <Link to="/"><img className="register__logo" src="/images/logo/logo.png" alt="" /></Link>
+              <h1 className="register__msg">{props.failRegister}</h1>
+              <RegisterForm onSubmit={submit} />
+              <GoogleLogin
+                className='register__google'
+                clientId= "668527435235-mtprvqmvk6tcgrvfj14d42tgetucjrto.apps.googleusercontent.com"
+                buttonText="Register with Google Account"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+                render={renderProps => (
+                  <button className="register__google" onClick={renderProps.onClick}> <img className="register__google__img" src="/images/google.png" alt=""></img> Register with Google Account</button>
+                )}
+              />
+              <Link className='register__link' to="/login">login</Link>
+            </Col>
+          </Row>
+        </Container>
       </div>
     )
   }
