@@ -23,14 +23,18 @@ function Menu(props) {
             <NavLink to="/"><img src="/images/logo/logo.png" className="menu__logo" alt="" /></NavLink>
           </Col>
 
-          <Col md={7}></Col>
+          <Col md={6}></Col>
 
           <Col md={1}>
-            <NavLink to='/studio' className="menu__link" activeStyle={{color: "#ff9e00"}}>studio</NavLink>
+            <NavLink to='/studio' className="menu__link">studio</NavLink>
           </Col>
 
           <Col md={1}>
             <Link to='/social' className="menu__link">social</Link>
+          </Col>
+
+          <Col md={1}>
+            <Link to='/search' className="menu__link">search</Link>
           </Col>
 
           <Col md={1}>

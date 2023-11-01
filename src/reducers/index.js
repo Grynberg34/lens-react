@@ -110,6 +110,64 @@ const failedNewPasswordReducer = (msg = '', action) => {
   return msg;
 };
 
+const createListReducer = (list = {title: null, type: null, content: null, uri_content: null, lens: null, query: null }, action) => {
+  switch(action.type){
+    case 'SET_TYPE':
+      return {
+        ...list,
+        type: action.payload
+      };
+    case 'SET_CONTENT_URI':
+      return {
+        ...list,
+        uri_content: action.payload
+      };
+    case 'SET_CONTENT':
+      return {
+        ...list,
+        content: action.payload
+      };
+    default:
+      return list;
+    
+
+  }
+};
+
+const showFiltersReducer = (filters = {genre: false, person: false, keyword: false, date: false, country: false}, action) => {
+  switch(action.type){
+    case 'SET_GENRE_FILTER':
+      return {
+        ...filters,
+        genre: action.payload
+      };
+      case 'SET_PERSON_FILTER':
+        return {
+          ...filters,
+          person: action.payload
+        };
+      case 'SET_KEYWORD_FILTER':
+        return {
+          ...filters,
+          genre: action.payload
+        };
+      case 'SET_DATE_FILTER':
+        return {
+          ...filters,
+          date: action.payload
+        };
+      case 'SET_COUNTRY_FILTER':
+        return {
+          ...filters,
+          country: action.payload
+        };
+    default:
+      return filters;
+    
+
+  }
+};
+
 export default combineReducers({
 
   jwt: userLogInReducer,
@@ -122,6 +180,8 @@ export default combineReducers({
   failRedefine: failedRedefineReducer,
   newpass: defineNewPasswordReducer,
   failNewpass: failedNewPasswordReducer,
+  list: createListReducer,
+  filters: showFiltersReducer,
   form: formReducer
   
 });

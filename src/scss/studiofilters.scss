@@ -1,0 +1,57 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#filters {
+    .filters__add {
+        .filters__add__title {
+            font-size: 30px;
+            color: $amarelo;
+            font-weight: 700;
+            margin-bottom: 1vw;
+            text-transform: lowercase;
+        }
+
+        .filters__add__button {
+            display: block;
+            width: 100%;
+            background-color: $amarelo;
+            border: none;
+            outline: none;
+            padding: 1vw;
+            border-radius: 36px;
+            font-size: 20px;
+            font-weight: 500;
+            color: $azul-escuro;
+
+            &:focus {
+                box-shadow: none !important;
+            }
+    
+        }
+    }
+
+    .filters__section {
+
+        .filters__section__button {
+            display: block;
+            width: 100%;
+            background-color: $amarelo;
+            border: none;
+            outline: none;
+            padding: 1vw;
+            border-radius: 36px;
+            font-size: 20px;
+            font-weight: 500;
+            color: $azul-escuro;
+            margin-bottom: 1vw;
+
+            &:hover {
+                background-color: $azul-claro;
+            }
+
+            &:first-of-type {
+                margin-bottom: 1vw;
+            }
+        }
+    }
+}

@@ -76,6 +76,32 @@ export const AuthGoogle = (googleUser) => async dispatch => {
 
 };
 
+export const SetListType = (type) => async dispatch => {
+
+    dispatch({ type: 'SET_TYPE', payload: type});
+};
+
+export const SetListContent = (uri, content) => async dispatch => {
+
+    dispatch({ type: 'SET_CONTENT_URI', payload: uri});
+    dispatch({ type: 'SET_CONTENT', payload: content});
+};
+
+export const ShowFilters = (filter) => async dispatch => {
+
+    if (filter === 'genre') {
+        dispatch({ type: 'SET_GENRE_FILTER', payload: true});
+    } else if (filter === 'country') {
+        dispatch({ type: 'SET_COUNTRY_FILTER', payload: true});
+    } else if (filter === 'person') {
+        dispatch({ type: 'SET_PERSON_FILTER', payload: true});
+    } else if (filter === 'keyword') {
+        dispatch({ type: 'SET_KEYWORD_FILTER', payload: true});
+    } else if (filter === 'date') {
+        dispatch({ type: 'SET_DATE_FILTER', payload: true});
+    }
+};
+
 export const LogoutUser = () => async dispatch => {
 
     await dispatch({ type: 'LOGIN_USER', payload: null });

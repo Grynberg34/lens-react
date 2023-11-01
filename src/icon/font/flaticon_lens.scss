@@ -1,0 +1,49 @@
+$flaticon_lens-font: "flaticon_lens";
+
+@font-face {
+    font-family: $flaticon_lens-font;
+    src: url("./flaticon_lens.ttf?36eb6c7badc17fd58a93f9b3fa1135c9") format("truetype"),
+url("./flaticon_lens.woff?36eb6c7badc17fd58a93f9b3fa1135c9") format("woff"),
+url("./flaticon_lens.woff2?36eb6c7badc17fd58a93f9b3fa1135c9") format("woff2"),
+url("./flaticon_lens.eot?36eb6c7badc17fd58a93f9b3fa1135c9#iefix") format("embedded-opentype"),
+url("./flaticon_lens.svg?36eb6c7badc17fd58a93f9b3fa1135c9#flaticon_lens") format("svg");
+}
+
+i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
+    font-family: flaticon_lens !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+$flaticon_lens-map: (
+    "pyramid": "\f101",
+    "eye": "\f102",
+    "film": "\f103",
+    "film-1": "\f104",
+    "clapperboard": "\f105",
+    "television": "\f106",
+);
+
+.flaticon-pyramid:before {
+    content: map-get($flaticon_lens-map, "pyramid");
+}
+.flaticon-eye:before {
+    content: map-get($flaticon_lens-map, "eye");
+}
+.flaticon-film:before {
+    content: map-get($flaticon_lens-map, "film");
+}
+.flaticon-film-1:before {
+    content: map-get($flaticon_lens-map, "film-1");
+}
+.flaticon-clapperboard:before {
+    content: map-get($flaticon_lens-map, "clapperboard");
+}
+.flaticon-television:before {
+    content: map-get($flaticon_lens-map, "television");
+}
