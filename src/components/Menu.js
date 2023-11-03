@@ -34,7 +34,7 @@ function Menu(props) {
           </Col>
 
           <Col md={1}>
-            <Link to='/search' className="menu__link">search</Link>
+            <Link to='/focus' className="menu__link">focus</Link>
           </Col>
 
           <Col md={1}>

@@ -12,25 +12,14 @@
 .studio {
     min-height: 100vh;
 
-    .studio__lens {
+    .studio__create {
         padding-left: 10vw;
         padding-right: 10vw;
 
-        .studio__lens__wide {
+        .studio__create__section {
             margin-top: 10vw;
-            margin-bottom: 10vw;
+            margin-bottom: 4vw;
 
-        }
-
-        .studio__lens__medium {
-            margin-top: 10vw;
-            margin-bottom: 10vw;
-
-        }
-
-        .studio__lens__narrow {
-            margin-top: 5vw;
-            margin-bottom: 10vw;
         }
     }
 }

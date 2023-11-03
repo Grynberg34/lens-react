@@ -134,38 +134,88 @@ const createListReducer = (list = {title: null, type: null, content: null, uri_c
   }
 };
 
-const showFiltersReducer = (filters = {genre: false, person: false, keyword: false, date: false, country: false}, action) => {
+const createLensReducer = (lens = {country: {name: null, iso: null, query: null}, persons: {names: null, query: null}, genres: {names: null, query: null}, keywords: {words: null, query: null}, time: {years: null, query: null}}, action) => {
   switch(action.type){
-    case 'SET_GENRE_FILTER':
+    case 'SET_LENS_COUNTRY':
       return {
-        ...filters,
-        genre: action.payload
+        ...lens,
+        country: action.payload
       };
-      case 'SET_PERSON_FILTER':
-        return {
-          ...filters,
-          person: action.payload
-        };
-      case 'SET_KEYWORD_FILTER':
-        return {
-          ...filters,
-          genre: action.payload
-        };
-      case 'SET_DATE_FILTER':
-        return {
-          ...filters,
-          date: action.payload
-        };
-      case 'SET_COUNTRY_FILTER':
-        return {
-          ...filters,
-          country: action.payload
-        };
+    case 'SET_LENS_TIME':
+      return {
+        ...lens,
+        time: action.payload
+      };
+    case 'SET_LENS_GENRE':
+      return {
+        ...lens,
+        genres: lens.genres.push(action.payload)
+      };
+    case 'SET_LENS_PERSON':
+      return {
+        ...lens,
+        persons: lens.persons.push(action.payload)
+      };
+    case 'SET_LENS_KEYWORD':
+    return {
+      ...lens,
+      keywords: lens.keywords.push(action.payload)
+    };
+    
     default:
-      return filters;
+      return lens;
     
 
   }
+};
+
+const showFilterReducer = (filter = null, action) => {
+
+  if (action.type === 'SHOW_FILTER') {
+
+    return action.payload;
+    
+  }
+  
+  return filter;  
+
+  
+};
+
+const getDecadesReducer = (decades = null, action) => {
+
+  if (action.type === 'GET_DECADES') {
+
+    return action.payload;
+    
+  }
+  
+  return decades;  
+  
+};
+
+const getGenresReducer = (genres = null, action) => {
+
+  if (action.type === 'GET_GENRES') {
+
+    return action.payload;
+    
+  }
+  
+  return genres;  
+  
+};
+
+const getCountriesReducer = (countries = null, action) => {
+
+  if (action.type === 'GET_COUNTRIES') {
+
+    return action.payload;
+    
+  }
+  
+  return countries;  
+  
 };
 
 export default combineReducers({
@@ -181,7 +231,11 @@ export default combineReducers({
   newpass: defineNewPasswordReducer,
   failNewpass: failedNewPasswordReducer,
   list: createListReducer,
-  filters: showFiltersReducer,
+  filter: showFilterReducer,
+  countries: getCountriesReducer,
+  decades: getDecadesReducer,
+  genres: getGenresReducer,
+  lens: createLensReducer,
   form: formReducer
   
 });

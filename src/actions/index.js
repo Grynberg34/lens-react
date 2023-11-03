@@ -1,4 +1,6 @@
 import api from '../api/api';
+import movies from '../api/movies';
+import filters from '../filters';
 
 // REGISTER, LOGIN, REDEFINE, AUTH
 
@@ -76,6 +78,14 @@ export const AuthGoogle = (googleUser) => async dispatch => {
 
 };
 
+export const LogoutUser = () => async dispatch => {
+
+    await dispatch({ type: 'LOGIN_USER', payload: null });
+    await dispatch({ type: 'CHECK_AUTH', payload: false });
+
+};
+
+
 export const SetListType = (type) => async dispatch => {
 
     dispatch({ type: 'SET_TYPE', payload: type});
@@ -87,25 +97,26 @@ export const SetListContent = (uri, content) => async dispatch => {
     dispatch({ type: 'SET_CONTENT', payload: content});
 };
 
-export const ShowFilters = (filter) => async dispatch => {
+export const ShowFilter = (filter) => async dispatch => {
 
-    if (filter === 'genre') {
-        dispatch({ type: 'SET_GENRE_FILTER', payload: true});
-    } else if (filter === 'country') {
-        dispatch({ type: 'SET_COUNTRY_FILTER', payload: true});
-    } else if (filter === 'person') {
-        dispatch({ type: 'SET_PERSON_FILTER', payload: true});
-    } else if (filter === 'keyword') {
-        dispatch({ type: 'SET_KEYWORD_FILTER', payload: true});
-    } else if (filter === 'date') {
-        dispatch({ type: 'SET_DATE_FILTER', payload: true});
+    if (filter === 'country') {
+        dispatch({ type: 'GET_COUNTRIES', payload: filters.countries });
+    } else if (filter === 'time') {
+        dispatch({ type: 'GET_DECADES', payload: filters.decades });
+    } else if (filter === 'genre') {
+        dispatch({ type: 'GET_GENRES', payload: filters.genres });
     }
+
+    dispatch({ type: 'SHOW_FILTER', payload: filter});
 };
 
-export const LogoutUser = () => async dispatch => {
+export const SetLensCountry = (iso,name) => async dispatch => {
 
-    await dispatch({ type: 'LOGIN_USER', payload: null });
-    await dispatch({ type: 'CHECK_AUTH', payload: false });
+    var country = {
+        iso: iso,
+        name: name, 
+        query: 'with_origin_country='+iso
+    };
 
+    dispatch({ type: 'SET_LENS_COUNTRY', payload: country});
 };
-

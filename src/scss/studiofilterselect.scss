@@ -1,0 +1,14 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#filterselect {
+    .filterselect__add {
+        .filterselect__add__title {
+            font-size: 24px;
+            color: $amarelo;
+            font-weight: 700;
+            margin-bottom: 2vw;
+            text-transform: lowercase;
+        }
+    }
+}

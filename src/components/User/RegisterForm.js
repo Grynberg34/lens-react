@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import "../scss/registerForm.scss";
+import "../../scss/registerForm.scss";
 
 let RegisterForm = props => {
 

@@ -1,11 +1,11 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { SetListType } from '../actions';
-import { SetListContent } from '../actions';
-import { store } from '../store';
-import "../scss/studiotypecontent.scss";
+import { SetListType } from '../../actions';
+import { SetListContent } from '../../actions';
+import { store } from '../../store';
+import "../../scss/studiotypecontent.scss";
 
-function Studio_TypeContent(props) {
+function StudioTypeContent(props) {
   
 
   function setType(type) {
@@ -20,7 +20,13 @@ function Studio_TypeContent(props) {
 
   
   return (
-    <div>
+    
+    <div id="typecontent" className="typecontent">
+
+      <div className="typecontent__add">
+        <h3 className="typecontent__add__title">type and content</h3>
+      </div>
+
       <div className="typecontent__section">
         <button onClick={()=> setType('watch')} className="typecontent__section__button"  style={{backgroundColor:list.type === "watch" ? "#bde0fe": ""}} >watch <span className="typecontent__section__bold">list</span> </button>
         <button onClick={()=> setType('tier')} className="typecontent__section__button" style={{backgroundColor:list.type === "tier" ? "#bde0fe": ""}}>tier <span className="typecontent__section__bold">list</span> </button>
@@ -45,5 +51,5 @@ function mapStateToProps(state) {
 
 export default connect(
   mapStateToProps
-)(Studio_TypeContent);
+)(StudioTypeContent);
 

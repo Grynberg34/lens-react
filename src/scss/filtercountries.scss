@@ -1,0 +1,50 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#countries {
+    margin-top: 14vw;
+    
+    .countries__title {
+        font-size: 18px;
+        color: $azul-claro;
+        font-weight: 700;
+        margin-bottom: 2vw;
+        text-transform: lowercase;
+    }
+    
+    .countries__list {
+        list-style: none;
+        padding-left: 0;
+        height: 20vw;
+        overflow-y: auto;
+        padding-right: 2vw;
+
+        .countries__list__country {
+            display: block;
+            font-size: 14px;
+            color: $amarelo;
+            border: 2px solid $amarelo;
+            padding: 0.5vw;
+            margin-bottom: 1vw;
+            border-radius: 36px;
+            cursor: pointer;
+            text-align: center;
+            text-transform: lowercase;
+        }
+    }
+
+    
+    .countries__list::-webkit-scrollbar-track {
+        border: 2px solid $amarelo;
+    }
+       
+    .countries__list::-webkit-scrollbar-thumb {
+        background-color: $azul-claro;
+        outline: none;
+    }
+
+    .countries__list::-webkit-scrollbar {
+        width: 1vw;
+    }
+
+}

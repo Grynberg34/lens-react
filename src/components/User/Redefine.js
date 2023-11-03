@@ -1,13 +1,13 @@
 import React from 'react';
 import RedefineForm from './RedefineForm';
 import NewPassForm from './NewPassForm';
-import { RedefinePassword } from '../actions';
-import { DefineNewPassword } from '../actions';
+import { RedefinePassword } from '../../actions';
+import { DefineNewPassword } from '../../actions';
 import { connect } from 'react-redux';
-import { CheckAuth } from '../actions';
-import { store } from '../store';
+import { CheckAuth } from '../../actions';
+import { store } from '../../store';
 import { Link, Navigate } from "react-router-dom";
-import "../scss/redefine.scss";
+import "../../scss/redefine.scss";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';

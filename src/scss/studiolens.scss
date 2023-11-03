@@ -1,3 +1,39 @@
 @import '../scss/colors.scss';
 @import '../scss/font.scss';
 
+#lens {
+    .lens__add {
+        .lens__add__title {
+            font-size: 24px;
+            color: $amarelo;
+            font-weight: 700;
+            margin-bottom: 2vw;
+            text-transform: lowercase;
+        }
+    }
+
+    .lens__filter {
+        display: block;
+        border: 2px solid $amarelo;
+        padding: 0.5vw;
+        border-radius: 36px;
+        text-align: center;
+
+        .lens__filter__title {
+            font-size: 18px;
+            color: $amarelo;
+            font-weight: 700;
+            margin-bottom: 0.5vw;
+            text-transform: lowercase;
+        }
+
+        .lens__filter__content {
+            font-size: 16px;
+            color: $azul-claro;
+            font-weight: 400;
+            text-transform: lowercase;
+            margin-bottom: 0;
+        }
+
+    }
+}
