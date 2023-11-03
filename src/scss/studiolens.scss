@@ -14,11 +14,25 @@
 
     .lens__filter {
         display: block;
+        position: relative;
         border: 2px solid $amarelo;
         padding: 0.5vw;
         border-radius: 36px;
         text-align: center;
         margin-bottom: 1vw;
+
+        .lens__filter__remove {
+            position: absolute;
+            top: 0%;
+            right: 0%;
+            color: $amarelo;
+            padding: 0.5vw;
+            font-weight: 700;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 99;
+        }
+
 
         .lens__filter__title {
             font-size: 18px;
@@ -34,6 +48,18 @@
             font-weight: 400;
             text-transform: lowercase;
             margin-bottom: 0;
+        }
+
+        .lens__filter__content--genre {
+            font-size: 16px;
+            color: $azul-claro;
+            font-weight: 400;
+            text-transform: lowercase;
+            margin-bottom: 0.5vw;
+
+            &:last-of-type {
+                margin-bottom: 0;
+            }
         }
 
     }

@@ -39,6 +39,7 @@
                 text-align: center;
                 font-weight: 700;
                 text-transform: lowercase;
+                user-select: none;
             }
 
             .date__list__decades__year {
@@ -52,6 +53,7 @@
                 cursor: pointer;
                 text-align: center;
                 text-transform: lowercase;
+                user-select: none;
             }
         }
     }
@@ -59,10 +61,12 @@
     
     .date__list::-webkit-scrollbar-track {
         border: 2px solid $amarelo;
+        border-radius: 36px;
     }
        
     .date__list::-webkit-scrollbar-thumb {
         background-color: $azul-claro;
+        border-radius: 36px;
         outline: none;
     }
 

@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { ShowLens } from '../../actions';
 import FilterCountries from './FilterCountries';
 import FilterDate from './FilterDate';
+import FilterGenres from './FilterGenres';
 import { store } from '../../store';
 import "../../icon/font/flaticon_lens.scss";
 import "../../scss/studiofilterselect.scss";
@@ -25,10 +26,8 @@ function StudioFilterSelect(props) {
         :null
       }
 
-      {filter === 'genre'?
-        <div className="filterselect__filter">
-          <h1 className="filterselect__filter__title">genre</h1>
-        </div>
+      {filter === 'genres'?
+        <FilterGenres></FilterGenres>
         :null
       }
 

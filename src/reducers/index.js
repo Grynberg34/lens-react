@@ -110,7 +110,7 @@ const failedNewPasswordReducer = (msg = '', action) => {
   return msg;
 };
 
-const createListReducer = (list = {title: null, type: null, content: null, uri_content: null, lens: null, query: null }, action) => {
+const createListReducer = (list = {title: null, type: null, content: null, uri_content: null, lens: null }, action) => {
   switch(action.type){
     case 'SET_TYPE':
       return {
@@ -134,7 +134,7 @@ const createListReducer = (list = {title: null, type: null, content: null, uri_c
   }
 };
 
-const createLensReducer = (lens = {country: {name: null, iso: null, query: null}, persons: {names: null, query: null}, genres: {names: null, query: null}, keywords: {words: null, query: null}, date: {decade:null, year: null, query: null}}, action) => {
+const createLensReducer = (lens = {country: {name: null, iso: null}, persons: [], genres: [], keywords: [], date: {decade:null, year: null}}, action) => {
   switch(action.type){
     case 'SET_LENS_COUNTRY':
       return {
@@ -146,10 +146,15 @@ const createLensReducer = (lens = {country: {name: null, iso: null, query: null}
         ...lens,
         date: action.payload
       };
-    case 'SET_LENS_GENRE':
+    case 'SET_LENS_GENRES':
       return {
         ...lens,
-        genres: lens.genres.push(action.payload)
+        genres: [...lens.genres, action.payload]
+      };
+    case 'REMOVE_LENS_GENRES':
+      return {
+        ...lens,
+        genres: action.payload
       };
     case 'SET_LENS_PERSON':
       return {
@@ -208,7 +213,7 @@ const getGenresReducer = (genres = null, action) => {
 
 const getCountriesReducer = (countries = null, action) => {
 
-  if (action.type === 'GET_COUNTRIES') {
+  if (action.type === 'GET_COUNTRY') {
 
     return action.payload;
     

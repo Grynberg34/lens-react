@@ -9,8 +9,6 @@ function FilterDate(props) {
 
   var date = props.date;
 
-  console.log(date)
-
   var lens = props.lens;
 
   function selectTime(year_start, year_end) {

@@ -28,7 +28,7 @@ function StudioTypeContent(props) {
       </div>
 
       <div className="typecontent__section">
-        <button onClick={()=> setType('watch')} className="typecontent__section__button"  style={{backgroundColor:list.type === "watch" ? "#bde0fe": ""}} >watch <span className="typecontent__section__bold">list</span> </button>
+        <button onClick={()=> setType('watch')} className="typecontent__section__button"  style={{backgroundColor:list.type === "watch" ? "#bde0fe": ""}} >watch<span className="typecontent__section__bold">list</span> </button>
         <button onClick={()=> setType('tier')} className="typecontent__section__button" style={{backgroundColor:list.type === "tier" ? "#bde0fe": ""}}>tier <span className="typecontent__section__bold">list</span> </button>
       </div>
 

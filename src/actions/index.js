@@ -100,14 +100,33 @@ export const SetListContent = (uri, content) => async dispatch => {
 export const ShowFilter = (filter) => async dispatch => {
 
     if (filter === 'country') {
-        dispatch({ type: 'GET_COUNTRIES', payload: filters.countries });
+        dispatch({ type: 'GET_COUNTRY', payload: filters.countries });
     } else if (filter === 'date') {
         dispatch({ type: 'GET_DATE', payload: filters.date });
-    } else if (filter === 'genre') {
+    } else if (filter === 'genres') {
         dispatch({ type: 'GET_GENRES', payload: filters.genres });
     }
 
     dispatch({ type: 'SHOW_FILTER', payload: filter});
+};
+
+export const RemoveFilter = (filter) => async dispatch => {
+
+    if (filter === 'country') {
+        var country = {
+            iso: null,
+            name: null
+        };
+        dispatch({ type: 'SET_LENS_COUNTRY', payload: country });
+    } else if (filter === 'date') {
+        var date = {
+            year: null,
+            decade: null,
+        };
+        dispatch({ type: 'SET_LENS_DATE', payload: date});
+    } else if (filter === 'genres') {
+        dispatch({ type: 'REMOVE_LENS_GENRES', payload: [] });
+    }
 };
 
 export const SetLensCountry = (iso,name) => async dispatch => {
@@ -115,7 +134,6 @@ export const SetLensCountry = (iso,name) => async dispatch => {
     var country = {
         iso: iso,
         name: name, 
-        query: 'with_origin_country='+iso
     };
 
     dispatch({ type: 'SET_LENS_COUNTRY', payload: country});
@@ -127,13 +145,11 @@ export const SetLensDate = (year_start, year_end) => async dispatch => {
         var date = {
             year: year_start,
             decade: null,
-            query: ''
         };
     } else {
         var date = {
             year: null,
             decade: year_start+'s',
-            query: ''
         };
     }
 
@@ -141,3 +157,7 @@ export const SetLensDate = (year_start, year_end) => async dispatch => {
     dispatch({ type: 'SET_LENS_DATE', payload: date});
 };
 
+export const SetLensGenres = (genre) => async dispatch => {
+
+    dispatch({ type: 'SET_LENS_GENRES', payload: genre});
+};

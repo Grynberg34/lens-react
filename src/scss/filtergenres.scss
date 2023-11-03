@@ -1,10 +1,10 @@
 @import '../scss/colors.scss';
 @import '../scss/font.scss';
 
-#countries {
+#genres {
     margin-top: 14vw;
     
-    .countries__title {
+    .genres__title {
         font-size: 18px;
         color: $azul-claro;
         font-weight: 700;
@@ -12,14 +12,14 @@
         text-transform: lowercase;
     }
     
-    .countries__list {
+    .genres__list {
         list-style: none;
         padding-left: 0;
         height: 20vw;
         overflow-y: auto;
         padding-right: 2vw;
 
-        .countries__list__country {
+        .genres__list__genre {
             display: block;
             font-size: 14px;
             color: $amarelo;
@@ -35,18 +35,18 @@
     }
 
     
-    .countries__list::-webkit-scrollbar-track {
+    .genres__list::-webkit-scrollbar-track {
         border: 2px solid $amarelo;
         border-radius: 36px;
     }
        
-    .countries__list::-webkit-scrollbar-thumb {
+    .genres__list::-webkit-scrollbar-thumb {
         background-color: $azul-claro;
         border-radius: 36px;
         outline: none;
     }
 
-    .countries__list::-webkit-scrollbar {
+    .genres__list::-webkit-scrollbar {
         width: 1vw;
     }
 
