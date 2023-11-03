@@ -11,8 +11,6 @@ function FilterCountries(props) {
 
   var lens = props.lens;
 
-  console.log(lens.country)
-
   function selectCountry(iso,name) {
     store.dispatch(SetLensCountry(iso,name))
   }

@@ -1,0 +1,73 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#date {
+    margin-top: 14vw;
+    
+    .date__title {
+        font-size: 18px;
+        color: $azul-claro;
+        font-weight: 700;
+        margin-bottom: 2vw;
+        text-transform: lowercase;
+    }
+    
+    .date__list {
+        list-style: none;
+        padding-left: 0;
+        height: 20vw;
+        overflow-y: auto;
+        padding-right: 2vw;
+        padding-left: 0.5vw;
+
+        .date__list__decades {
+            display: block;
+            border: 2px solid $amarelo;
+            padding: 1vw;
+            margin-bottom: 1vw;
+            border-radius: 36px;
+
+            .date__list__decades__decade {
+                display: block;
+                font-size: 20px;
+                color: $amarelo;
+                border: 2px solid $amarelo;
+                padding: 0.5vw;
+                margin-bottom: 2vw;
+                border-radius: 36px;
+                cursor: pointer;
+                text-align: center;
+                font-weight: 700;
+                text-transform: lowercase;
+            }
+
+            .date__list__decades__year {
+                display: block;
+                font-size: 14px;
+                color: $amarelo;
+                border: 2px solid $amarelo;
+                padding: 0.5vw;
+                margin-bottom: 1vw;
+                border-radius: 36px;
+                cursor: pointer;
+                text-align: center;
+                text-transform: lowercase;
+            }
+        }
+    }
+
+    
+    .date__list::-webkit-scrollbar-track {
+        border: 2px solid $amarelo;
+    }
+       
+    .date__list::-webkit-scrollbar-thumb {
+        background-color: $azul-claro;
+        outline: none;
+    }
+
+    .date__list::-webkit-scrollbar {
+        width: 1vw;
+    }
+
+}

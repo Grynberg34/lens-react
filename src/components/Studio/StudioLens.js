@@ -24,6 +24,14 @@ function StudioLens(props) {
     </div>
     :null
     }
+
+    {lens.date.name !== null?
+      <div className="lens__filter">
+        <h2 className="lens__filter__title">date</h2>
+        <h3 className="lens__filter__content">{lens.date.decade}{lens.date.year}</h3>
+      </div>
+      :null
+    }
       
     </div>
   )

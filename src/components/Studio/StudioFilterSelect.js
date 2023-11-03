@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { ShowLens } from '../../actions';
 import FilterCountries from './FilterCountries';
+import FilterDate from './FilterDate';
 import { store } from '../../store';
 import "../../icon/font/flaticon_lens.scss";
 import "../../scss/studiofilterselect.scss";
@@ -20,9 +21,7 @@ function StudioFilterSelect(props) {
       }
 
       {filter === 'date'?
-        <div className="filterselect__filter">
-          <h1 className="filterselect__filter__title">date</h1>
-        </div>
+        <FilterDate></FilterDate>
         :null
       }
 

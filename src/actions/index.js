@@ -101,8 +101,8 @@ export const ShowFilter = (filter) => async dispatch => {
 
     if (filter === 'country') {
         dispatch({ type: 'GET_COUNTRIES', payload: filters.countries });
-    } else if (filter === 'time') {
-        dispatch({ type: 'GET_DECADES', payload: filters.decades });
+    } else if (filter === 'date') {
+        dispatch({ type: 'GET_DATE', payload: filters.date });
     } else if (filter === 'genre') {
         dispatch({ type: 'GET_GENRES', payload: filters.genres });
     }
@@ -120,3 +120,24 @@ export const SetLensCountry = (iso,name) => async dispatch => {
 
     dispatch({ type: 'SET_LENS_COUNTRY', payload: country});
 };
+
+export const SetLensDate = (year_start, year_end) => async dispatch => {
+
+    if (year_end === null) {
+        var date = {
+            year: year_start,
+            decade: null,
+            query: ''
+        };
+    } else {
+        var date = {
+            year: null,
+            decade: year_start+'s',
+            query: ''
+        };
+    }
+
+
+    dispatch({ type: 'SET_LENS_DATE', payload: date});
+};
+

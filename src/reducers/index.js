@@ -134,17 +134,17 @@ const createListReducer = (list = {title: null, type: null, content: null, uri_c
   }
 };
 
-const createLensReducer = (lens = {country: {name: null, iso: null, query: null}, persons: {names: null, query: null}, genres: {names: null, query: null}, keywords: {words: null, query: null}, time: {years: null, query: null}}, action) => {
+const createLensReducer = (lens = {country: {name: null, iso: null, query: null}, persons: {names: null, query: null}, genres: {names: null, query: null}, keywords: {words: null, query: null}, date: {decade:null, year: null, query: null}}, action) => {
   switch(action.type){
     case 'SET_LENS_COUNTRY':
       return {
         ...lens,
         country: action.payload
       };
-    case 'SET_LENS_TIME':
+    case 'SET_LENS_DATE':
       return {
         ...lens,
-        time: action.payload
+        date: action.payload
       };
     case 'SET_LENS_GENRE':
       return {
@@ -182,15 +182,15 @@ const showFilterReducer = (filter = null, action) => {
   
 };
 
-const getDecadesReducer = (decades = null, action) => {
+const getDateReducer = (date = null, action) => {
 
-  if (action.type === 'GET_DECADES') {
+  if (action.type === 'GET_DATE') {
 
     return action.payload;
     
   }
   
-  return decades;  
+  return date;  
   
 };
 
@@ -233,7 +233,7 @@ export default combineReducers({
   list: createListReducer,
   filter: showFilterReducer,
   countries: getCountriesReducer,
-  decades: getDecadesReducer,
+  date: getDateReducer,
   genres: getGenresReducer,
   lens: createLensReducer,
   form: formReducer

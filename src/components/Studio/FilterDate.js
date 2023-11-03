@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { SetLensCountry } from '../../actions';
+import { SetLensDate } from '../../actions';
 import { store } from '../../store';
 import "../../scss/filterdate.scss";
 
@@ -9,24 +9,37 @@ function FilterDate(props) {
 
   var date = props.date;
 
+  console.log(date)
+
   var lens = props.lens;
 
-  function selectCountry(iso,name) {
-    store.dispatch(SetLensCountry(iso,name))
+  function selectTime(year_start, year_end) {
+    store.dispatch(SetLensDate(year_start, year_end))
   }
   
   return (
     <div id="date" className="date">
       
-      <ul className="date__list">
+      <div className="date__list">
 
-      { date.map( (country, index) =>
+      { date.map( (date, index) =>
 
-        <li key={index} onClick={()=> selectCountry(country.iso_3166_1, country.english_name)} style={{border:lens.country.iso === country.iso_3166_1? "2px solid #bde0fe": "", color:lens.country.iso === country.iso_3166_1? "#bde0fe": "" }} className="date__list__country">{country.english_name}</li>
+        <div key={index} className="date__list__decades">
+
+          {date.years[0] === 2020?
+          <h1 style={{border:lens.date.decade === date.decade? "2px solid #bde0fe": "", color:lens.date.decade === date.decade? "#bde0fe": "" }} className="date__list__decades__decade" onClick={()=> selectTime(date.years[0], date.years[3])}>{date.decade}</h1>
+          :<h1 style={{border:lens.date.decade === date.decade? "2px solid #bde0fe": "", color:lens.date.decade === date.decade? "#bde0fe": "" }} className="date__list__decades__decade" onClick={()=> selectTime(date.years[0], date.years[9])}>{date.decade}</h1>
+          }
+          
+          { date.years.map( (year, index) =>
+            <h2 style={{border:lens.date.year === year? "2px solid #bde0fe": "", color:lens.date.year === year? "#bde0fe": "" }} key={index} className="date__list__decades__year" onClick={()=> selectTime(year, null)}>{year}</h2>
+          )}
+
+        </div>
 
       )}
 
-      </ul>
+      </div>
 
     </div>
   )
