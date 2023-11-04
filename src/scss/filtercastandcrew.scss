@@ -1,0 +1,79 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#castandcrew {
+    margin-top: 14vw;
+    
+    .castandcrew__title {
+        font-size: 18px;
+        color: $azul-claro;
+        font-weight: 700;
+        margin-bottom: 2vw;
+        text-transform: lowercase;
+    }
+
+    .castandcrew__title {
+        font-size: 20px;
+        color: $azul-claro;
+        font-weight: 700;
+        margin-bottom: 0.5vw;
+        text-transform: lowercase;
+    }
+
+    .castandcrew__search {
+        width: 100%;
+        border-radius: 36px;
+        border: none;
+        outline: none;
+        margin-bottom: 2vw;
+        text-align: center;
+    }
+    
+    .castandcrew__list {
+        list-style: none;
+        padding-left: 0;
+        height: 15vw;
+        overflow-y: auto;
+        padding-right: 2vw;
+
+        .castandcrew__list__person {
+            display: block;
+            font-size: 14px;
+            color: $amarelo;
+            border: 2px solid $amarelo;
+            padding: 0.5vw;
+            margin-bottom: 1vw;
+            border-radius: 36px;
+            cursor: pointer;
+            text-align: center;
+            text-transform: lowercase;
+            user-select: none;
+
+            .castandcrew__list__person__img {
+                display: block;
+                width: 50%;
+                margin-left: auto;
+                margin-right: auto;
+                margin-top: 0.5vw;
+                border-radius:36px;
+            }
+        }
+    }
+
+    
+    .castandcrew__list::-webkit-scrollbar-track {
+        border: 2px solid $amarelo;
+        border-radius: 36px;
+    }
+       
+    .castandcrew__list::-webkit-scrollbar-thumb {
+        background-color: $azul-claro;
+        border-radius: 36px;
+        outline: none;
+    }
+
+    .castandcrew__list::-webkit-scrollbar {
+        width: 1vw;
+    }
+
+}

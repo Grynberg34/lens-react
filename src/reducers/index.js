@@ -110,7 +110,7 @@ const failedNewPasswordReducer = (msg = '', action) => {
   return msg;
 };
 
-const createListReducer = (list = {title: null, type: null, content: null, uri_content: null, lens: null }, action) => {
+const createListReducer = (list = {title: null, type: null, content: null, uri_content: null, lenses: [] }, action) => {
   switch(action.type){
     case 'SET_TYPE':
       return {
@@ -127,6 +127,12 @@ const createListReducer = (list = {title: null, type: null, content: null, uri_c
         ...list,
         content: action.payload
       };
+    case 'SET_LENS':
+      return {
+        ...list,
+        lenses: [...list.lenses, action.payload]
+      };
+  
     default:
       return list;
     
@@ -134,7 +140,7 @@ const createListReducer = (list = {title: null, type: null, content: null, uri_c
   }
 };
 
-const createLensReducer = (lens = {country: {name: null, iso: null}, persons: [], genres: [], keywords: [], date: {decade:null, year: null}}, action) => {
+const createLensReducer = (lens = {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: {decade:null, year: null}}, action) => {
   switch(action.type){
     case 'SET_LENS_COUNTRY':
       return {
@@ -156,17 +162,26 @@ const createLensReducer = (lens = {country: {name: null, iso: null}, persons: []
         ...lens,
         genres: action.payload
       };
-    case 'SET_LENS_PERSON':
+    case 'SET_LENS_CAST_CREW':
       return {
         ...lens,
-        persons: lens.persons.push(action.payload)
+        castandcrew: [...lens.castandcrew, action.payload]
       };
-    case 'SET_LENS_KEYWORD':
+    case 'REMOVE_LENS_CAST_CREW':
     return {
       ...lens,
-      keywords: lens.keywords.push(action.payload)
+      castandcrew: action.payload
     };
-    
+    case 'SET_LENS_KEYWORDS':
+    return {
+      ...lens,
+      keywords: [...lens.keywords, action.payload]
+    };
+    case 'REMOVE_LENS_KEYWORDS':
+      return {
+        ...lens,
+        keywords: action.payload
+      };
     default:
       return lens;
     
@@ -185,6 +200,31 @@ const showFilterReducer = (filter = null, action) => {
   return filter;  
 
   
+};
+
+const searchCastandCrewReducer = (castandcrew = null, action) => {
+
+  if (action.type === 'SEARCH_CAST_CREW') {
+
+    return action.payload;
+    
+  }
+  
+  return castandcrew;  
+
+};
+
+
+const searchKeywordsReducer = (keywords = null, action) => {
+
+  if (action.type === 'SEARCH_KEYWORDS') {
+
+    return action.payload;
+    
+  }
+  
+  return keywords;  
+
 };
 
 const getDateReducer = (date = null, action) => {
@@ -240,6 +280,8 @@ export default combineReducers({
   countries: getCountriesReducer,
   date: getDateReducer,
   genres: getGenresReducer,
+  castandcrew: searchCastandCrewReducer,
+  keywords: searchKeywordsReducer,
   lens: createLensReducer,
   form: formReducer
   

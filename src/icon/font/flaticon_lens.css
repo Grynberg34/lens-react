@@ -1,10 +1,10 @@
 @font-face {
     font-family: "flaticon_lens";
-    src: url("./flaticon_lens.ttf?f5b544415ab23e038415e6d78c64ab70") format("truetype"),
-url("./flaticon_lens.woff?f5b544415ab23e038415e6d78c64ab70") format("woff"),
-url("./flaticon_lens.woff2?f5b544415ab23e038415e6d78c64ab70") format("woff2"),
-url("./flaticon_lens.eot?f5b544415ab23e038415e6d78c64ab70#iefix") format("embedded-opentype"),
-url("./flaticon_lens.svg?f5b544415ab23e038415e6d78c64ab70#flaticon_lens") format("svg");
+    src: url("./flaticon_lens.ttf?0c590f6d0c170f9c87e64fca8b3b64d8") format("truetype"),
+url("./flaticon_lens.woff?0c590f6d0c170f9c87e64fca8b3b64d8") format("woff"),
+url("./flaticon_lens.woff2?0c590f6d0c170f9c87e64fca8b3b64d8") format("woff2"),
+url("./flaticon_lens.eot?0c590f6d0c170f9c87e64fca8b3b64d8#iefix") format("embedded-opentype"),
+url("./flaticon_lens.svg?0c590f6d0c170f9c87e64fca8b3b64d8#flaticon_lens") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
@@ -36,6 +36,6 @@ i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
 .flaticon-television:before {
     content: "\f106";
 }
-.flaticon-delete:before {
+.flaticon-remove:before {
     content: "\f107";
 }

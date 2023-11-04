@@ -1,0 +1,71 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#keywords {
+    margin-top: 14vw;
+    
+    .keywords__title {
+        font-size: 18px;
+        color: $azul-claro;
+        font-weight: 700;
+        margin-bottom: 2vw;
+        text-transform: lowercase;
+    }
+
+    .keywords__title {
+        font-size: 20px;
+        color: $azul-claro;
+        font-weight: 700;
+        margin-bottom: 0.5vw;
+        text-transform: lowercase;
+    }
+
+    .keywords__search {
+        width: 100%;
+        border-radius: 36px;
+        border: none;
+        outline: none;
+        margin-bottom: 2vw;
+        text-align: center;
+    }
+    
+    .keywords__list {
+        list-style: none;
+        padding-left: 0;
+        height: 15vw;
+        overflow-y: auto;
+        padding-right: 2vw;
+
+        .keywords__list__word {
+            display: block;
+            font-size: 14px;
+            color: $amarelo;
+            border: 2px solid $amarelo;
+            padding: 0.5vw;
+            margin-bottom: 1vw;
+            border-radius: 36px;
+            cursor: pointer;
+            text-align: center;
+            text-transform: lowercase;
+            user-select: none;
+
+        }
+    }
+
+    
+    .keywords__list::-webkit-scrollbar-track {
+        border: 2px solid $amarelo;
+        border-radius: 36px;
+    }
+       
+    .keywords__list::-webkit-scrollbar-thumb {
+        background-color: $azul-claro;
+        border-radius: 36px;
+        outline: none;
+    }
+
+    .keywords__list::-webkit-scrollbar {
+        width: 1vw;
+    }
+
+}

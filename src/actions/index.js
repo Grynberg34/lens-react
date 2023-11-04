@@ -126,6 +126,10 @@ export const RemoveFilter = (filter) => async dispatch => {
         dispatch({ type: 'SET_LENS_DATE', payload: date});
     } else if (filter === 'genres') {
         dispatch({ type: 'REMOVE_LENS_GENRES', payload: [] });
+    } else if (filter === 'cast and crew') {
+        dispatch({ type: 'REMOVE_LENS_CAST_CREW', payload: [] });
+    } else if (filter === 'keywords') {
+        dispatch({ type: 'REMOVE_LENS_KEYWORDS', payload: [] });
     }
 };
 
@@ -160,4 +164,49 @@ export const SetLensDate = (year_start, year_end) => async dispatch => {
 export const SetLensGenres = (genre) => async dispatch => {
 
     dispatch({ type: 'SET_LENS_GENRES', payload: genre});
+};
+
+export const SetLensCastandCrew = (name) => async dispatch => {
+
+    dispatch({ type: 'SET_LENS_CAST_CREW', payload: name});
+};
+
+export const SearchCastandCrew = (name) => async dispatch => {
+
+    var query= name.replace(/ /g, '%20')
+
+    await movies.get(`/search/person?query=${query}`, {
+    }).then(function(response){
+        dispatch({ type: 'SEARCH_CAST_CREW', payload: response.data });
+    }).catch(function(err){
+        console.log(err)
+    })
+};
+
+export const SetLensKeywords = (name) => async dispatch => {
+
+    dispatch({ type: 'SET_LENS_KEYWORDS', payload: name});
+};
+
+export const SearchKeywords = (word) => async dispatch => {
+
+    var query= word.replace(/ /g, '%20')
+
+    await movies.get(`/search/keyword?query=${query}`, {
+    }).then(function(response){
+        dispatch({ type: 'SEARCH_KEYWORDS', payload: response.data });
+    }).catch(function(err){
+        console.log(err)
+    })
+};
+
+export const CreateLens = (lens) => async dispatch => {
+
+    console.log(lens)
+
+    var new_lens = {
+
+    };
+
+    dispatch({ type: 'SET_LENS', payload: new_lens});
 };

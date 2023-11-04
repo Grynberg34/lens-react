@@ -23,10 +23,9 @@
 
         .lens__filter__remove {
             position: absolute;
-            top: 0%;
-            right: 0%;
+            top: -5%;
+            right: -5%;
             color: $amarelo;
-            padding: 0.5vw;
             font-weight: 700;
             font-size: 24px;
             cursor: pointer;
@@ -60,6 +59,25 @@
             &:last-of-type {
                 margin-bottom: 0;
             }
+        }
+
+    }
+
+    .lens__button {
+        display: block;
+        width: 100%;
+        background-color: $amarelo;
+        border: none;
+        outline: none;
+        padding: 0.5vw;
+        border-radius: 36px;
+        font-size: 20px;
+        font-weight: 700;
+        color: $azul-escuro;
+        margin-bottom: 0;
+
+        &:hover {
+            background-color: $azul-claro;
         }
 
     }

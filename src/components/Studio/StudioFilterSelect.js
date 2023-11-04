@@ -4,6 +4,8 @@ import { ShowLens } from '../../actions';
 import FilterCountries from './FilterCountries';
 import FilterDate from './FilterDate';
 import FilterGenres from './FilterGenres';
+import FilterCastandCrew from './FilterCastandCrew';
+import FilterKeywords from './FilterKeywords';
 import { store } from '../../store';
 import "../../icon/font/flaticon_lens.scss";
 import "../../scss/studiofilterselect.scss";
@@ -31,17 +33,13 @@ function StudioFilterSelect(props) {
         :null
       }
 
-      {filter === 'person'?
-        <div className="filterselect__filter">
-          <h1 className="filterselect__filter__title">person</h1>
-        </div>
+      {filter === 'cast and crew'?
+        <FilterCastandCrew></FilterCastandCrew>
         :null
       }
 
-      {filter === 'keyword'?
-        <div className="filterselect__filter">
-          <h1 className="filterselect__filter__title">keyword</h1>
-        </div>
+      {filter === 'keywords'?
+        <FilterKeywords></FilterKeywords>
         :null
       }
 

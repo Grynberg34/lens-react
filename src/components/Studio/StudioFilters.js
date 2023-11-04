@@ -24,7 +24,7 @@ function StudioFilters(props) {
         <button onClick={()=> addFilter('country')} className="filters__section__button" style={{backgroundColor:filter === "country" ? "#bde0fe": ""}} >country</button>
         <button onClick={()=> addFilter('date')} className="filters__section__button" style={{backgroundColor:filter === "date" ? "#bde0fe": ""}} >date</button>
         <button onClick={()=> addFilter('genres')} className="filters__section__button" style={{backgroundColor:filter === "genres" ? "#bde0fe": ""}} >genres</button>
-        <button onClick={()=> addFilter('persons')} className="filters__section__button" style={{backgroundColor:filter === "persons" ? "#bde0fe": ""}} >persons</button>
+        <button onClick={()=> addFilter('cast and crew')} className="filters__section__button" style={{backgroundColor:filter === "cast and crew" ? "#bde0fe": ""}} >cast and crew</button>
         <button onClick={()=> addFilter('keywords')} className="filters__section__button" style={{backgroundColor:filter === "keywords" ? "#bde0fe": ""}} >keywords</button>
       </div>
 

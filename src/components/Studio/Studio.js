@@ -21,6 +21,8 @@ function Studio(props) {
   }
 
   var auth =  props.auth;
+
+  var list = props.list;
   
   if (auth === true) {
 
@@ -44,19 +46,24 @@ function Studio(props) {
 
               <Col md={2}>
 
+              {(list.type !==null && list.content !== null)?
                 <div className="studio__create__section">
                   <StudioFilters></StudioFilters>
                 </div>
+              :null
+              }
+
 
               </Col>
 
               <Col md={2}>
 
+                {(list.type !==null && list.content !== null)?
                 <div className="studio__create__section">
-
                   <StudioFilterSelect></StudioFilterSelect>
-
                 </div>
+                :null
+                }
 
               </Col>
 
@@ -64,21 +71,23 @@ function Studio(props) {
 
               <Col md={2}>
 
+                {(list.type !==null && list.content !== null)?
                 <div className="studio__create__section">
-
                   <StudioLens></StudioLens>
-
                 </div>
+                :null
+                }
 
               </Col>
 
               <Col md={2}>
 
+                {(list.type !==null && list.content !== null)?
                 <div className="studio__create__section">
-
-                  <StudioNext></StudioNext>
-
+                <StudioNext></StudioNext>
                 </div>
+                :null
+                }
 
               </Col>
 
