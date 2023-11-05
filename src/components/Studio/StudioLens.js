@@ -11,12 +11,16 @@ function StudioLens(props) {
  
   var lens = props.lens;
 
+  var list = props.list;
+
+  var lens_fail = props.lens_fail;
+
   function removeFilter(filter) {
     store.dispatch(RemoveFilter(filter))
   }
 
-  function createLens(lens) {
-    store.dispatch(CreateLens(lens))
+  function createLens(lens, list) {
+    store.dispatch(CreateLens(lens, list))
   }
   
   return (
@@ -26,6 +30,11 @@ function StudioLens(props) {
         <h1 className="lens__add__title">create lens</h1>
         <h2 className="lens__add__number"></h2>
       </div>
+
+      {lens.fail !== null?
+        <h3 className="lens__fail">{lens_fail}</h3>
+        :null
+      }
 
       {lens.country.name !== null?
       <div className="lens__filter">
@@ -51,7 +60,7 @@ function StudioLens(props) {
         <h2 className="lens__filter__title">genres</h2>
 
         { lens.genres.map( (genre, index) =>
-          <h3 key={index} className="lens__filter__content--genre">{genre}</h3>
+          <h3 key={index} className="lens__filter__content--genre">{genre.name}</h3>
         )}
 
       </div>
@@ -64,7 +73,7 @@ function StudioLens(props) {
         <h2 className="lens__filter__title">cast and crew</h2>
 
         { lens.castandcrew.map( (person, index) =>
-          <h3 key={index} className="lens__filter__content--genre">{person}</h3>
+          <h3 key={index} className="lens__filter__content--genre">{person.name}</h3>
         )}
 
       </div>
@@ -77,7 +86,7 @@ function StudioLens(props) {
         <h2 className="lens__filter__title">keywords</h2>
 
         { lens.keywords.map( (word, index) =>
-          <h3 key={index} className="lens__filter__content--genre">{word}</h3>
+          <h3 key={index} className="lens__filter__content--genre">{word.name}</h3>
         )}
 
       </div>
@@ -85,7 +94,7 @@ function StudioLens(props) {
       }
 
       {(lens.country.name !== null || lens.date.decade !== null || lens.date.year !== null || lens.genres.length > 0 || lens.castandcrew.length > 0 || lens.keywords.length > 0)?
-        <button onClick={()=> createLens(lens)} className="lens__button">create</button>
+        <button onClick={()=> createLens(lens, list)} className="lens__button">create</button>
         :null
       }
       
@@ -97,7 +106,9 @@ function StudioLens(props) {
 
 function mapStateToProps(state) {
   return {
-    lens: state.lens
+    lens: state.lens,
+    list: state.list,
+    lens_fail: state.lens_fail
   }
 }
 

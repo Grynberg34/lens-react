@@ -16,10 +16,10 @@ function FilterCastandCrew(props) {
     store.dispatch(SearchCastandCrew(name))
   }
 
-  function selectPerson(name) {
+  function selectPerson(person) {
 
-    if (!lens.castandcrew.includes(name)) {
-      store.dispatch(SetLensCastandCrew(name))
+    if (!lens.castandcrew.includes(person)) {
+      store.dispatch(SetLensCastandCrew(person))
     }
   }
   
@@ -34,7 +34,7 @@ function FilterCastandCrew(props) {
         { castandcrew.results.map( (person, index) =>
   
           person.profile_path !== null?
-          <li key={index} onClick={()=> selectPerson(person.name)} style={{border:lens.castandcrew.includes(person.name)? "2px solid #bde0fe": "", color:lens.castandcrew.includes(person.name)? "#bde0fe": "" }} className="castandcrew__list__person">{person.name}
+          <li key={index} onClick={()=> selectPerson(person)} style={{border:lens.castandcrew.includes(person.name)? "2px solid #bde0fe": "", color:lens.castandcrew.includes(person.name)? "#bde0fe": "" }} className="castandcrew__list__person">{person.name}
           <img className="castandcrew__list__person__img" src={`https://image.tmdb.org/t/p/original/${person.profile_path}`} alt="" />
           </li>
           :null

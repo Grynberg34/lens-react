@@ -132,6 +132,11 @@ const createListReducer = (list = {title: null, type: null, content: null, uri_c
         ...list,
         lenses: [...list.lenses, action.payload]
       };
+    case 'REMOVE_LENS':
+      return {
+        ...list,
+        lenses: list.lenses.filter((_, index) => index !== action.payload)
+      };
   
     default:
       return list;
@@ -182,11 +187,27 @@ const createLensReducer = (lens = {country: {name: null, iso: null}, castandcrew
         ...lens,
         keywords: action.payload
       };
+    case 'RESET_LENS':
+      return {
+        ...lens = action.payload
+      };
     default:
       return lens;
     
 
   }
+};
+
+const showLensFailReducer = (lens_fail = null, action) => {
+
+  if (action.type === 'SET_LENS_FAIL') {
+
+    return action.payload;
+    
+  }
+  
+  return lens_fail;  
+  
 };
 
 const showFilterReducer = (filter = null, action) => {
@@ -198,7 +219,6 @@ const showFilterReducer = (filter = null, action) => {
   }
   
   return filter;  
-
   
 };
 
@@ -263,6 +283,18 @@ const getCountriesReducer = (countries = null, action) => {
   
 };
 
+const advanceListCreationReducer = (next = false, action) => {
+
+  if (action.type === 'ADVANCE_LIST_CREATION') {
+
+    return action.payload;
+    
+  }
+  
+  return next;  
+  
+};
+
 export default combineReducers({
 
   jwt: userLogInReducer,
@@ -283,6 +315,8 @@ export default combineReducers({
   castandcrew: searchCastandCrewReducer,
   keywords: searchKeywordsReducer,
   lens: createLensReducer,
+  lens_fail: showLensFailReducer,
+  next: advanceListCreationReducer,
   form: formReducer
   
 });

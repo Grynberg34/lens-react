@@ -7,6 +7,7 @@ import Register from './components/User/Register';
 import Login from './components/User/Login';
 import Redefine from './components/User/Redefine';
 import Studio from './components/Studio/Studio';
+import StudioWatchList from './components/Studio/StudioWatchlist';
 import {store, persistor} from './store.js';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -23,6 +24,7 @@ ReactDOM.render(
           <Route path="login" element={<Login />}></Route>
           <Route path="redefine" element={<Redefine />}></Route>
           <Route path="studio" element={<Studio />}></Route>
+          <Route path="studio/watchlist" element={<StudioWatchList />}></Route>
         </Routes>
       </BrowserRouter>
     </PersistGate>

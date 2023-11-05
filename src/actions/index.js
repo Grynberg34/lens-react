@@ -200,13 +200,136 @@ export const SearchKeywords = (word) => async dispatch => {
     })
 };
 
-export const CreateLens = (lens) => async dispatch => {
+export const CreateLens = (lens, list) => async dispatch => {
 
-    console.log(lens)
+    var query = `/discover/${list.uri_content}?`
 
-    var new_lens = {
+    var filter_description = []
 
-    };
+    if (lens.country.iso !== null) {
+        var query_country = `&with_origin_country=${lens.country.iso}`;
+        query= query + query_country;
+        filter_description.push(`country: ${lens.country.name}`)
+    }
 
-    dispatch({ type: 'SET_LENS', payload: new_lens});
+    if (lens.date.year !== null) {
+        var query_date = `&primary_release_year=${lens.date.year}`;
+        query= query + query_date;
+        filter_description.push(`date: ${lens.date.year}`)
+    }
+
+    if (lens.date.decade !== null) {
+        var start = lens.date.decade.substring(0,3)
+
+        var query_date = `&primary_release_date.gte=${start + '0'}&primary_release_date.lte=${start+'9'}`;
+
+        query= query + query_date;
+
+        filter_description.push(`date: ${lens.date.decade}`)
+    }
+
+    if (lens.genres.length >0) {
+
+        var genres = [];
+        
+        var genres_string = [];
+
+        for (var i=0; i<lens.genres.length; i++) {
+            genres.push(lens.genres[i].id)
+            genres_string.push(lens.genres[i].name)
+        }
+
+        var query_genres = `&with_genres=${genres}`;
+
+        query = query + query_genres;
+
+        filter_description.push(`Genres: ${genres_string}`)
+    }
+
+    if (lens.castandcrew.length >0) {
+
+        var castandcrew = [];
+
+        var castandcrew_string = [];
+
+        for (var i=0; i<lens.castandcrew.length; i++) {
+            castandcrew.push(lens.castandcrew[i].id)
+            castandcrew_string.push(lens.castandcrew[i].name)
+        }
+
+        var query_castandcrew = `&with_people=${castandcrew}`;
+
+        query = query + query_castandcrew;
+
+        filter_description.push(`Cast and crew: ${castandcrew_string}`)
+    }
+
+    if (lens.keywords.length >0) {
+
+        var keywords = [];
+
+        var keywords_string = [];
+
+        for (var i=0; i<lens.keywords.length; i++) {
+            keywords.push(lens.keywords[i].id)
+            keywords_string.push(lens.keywords[i].name)
+        }
+
+        var query_keywords = `&with_keywords=${keywords}`;
+
+        query = query + query_keywords;
+
+        filter_description.push(`Keywords: ${keywords_string}`)
+    }
+
+    await movies.get(`${query}`, {
+    }).then(function(response){
+        var new_lens = {
+            filters: lens,
+            filter_description: filter_description,
+            query: query,
+            length: response.data.total_results
+        };
+
+        if (new_lens.length > 0)
+        {
+            dispatch({ type: 'SET_LENS', payload: new_lens});
+            dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: {decade:null, year: null}}});
+            dispatch({ type: 'SHOW_FILTER', payload: null});
+            dispatch({ type: 'SET_LENS_FAIL', payload: null});
+
+        } else {
+            dispatch({ type: 'SET_LENS_FAIL', payload: 'No results found'});
+        }
+    
+    }).catch(function(err){
+        console.log(err)
+    })
+
 };
+
+export const RemoveLens = (index) => async dispatch => {
+    dispatch({ type: 'REMOVE_LENS', payload: index.index});
+};
+
+export const AdvanceListCreation = () => async dispatch => {
+    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: {decade:null, year: null}}});
+    dispatch({ type: 'ADVANCE_LIST_CREATION', payload: true});
+};
+
+export const CreateSelectionList = (lenses) => async dispatch => {
+
+    var list = []
+
+    for (let i = 0; i < lenses.length; i++){
+        var movies = await movies.get(`${lenses[i].query}`, {
+        }).then(function(response){
+
+        }).catch(function(err){
+            console.log(err)
+        })
+
+        console.log(movies)
+    }
+ };
+

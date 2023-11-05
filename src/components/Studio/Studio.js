@@ -8,6 +8,7 @@ import StudioFilterSelect from './StudioFilterSelect';
 import StudioLens from './StudioLens';
 import StudioNext from './StudioNext';
 import { store } from '../../store';
+import { Navigate } from "react-router-dom";
 import "../../icon/font/flaticon_lens.scss";
 import "../../scss/studio.scss";
 import Container from 'react-bootstrap/Container';
@@ -23,81 +24,88 @@ function Studio(props) {
   var auth =  props.auth;
 
   var list = props.list;
+
+  var next = props.next;
   
   if (auth === true) {
 
-    return (
-      <div id='studio' className="studio" style={{backgroundImage: `url('/images/background.png')`}}>
-      <Menu></Menu>
-
-        <div className="studio__create">
-
-          <Container fluid>
-            <Row>
-              <Col md={2}>
-
-                <div className="studio__create__section">
-                  <StudioTypeContent></StudioTypeContent>
-                </div>
-
-              </Col>
-
-              <Col md={1}></Col>
-
-              <Col md={2}>
-
-              {(list.type !==null && list.content !== null)?
-                <div className="studio__create__section">
-                  <StudioFilters></StudioFilters>
-                </div>
-              :null
-              }
-
-
-              </Col>
-
-              <Col md={2}>
-
+    if (next === true) {
+      return (
+        <Navigate to="/studio/watchlist" />
+      )
+    } else {
+      return (
+        <div id='studio' className="studio" style={{backgroundImage: `url('/images/background.png')`}}>
+        <Menu></Menu>
+  
+          <div className="studio__create">
+  
+            <Container fluid>
+              <Row>
+                <Col md={2}>
+  
+                  <div className="studio__create__section">
+                    <StudioTypeContent></StudioTypeContent>
+                  </div>
+  
+                </Col>
+  
+                <Col md={1}></Col>
+  
+                <Col md={2}>
+  
                 {(list.type !==null && list.content !== null)?
-                <div className="studio__create__section">
-                  <StudioFilterSelect></StudioFilterSelect>
-                </div>
+                  <div className="studio__create__section">
+                    <StudioFilters></StudioFilters>
+                  </div>
                 :null
                 }
-
-              </Col>
-
-              <Col md={1}></Col>
-
-              <Col md={2}>
-
-                {(list.type !==null && list.content !== null)?
-                <div className="studio__create__section">
-                  <StudioLens></StudioLens>
-                </div>
-                :null
-                }
-
-              </Col>
-
-              <Col md={2}>
-
-                {(list.type !==null && list.content !== null)?
-                <div className="studio__create__section">
-                <StudioNext></StudioNext>
-                </div>
-                :null
-                }
-
-              </Col>
-
-
-            </Row>
-          </Container>
-
+  
+  
+                </Col>
+  
+                <Col md={2}>
+  
+                  {(list.type !==null && list.content !== null)?
+                  <div className="studio__create__section">
+                    <StudioFilterSelect></StudioFilterSelect>
+                  </div>
+                  :null
+                  }
+  
+                </Col>
+  
+                <Col md={3}>
+  
+                  {(list.type !==null && list.content !== null)?
+                  <div className="studio__create__section">
+                    <StudioLens></StudioLens>
+                  </div>
+                  :null
+                  }
+  
+                </Col>
+  
+                <Col md={2}>
+  
+                  {(list.type !==null && list.content !== null)?
+                  <div className="studio__create__section">
+                  <StudioNext></StudioNext>
+                  </div>
+                  :null
+                  }
+  
+                </Col>
+  
+  
+              </Row>
+            </Container>
+  
+          </div>
         </div>
-      </div>
-    )
+      )
+    }
+
 
   } else {
     return (
@@ -113,7 +121,8 @@ function mapStateToProps(state) {
     jwt: state.jwt,
     auth: state.auth,
     list: state.list,
-    filter: state.filter
+    filter: state.filter,
+    next: state.next
   }
 }
 

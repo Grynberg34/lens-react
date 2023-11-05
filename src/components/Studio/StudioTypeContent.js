@@ -27,15 +27,18 @@ function StudioTypeContent(props) {
         <h3 className="typecontent__add__title">type and content</h3>
       </div>
 
-      <div className="typecontent__section">
-        <button onClick={()=> setType('watch')} className="typecontent__section__button"  style={{backgroundColor:list.type === "watch" ? "#bde0fe": ""}} >watch<span className="typecontent__section__bold">list</span> </button>
-        <button onClick={()=> setType('tier')} className="typecontent__section__button" style={{backgroundColor:list.type === "tier" ? "#bde0fe": ""}}>tier <span className="typecontent__section__bold">list</span> </button>
-      </div>
 
-      <div className="typecontent__section">
-        <button onClick={()=> setContent('movie', 'movies')} className="typecontent__section__button" style={{backgroundColor:list.content === "movies" ? "#bde0fe": ""}}>movies</button>
-        <button onClick={()=> setContent('tv', 'series')} className="typecontent__section__button" style={{backgroundColor:list.content === "series" ? "#bde0fe": ""}}>series</button>
-      </div>
+        <div className="typecontent__section">
+          <button onClick={()=> setType('watch')} className="typecontent__section__button"  style={{backgroundColor:list.type === "watch" ? "#bde0fe": ""}} >watch<span className="typecontent__section__bold">list</span> </button>
+          <button onClick={()=> setType('tier')} className="typecontent__section__button" style={{backgroundColor:list.type === "tier" ? "#bde0fe": ""}}>tier <span className="typecontent__section__bold">list</span> </button>
+        </div>
+
+
+        <div className="typecontent__section">
+          <button onClick={() => list.content === null ?  setContent('movie', 'movies') : null} className="typecontent__section__button" style={{backgroundColor:list.content === "movies" ? "#bde0fe": ""}}>movies</button>
+          <button onClick={() => list.content === null ?  setContent('tv', 'series') : null} className="typecontent__section__button" style={{backgroundColor:list.content === "series" ? "#bde0fe": ""}}>series</button>
+        </div>
+ 
 
     </div>
   )

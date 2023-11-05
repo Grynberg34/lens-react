@@ -2,6 +2,9 @@
 @import '../scss/font.scss';
 
 #lens {
+    padding-left: 2vw;
+    padding-right: 4vw;
+
     .lens__add {
         .lens__add__title {
             font-size: 24px;
@@ -10,6 +13,15 @@
             margin-bottom: 2vw;
             text-transform: lowercase;
         }
+    }
+
+    .lens__fail {
+        font-size: 20px;
+        color: $azul-claro;
+        font-weight: 700;
+        margin-bottom: 2vw;
+        text-transform: lowercase;
+        font-style: italic;
     }
 
     .lens__filter {
@@ -23,8 +35,8 @@
 
         .lens__filter__remove {
             position: absolute;
-            top: -5%;
-            right: -5%;
+            top: -15%;
+            right: 0%;
             color: $amarelo;
             font-weight: 700;
             font-size: 24px;
