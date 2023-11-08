@@ -43,4 +43,23 @@
     .active {
         color: $amarelo;
     }
+
+    .credit {
+        display: block;
+        font-size: 16px;
+        font-weight: 400;
+        text-align: center;
+        color: $azul-escuro;
+        text-decoration: none;
+        background-color: $amarelo;
+        padding: 0.5vw;
+        border-radius: 36px;
+        font-weight: 700;
+
+        &:hover {
+            background-color: $azul-claro;
+            text-decoration: none;
+        }
+        
+    }
 }

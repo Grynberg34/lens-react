@@ -35,7 +35,7 @@ function Register(props) {
 
   if (auth === true) {
     return (
-      <Navigate to="/studio" />
+      <Navigate to="/home" />
     )
   } else if (register === true) {
     return (

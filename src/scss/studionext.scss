@@ -16,7 +16,8 @@
     .next__lens {
         display: block;
         position: relative;
-        border: 2px solid $amarelo;
+        border: 2px solid $azul-claro;
+        background-color: $azul-claro;
         padding: 0.5vw;
         border-radius: 36px;
         text-align: center;
@@ -35,7 +36,7 @@
 
         .next__lens__title {
             font-size: 18px;
-            color: $amarelo;
+            color: $azul-escuro;
             font-weight: 700;
             margin-bottom: 1vw;
             text-transform: lowercase;
@@ -43,7 +44,7 @@
 
         .next__lens__description {
             font-size: 14px;
-            color: $azul-claro;
+            color: $azul-escuro;
             font-weight: 700;
             margin-bottom: 0.5vw;
             text-transform: lowercase;
@@ -55,14 +56,14 @@
             margin-left: auto;
             margin-right: auto;
             margin-top: 1vw;
-            background-color: $amarelo;
+            background-color: $azul-escuro;
             border: none;
             outline: none;
             padding: 0.5vw;
             border-radius: 36px;
             font-size: 18px;
             font-weight: 700;
-            color: $azul-escuro;
+            color: $azul-claro;
         }
     }
 

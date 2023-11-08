@@ -109,7 +109,7 @@ function Studio(props) {
 
   } else {
     return (
-      <div></div>
+      <Navigate to="/" />
     )
   }
 

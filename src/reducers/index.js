@@ -295,6 +295,51 @@ const advanceListCreationReducer = (next = false, action) => {
   
 };
 
+const getSelectionListReducer = (selection_list = null, action) => {
+
+  switch(action.type){
+    case 'GET_SELECTION_LIST':
+      return {
+        ...selection_list,
+        all: action.payload,
+        filter: action.payload
+      };
+    case 'FILTER_SELECTION_LIST':
+      return {
+        ...selection_list,
+        filter: action.payload
+      };
+    default:
+      return selection_list;
+    }
+  
+};
+
+const getMovieReducer = (movie = null, action) => {
+
+  switch(action.type){
+    case 'GET_MOVIE_INFO':
+      return {
+        ...movie,
+        info: action.payload
+      };
+    case 'GET_MOVIE_CREDITS':
+      return {
+        ...movie,
+        credits: action.payload
+      };
+      case 'GET_MOVIE_KEYWORDS':
+        return {
+          ...movie,
+          keywords: action.payload
+        };
+    default:
+      return movie;
+    }
+  
+};
+
+
 export default combineReducers({
 
   jwt: userLogInReducer,
@@ -317,6 +362,8 @@ export default combineReducers({
   lens: createLensReducer,
   lens_fail: showLensFailReducer,
   next: advanceListCreationReducer,
+  selection_list: getSelectionListReducer,
+  movie: getMovieReducer,
   form: formReducer
   
 });

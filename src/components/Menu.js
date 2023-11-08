@@ -20,10 +20,20 @@ function Menu(props) {
         <Row>
 
           <Col md={2}>
-            <NavLink to="/"><img src="/images/logo/logo.png" className="menu__logo" alt="" /></NavLink>
+            <NavLink to="/home"><img src="/images/logo/logo.png" className="menu__logo" alt="" /></NavLink>
           </Col>
 
-          <Col md={6}></Col>
+          <Col md={1}></Col>
+
+          <Col md={3}>
+             <a target='_blank' rel="noreferrer" href="https://www.linkedin.com/in/francisco-grynberg/" className='credit'>created by Francisco Grynberg</a>
+          </Col>
+
+          <Col md={1}></Col>
+
+          <Col md={1}>
+            <NavLink to='/home' className="menu__link">home</NavLink>
+          </Col>
 
           <Col md={1}>
             <NavLink to='/studio' className="menu__link">studio</NavLink>

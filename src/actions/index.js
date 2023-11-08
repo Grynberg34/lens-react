@@ -202,6 +202,9 @@ export const SearchKeywords = (word) => async dispatch => {
 
 export const CreateLens = (lens, list) => async dispatch => {
 
+    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: {decade:null, year: null}}});
+    dispatch({ type: 'SHOW_FILTER', payload: null});
+
     var query = `/discover/${list.uri_content}?`
 
     var filter_description = []
@@ -294,8 +297,6 @@ export const CreateLens = (lens, list) => async dispatch => {
         if (new_lens.length > 0)
         {
             dispatch({ type: 'SET_LENS', payload: new_lens});
-            dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: {decade:null, year: null}}});
-            dispatch({ type: 'SHOW_FILTER', payload: null});
             dispatch({ type: 'SET_LENS_FAIL', payload: null});
 
         } else {
@@ -319,17 +320,88 @@ export const AdvanceListCreation = () => async dispatch => {
 
 export const CreateSelectionList = (lenses) => async dispatch => {
 
-    var list = []
+    var list = [];
 
     for (let i = 0; i < lenses.length; i++){
-        var movies = await movies.get(`${lenses[i].query}`, {
-        }).then(function(response){
+        await movies.get(`${lenses[i].query}`, {
+        }).then(async function(response){
+            for (let j = 0; j < response.data.total_pages; j++) {
+                await movies.get(`${lenses[i].query}&page=${j+1}`, {
+                }).then(function(response){
+                    list.push(response.data.results)
+                }).catch(function(err){
+                    console.log(err)
+                })
+            }
 
         }).catch(function(err){
             console.log(err)
         })
-
-        console.log(movies)
     }
- };
 
+    list = list.flat();
+
+    dispatch({ type: 'GET_SELECTION_LIST', payload: list});
+};
+
+export const SortSelectionList = (filter, list) => async dispatch => {
+
+    if (filter === 'A-Z') {
+        var filtered_list = list.sort((a, b) => a.title > b.title ? 1 : -1);
+        dispatch({ type: 'FILTER_SELECTION_LIST', payload: filtered_list});
+    } else if (filter === 'Z-A') {
+        var filtered_list = list.sort((a, b) => b.title > a.title ? 1 : -1);
+        dispatch({ type: 'FILTER_SELECTION_LIST', payload: filtered_list});
+    } else if (filter === '0-9') {
+        var filtered_list = list.sort((a, b) => a.release_date > b.release_date ? 1 : -1);
+        dispatch({ type: 'FILTER_SELECTION_LIST', payload: filtered_list});
+    } else if (filter === '9-0') {
+        var filtered_list = list.sort((a, b) => b.release_date > a.release_date ? 1 : -1);
+        dispatch({ type: 'FILTER_SELECTION_LIST', payload: filtered_list});
+    }
+
+
+
+};
+
+export const SearchSelectionList = (filter, list) => async dispatch => {
+
+    filter.toLowerCase();
+
+    var filtered_list = list.filter(value => value.title.toLowerCase().includes(filter))
+
+    dispatch({ type: 'FILTER_SELECTION_LIST', payload: filtered_list});
+
+};
+
+ export const GetMovieInfo= (id) => async dispatch => {
+
+    await movies.get(`/movie/${id}`, {
+    }).then(function(response){
+
+        dispatch({ type: 'GET_MOVIE_INFO', payload: response.data});
+
+    }).catch(function(err){
+        console.log(err)
+    })
+
+    await movies.get(`/movie/${id}/credits`, {
+    }).then(function(response){
+
+        dispatch({ type: 'GET_MOVIE_CREDITS', payload: response.data});
+
+    }).catch(function(err){
+        console.log(err)
+    })
+
+    await movies.get(`/movie/${id}/keywords`, {
+    }).then(function(response){
+
+        dispatch({ type: 'GET_MOVIE_KEYWORDS', payload: response.data});
+
+    }).catch(function(err){
+        console.log(err)
+    })
+
+
+};

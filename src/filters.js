@@ -1418,6 +1418,10 @@ var countries = [
     }
 ]
 
+countries = countries.sort(function(a, b) {
+    return a.english_name.localeCompare(b.english_name);
+});
+
 var filters = {
     genres: genres,
     date: decades,

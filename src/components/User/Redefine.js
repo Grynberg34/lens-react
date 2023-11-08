@@ -39,7 +39,7 @@ function Redefine(props) {
 
   if (auth === true) {
     return (
-      <Navigate to="/studio" />
+      <Navigate to="/home" />
     )
   } else if (newpass === true) {
     return (

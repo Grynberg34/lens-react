@@ -2,11 +2,11 @@ $flaticon_lens-font: "flaticon_lens";
 
 @font-face {
     font-family: $flaticon_lens-font;
-    src: url("./flaticon_lens.ttf?0c590f6d0c170f9c87e64fca8b3b64d8") format("truetype"),
-url("./flaticon_lens.woff?0c590f6d0c170f9c87e64fca8b3b64d8") format("woff"),
-url("./flaticon_lens.woff2?0c590f6d0c170f9c87e64fca8b3b64d8") format("woff2"),
-url("./flaticon_lens.eot?0c590f6d0c170f9c87e64fca8b3b64d8#iefix") format("embedded-opentype"),
-url("./flaticon_lens.svg?0c590f6d0c170f9c87e64fca8b3b64d8#flaticon_lens") format("svg");
+    src: url("./flaticon_lens.ttf?f636eb545a55c24529c4aaf1a94f7d79") format("truetype"),
+url("./flaticon_lens.woff?f636eb545a55c24529c4aaf1a94f7d79") format("woff"),
+url("./flaticon_lens.woff2?f636eb545a55c24529c4aaf1a94f7d79") format("woff2"),
+url("./flaticon_lens.eot?f636eb545a55c24529c4aaf1a94f7d79#iefix") format("embedded-opentype"),
+url("./flaticon_lens.svg?f636eb545a55c24529c4aaf1a94f7d79#flaticon_lens") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
@@ -28,6 +28,9 @@ $flaticon_lens-map: (
     "clapperboard": "\f105",
     "television": "\f106",
     "remove": "\f107",
+    "info": "\f108",
+    "add-sign": "\f109",
+    "arrow-up": "\f10a",
 );
 
 .flaticon-pyramid:before {
@@ -50,4 +53,13 @@ $flaticon_lens-map: (
 }
 .flaticon-remove:before {
     content: map-get($flaticon_lens-map, "remove");
+}
+.flaticon-info:before {
+    content: map-get($flaticon_lens-map, "info");
+}
+.flaticon-add-sign:before {
+    content: map-get($flaticon_lens-map, "add-sign");
+}
+.flaticon-arrow-up:before {
+    content: map-get($flaticon_lens-map, "arrow-up");
 }
