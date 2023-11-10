@@ -12,8 +12,6 @@ function FilterCastandCrew(props) {
 
   var lens = props.lens;
   
-  console.log(lens.castandcrew)
-  
   function search(name) {
     store.dispatch(SearchCastandCrew(name))
   }
@@ -36,9 +34,7 @@ function FilterCastandCrew(props) {
         { castandcrew.results.map( (person, index) =>
   
           person.profile_path !== null?
-          <li key={index} onClick={()=> selectPerson(person)} style={{border:lens.castandcrew.find(item => item.name === person.name)? "2px solid #bde0fe": "", color:lens.castandcrew.find(item => item.name === person.name)? "#bde0fe": "" }} className="castandcrew__list__person">{person.name}
-          <img className="castandcrew__list__person__img" src={`https://image.tmdb.org/t/p/original/${person.profile_path}`} alt="" />
-          </li>
+          <li key={index} onClick={()=> selectPerson(person)} style={{backgroundImage: `linear-gradient(to bottom, rgba(2,48,71, 0.7) 0%,rgba(2,48,71,0.7) 100%), url(https://image.tmdb.org/t/p/original/${person.profile_path})`,border:lens.castandcrew.find(item => item.name === person.name)? "2px solid #97cdd5": "", color:lens.castandcrew.find(item => item.name === person.name)? "#97cdd5": "" }} className="castandcrew__list__person">{person.name}</li>
           :null
            
   

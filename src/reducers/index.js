@@ -110,6 +110,8 @@ const failedNewPasswordReducer = (msg = '', action) => {
   return msg;
 };
 
+//CREATE LENS
+
 const createListReducer = (list = {title: null, type: null, content: null, uri_content: null, lenses: [] }, action) => {
   switch(action.type){
     case 'SET_TYPE':
@@ -145,7 +147,7 @@ const createListReducer = (list = {title: null, type: null, content: null, uri_c
   }
 };
 
-const createLensReducer = (lens = {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: {decade:null, year: null}}, action) => {
+const createLensReducer = (lens = {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: null}, action) => {
   switch(action.type){
     case 'SET_LENS_COUNTRY':
       return {
@@ -234,7 +236,6 @@ const searchCastandCrewReducer = (castandcrew = null, action) => {
 
 };
 
-
 const searchKeywordsReducer = (keywords = null, action) => {
 
   if (action.type === 'SEARCH_KEYWORDS') {
@@ -273,13 +274,21 @@ const getGenresReducer = (genres = null, action) => {
 
 const getCountriesReducer = (countries = null, action) => {
 
-  if (action.type === 'GET_COUNTRY') {
-
-    return action.payload;
-    
-  }
-  
-  return countries;  
+  switch(action.type){
+    case 'GET_COUNTRIES':
+      return {
+        ...countries,
+        all: action.payload,
+        filter: action.payload
+      };
+    case 'FILTER_COUNTRIES':
+      return {
+        ...countries,
+        filter: action.payload
+      };
+    default:
+      return countries;
+    }
   
 };
 

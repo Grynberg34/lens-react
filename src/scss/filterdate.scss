@@ -20,10 +20,23 @@
         padding-right: 2vw;
         padding-left: 0.5vw;
 
+        .date__list__select {
+            font-size: 20px;
+            color: $amarelo;
+            font-weight: 700;
+            margin-bottom: 2vw;
+            cursor: pointer;
+            user-select: none;
+
+            .date__list__select__option {
+                &:hover {
+                    color: $azul-claro;
+                }
+            }
+        }
+
         .date__list__decades {
             display: block;
-            border: 2px solid $amarelo;
-            padding: 1vw;
             margin-bottom: 1vw;
             border-radius: 36px;
 
@@ -33,7 +46,7 @@
                 color: $amarelo;
                 border: 2px solid $amarelo;
                 padding: 0.5vw;
-                margin-bottom: 2vw;
+                margin-bottom: 1vw;
                 border-radius: 36px;
                 cursor: pointer;
                 text-align: center;
@@ -43,6 +56,20 @@
             }
 
             .date__list__decades__year {
+                display: block;
+                font-size: 14px;
+                color: $amarelo;
+                border: 2px solid $amarelo;
+                padding: 0.5vw;
+                margin-bottom: 1vw;
+                border-radius: 36px;
+                cursor: pointer;
+                text-align: center;
+                text-transform: lowercase;
+                user-select: none;
+            }
+
+            .date__list__decades__show {
                 display: block;
                 font-size: 14px;
                 color: $amarelo;

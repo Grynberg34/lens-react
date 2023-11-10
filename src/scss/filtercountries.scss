@@ -11,11 +11,33 @@
         margin-bottom: 2vw;
         text-transform: lowercase;
     }
+
+    .countries__label {
+        display: block;
+        font-size: 20px;
+        color: $amarelo;
+        font-weight: 700;
+        margin-bottom: 0.5vw;
+        text-transform: lowercase;
+        width: 80%;
+        margin-right: auto;
+    }
+
+    .countries__input {
+        display: block;
+        width: 80%;
+        border-radius: 36px;
+        border: none;
+        outline: none;
+        margin-bottom: 2vw;
+        text-align: center;
+        margin-right: auto;
+    }
     
     .countries__list {
         list-style: none;
         padding-left: 0;
-        height: 20vw;
+        height: 15vw;
         overflow-y: auto;
         padding-right: 2vw;
 

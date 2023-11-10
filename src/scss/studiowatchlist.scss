@@ -17,6 +17,21 @@
         padding-right: 10vw;
         padding-top: 5vw;
 
+        .studiowatchlist__selection__reset {
+            position: absolute;
+            left: 2%;
+            top: 15%;
+            font-size: 20px;
+            font-weight: 700;
+            color: $azul-claro;;
+            text-decoration: none;
+
+            &:hover {
+                color: $amarelo;
+            }
+
+        }
+
         .studiowatchlist__selection__label {
             display: block;
             font-size: 20px;
@@ -73,12 +88,12 @@
             display: block;
             padding: 2vw;
             border-radius: 36px;
-            height: 46vh;
+            height: 50vh;
             margin-top: 0.5vw;
             background-size: cover;
             overflow-y: auto;
             padding-right: 2vw;
-            margin-right: 2vw;
+            margin-right: 1vw;
 
             .studiowatchlist__selection__info__title {
                 text-align: center;
@@ -86,7 +101,7 @@
                 font-size: 20px;
                 font-weight: 700;
                 color: $amarelo;
-                margin-top: 21w;
+                margin-top: 2vw;
                 margin-bottom: 2vw;
             }
 
@@ -109,6 +124,7 @@
 
             .overview {
                 text-align: justify;
+                line-height: 2;
             }
 
         }
@@ -161,6 +177,7 @@
                     width: 100%;
                     margin-left: auto;
                     margin-right: auto;
+                    border-radius: 12px;
                 }
 
                 .studiowatchlist__selection__list__item__icon {

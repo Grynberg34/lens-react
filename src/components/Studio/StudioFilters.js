@@ -21,11 +21,11 @@ function StudioFilters(props) {
       </div>
 
       <div className="filters__section">
-        <button onClick={()=> addFilter('country')} className="filters__section__button" style={{backgroundColor:filter === "country" ? "#bde0fe": ""}} >country</button>
-        <button onClick={()=> addFilter('date')} className="filters__section__button" style={{backgroundColor:filter === "date" ? "#bde0fe": ""}} >date</button>
-        <button onClick={()=> addFilter('genres')} className="filters__section__button" style={{backgroundColor:filter === "genres" ? "#bde0fe": ""}} >genres</button>
-        <button onClick={()=> addFilter('cast and crew')} className="filters__section__button" style={{backgroundColor:filter === "cast and crew" ? "#bde0fe": ""}} >cast and crew</button>
-        <button onClick={()=> addFilter('keywords')} className="filters__section__button" style={{backgroundColor:filter === "keywords" ? "#bde0fe": ""}} >keywords</button>
+        <button onClick={()=> addFilter('country')} className="filters__section__button" style={{backgroundColor:filter === "country" ? "#97cdd5": ""}} >country</button>
+        <button onClick={()=> addFilter('date')} className="filters__section__button" style={{backgroundColor:filter === "date" ? "#97cdd5": ""}} >date</button>
+        <button onClick={()=> addFilter('genres')} className="filters__section__button" style={{backgroundColor:filter === "genres" ? "#97cdd5": ""}} >genres</button>
+        <button onClick={()=> addFilter('cast and crew')} className="filters__section__button" style={{backgroundColor:filter === "cast and crew" ? "#97cdd5": ""}} >cast and crew</button>
+        <button onClick={()=> addFilter('keywords')} className="filters__section__button" style={{backgroundColor:filter === "keywords" ? "#97cdd5": ""}} >keywords</button>
       </div>
 
     </div>

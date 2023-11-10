@@ -85,7 +85,6 @@ export const LogoutUser = () => async dispatch => {
 
 };
 
-
 export const SetListType = (type) => async dispatch => {
 
     dispatch({ type: 'SET_TYPE', payload: type});
@@ -100,7 +99,7 @@ export const SetListContent = (uri, content) => async dispatch => {
 export const ShowFilter = (filter) => async dispatch => {
 
     if (filter === 'country') {
-        dispatch({ type: 'GET_COUNTRY', payload: filters.countries });
+        dispatch({ type: 'GET_COUNTRIES', payload: filters.countries });
     } else if (filter === 'date') {
         dispatch({ type: 'GET_DATE', payload: filters.date });
     } else if (filter === 'genres') {
@@ -119,11 +118,7 @@ export const RemoveFilter = (filter) => async dispatch => {
         };
         dispatch({ type: 'SET_LENS_COUNTRY', payload: country });
     } else if (filter === 'date') {
-        var date = {
-            year: null,
-            decade: null,
-        };
-        dispatch({ type: 'SET_LENS_DATE', payload: date});
+        dispatch({ type: 'SET_LENS_DATE', payload: null});
     } else if (filter === 'genres') {
         dispatch({ type: 'REMOVE_LENS_GENRES', payload: [] });
     } else if (filter === 'cast and crew') {
@@ -143,22 +138,9 @@ export const SetLensCountry = (iso,name) => async dispatch => {
     dispatch({ type: 'SET_LENS_COUNTRY', payload: country});
 };
 
-export const SetLensDate = (year_start, year_end) => async dispatch => {
+export const SetLensDate = (year) => async dispatch => {
 
-    if (year_end === null) {
-        var date = {
-            year: year_start,
-            decade: null,
-        };
-    } else {
-        var date = {
-            year: null,
-            decade: year_start+'s',
-        };
-    }
-
-
-    dispatch({ type: 'SET_LENS_DATE', payload: date});
+    dispatch({ type: 'SET_LENS_DATE', payload: year});
 };
 
 export const SetLensGenres = (genre) => async dispatch => {
@@ -202,10 +184,10 @@ export const SearchKeywords = (word) => async dispatch => {
 
 export const CreateLens = (lens, list) => async dispatch => {
 
-    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: {decade:null, year: null}}});
+    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: null}});
     dispatch({ type: 'SHOW_FILTER', payload: null});
 
-    var query = `/discover/${list.uri_content}?`
+    var query = `/discover/${list.uri_content}?&sort_by=popularity.desc&with_release_type=1|2|3`
 
     var filter_description = []
 
@@ -215,23 +197,22 @@ export const CreateLens = (lens, list) => async dispatch => {
         filter_description.push(`country: ${lens.country.name}`)
     }
 
-    if (lens.date.year !== null) {
-        var query_date = `&primary_release_year=${lens.date.year}`;
-        query= query + query_date;
-        filter_description.push(`date: ${lens.date.year}`)
+    if (lens.date !== null) {
+
+        if (typeof lens.date === 'number') {
+            var query_date = `&primary_release_year=${lens.date}`;
+            query= query + query_date;
+
+        } else {
+            var start = lens.date.substring(0,3);
+
+            var query_date = `&primary_release_date.gte=${start + '0'}&primary_release_date.lte=${start+'9'}`;
+    
+            query= query + query_date;
+        }
     }
 
-    if (lens.date.decade !== null) {
-        var start = lens.date.decade.substring(0,3)
-
-        var query_date = `&primary_release_date.gte=${start + '0'}&primary_release_date.lte=${start+'9'}`;
-
-        query= query + query_date;
-
-        filter_description.push(`date: ${lens.date.decade}`)
-    }
-
-    if (lens.genres.length >0) {
+    if (lens.genres.length > 0) {
 
         var genres = [];
         
@@ -249,7 +230,7 @@ export const CreateLens = (lens, list) => async dispatch => {
         filter_description.push(`Genres: ${genres_string}`)
     }
 
-    if (lens.castandcrew.length >0) {
+    if (lens.castandcrew.length > 0) {
 
         var castandcrew = [];
 
@@ -267,7 +248,7 @@ export const CreateLens = (lens, list) => async dispatch => {
         filter_description.push(`Cast and crew: ${castandcrew_string}`)
     }
 
-    if (lens.keywords.length >0) {
+    if (lens.keywords.length > 0) {
 
         var keywords = [];
 
@@ -314,7 +295,7 @@ export const RemoveLens = (index) => async dispatch => {
 };
 
 export const AdvanceListCreation = () => async dispatch => {
-    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: {decade:null, year: null}}});
+    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: []}});
     dispatch({ type: 'ADVANCE_LIST_CREATION', payload: true});
 };
 
@@ -329,6 +310,10 @@ export const CreateSelectionList = (lenses) => async dispatch => {
                 await movies.get(`${lenses[i].query}&page=${j+1}`, {
                 }).then(function(response){
                     list.push(response.data.results)
+
+                    list = list.flat();
+
+                    dispatch({ type: 'GET_SELECTION_LIST', payload: list});
                 }).catch(function(err){
                     console.log(err)
                 })
@@ -339,9 +324,6 @@ export const CreateSelectionList = (lenses) => async dispatch => {
         })
     }
 
-    list = list.flat();
-
-    dispatch({ type: 'GET_SELECTION_LIST', payload: list});
 };
 
 export const SortSelectionList = (filter, list) => async dispatch => {
@@ -374,7 +356,17 @@ export const SearchSelectionList = (filter, list) => async dispatch => {
 
 };
 
- export const GetMovieInfo= (id) => async dispatch => {
+export const SearchCountries = (filter, list) => async dispatch => {
+
+    filter.toLowerCase();
+
+    var filtered_list_countries = list.filter(value => value.english_name.toLowerCase().includes(filter))
+
+    dispatch({ type: 'FILTER_COUNTRIES', payload: filtered_list_countries});
+
+};
+
+export const GetMovieInfo= (id) => async dispatch => {
 
     await movies.get(`/movie/${id}`, {
     }).then(function(response){

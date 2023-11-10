@@ -19,7 +19,8 @@ function FilterGenres(props) {
 
   function selectGenre(genre) {
 
-    if (!lens.genres.includes(genre.name)) {
+    if (!lens.genres.includes(genre)) {
+
       store.dispatch(SetLensGenres(genre))
     }
 
@@ -32,7 +33,7 @@ function FilterGenres(props) {
 
       { genres.map( (genre, index) =>
 
-        <li key={index} onClick={()=> selectGenre(genre)} className="genres__list__genre" style={{border:lens.genres.includes(genre.name)? "2px solid #bde0fe": "", color:lens.genres.includes(genre)? "#bde0fe": "" }}>{genre.name}</li>
+        <li key={index} onClick={()=> selectGenre(genre)} className="genres__list__genre" style={{border:lens.genres.includes(genre)? "2px solid #97cdd5": "", color:lens.genres.includes(genre)? "#97cdd5": "" }}>{genre.name}</li>
 
       )}
 

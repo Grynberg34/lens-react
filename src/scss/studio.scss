@@ -13,6 +13,7 @@
     min-height: 100vh;
 
     .studio__create {
+        position: relative;
         padding-left: 10vw;
         padding-right: 10vw;
 
@@ -21,5 +22,21 @@
             margin-bottom: 4vw;
 
         }
+
+        .studio__create__reset {
+            position: absolute;
+            left: 2%;
+            top: 15%;
+            font-size: 20px;
+            font-weight: 700;
+            color: $azul-claro;;
+            text-decoration: none;
+
+            &:hover {
+                color: $amarelo;
+            }
+
+        }
     }
+    
 }

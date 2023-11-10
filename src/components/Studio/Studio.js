@@ -39,6 +39,8 @@ function Studio(props) {
         <Menu></Menu>
   
           <div className="studio__create">
+
+            <a href="/studio" className="studio__create__reset">reset</a>
   
             <Container fluid>
               <Row>

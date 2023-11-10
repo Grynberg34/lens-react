@@ -33,7 +33,7 @@ function FilterKeywords(props) {
 
         { keywords.results.map( (word, index) =>
 
-          <li key={index} onClick={()=> selectWord(word)} style={{border:lens.keywords.includes(word.name)? "2px solid #bde0fe": "", color:lens.keywords.includes(word.name)? "#bde0fe": "" }} className="keywords__list__word">{word.name}</li>
+          <li key={index} onClick={()=> selectWord(word)} style={{border:lens.keywords.includes(word.name)? "2px solid #97cdd5": "", color:lens.keywords.includes(word.name)? "#97cdd5": "" }} className="keywords__list__word">{word.name}</li>
   
         )}
   

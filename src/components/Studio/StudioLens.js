@@ -45,11 +45,11 @@ function StudioLens(props) {
       :null
       }
 
-      {(lens.date.decade !== null || lens.date.year !== null)?
+      {lens.date !== null?
         <div className="lens__filter">
           <i onClick={()=> removeFilter('date')} className="lens__filter__remove flaticon-remove"></i>
           <h2 className="lens__filter__title">date</h2>
-          <h3 className="lens__filter__content">{lens.date.decade}{lens.date.year}</h3>
+          <h3 className="lens__filter__content">{lens.date}</h3>
         </div>
         :null
       }
@@ -93,7 +93,7 @@ function StudioLens(props) {
       :null
       }
 
-      {(lens.country.name !== null || lens.date.decade !== null || lens.date.year !== null || lens.genres.length > 0 || lens.castandcrew.length > 0 || lens.keywords.length > 0)?
+      {(lens.country.name !== null || lens.date !== null || lens.genres.length > 0 || lens.castandcrew.length > 0 || lens.keywords.length > 0)?
         <button onClick={()=> createLens(lens, list)} className="lens__button">create</button>
         :null
       }

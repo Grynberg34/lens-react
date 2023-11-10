@@ -4,10 +4,10 @@ import { CheckAuth } from '../../actions';
 import Menu from '../Menu';
 import StudioSearchSort from './StudioSearchSort';
 import StudioMovieInfo from './StudioMovieInfo';
+import StudioSelectionList from './StudioSelectionList';
 import { store } from '../../store';
 import { Navigate } from "react-router-dom";
 import { CreateSelectionList } from '../../actions';
-import { GetMovieInfo } from '../../actions';
 import "../../icon/font/flaticon_lens.scss";
 import "../../scss/studiowatchlist.scss";
 import Container from 'react-bootstrap/Container';
@@ -27,12 +27,6 @@ function StudioWatchList(props) {
   var next = props.next;
 
   var selection_list = props.selection_list;
-  
-  var movie = props.movie;
-
-  function getMovie(id) {
-    store.dispatch(GetMovieInfo(id))
-  }
 
   if (auth === true) {
 
@@ -40,15 +34,10 @@ function StudioWatchList(props) {
       return (
         <Navigate to="/studio" />
       )
-    } else {
+    } else if (next === true && list.type === "watch") {
 
       if (selection_list === null) {
-        store.dispatch(CreateSelectionList(list.lenses))
-
-
-        if(movie === null && selection_list !== null) {
-          store.dispatch(GetMovieInfo(selection_list.filter[0].id))
-        }      
+        store.dispatch(CreateSelectionList(list.lenses))    
 
         return (
           <div id='studiowatchlist' style={{backgroundImage: `url('/images/background.png')`}}>
@@ -61,6 +50,8 @@ function StudioWatchList(props) {
             <Menu></Menu>
     
             <div className="studiowatchlist__selection">
+
+              <a href="/studio" className="studiowatchlist__selection__reset">reset</a>
 
               <Container fluid>
                 <Row>
@@ -75,34 +66,8 @@ function StudioWatchList(props) {
 
                   <Col md={3}>
 
-                    <div className="studiowatchlist__selection__list">
 
-
-                      { selection_list.filter.map( (item, index) =>
-
-                        <div key={index} className="studiowatchlist__selection__list__item" style={{backgroundImage: `linear-gradient(to bottom, rgba(189,224,254, 0.9) 0%,rgba(189,224,254,0.9) 100%), url('https://image.tmdb.org/t/p/original/${item.poster_path}')`}}>
-
-                          <Container fluid>
-                            <Row>
-
-                              <Col md={6}>
-                                <img className="studiowatchlist__selection__list__item__img" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
-                              </Col>
-
-                              <Col md={6}>
-                                <h2 className="studiowatchlist__selection__list__item__title"> {item.title.length > 30 ? <span>{item.title.substring(0,30) + '...'}</span>: <span>{item.title}</span>} ({item.release_date !== undefined ?(item.release_date.substring(0,4)):null})</h2>
-
-                                <i className="studiowatchlist__selection__list__item__icon flaticon-add-sign"></i>
-                                <i onClick={()=> getMovie(item.id)} className="studiowatchlist__selection__list__item__icon flaticon-info"></i>
-
-                              </Col>
-                            </Row>
-                            </Container>
-                        </div>
-
-                      )}
-
-                    </div>
+                    <StudioSelectionList></StudioSelectionList>
 
 
                   </Col>
@@ -132,7 +97,7 @@ function StudioWatchList(props) {
 
   } else {
     return (
-      <Navigate to="/home" />
+      <Navigate to="/studio" />
     )
   }
 
@@ -146,7 +111,6 @@ function mapStateToProps(state) {
     list: state.list,
     next: state.next,
     selection_list: state.selection_list,
-    movie: state.movie
   }
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { store } from '../../store';
 import { SortSelectionList } from '../../actions';
@@ -14,6 +14,10 @@ import Col from 'react-bootstrap/Col';
 function StudioSearchSort(props) {
   
   var selection_list = props.selection_list;
+  
+  const [title, setTitle] = useState(true);
+
+  const [year, setYear] = useState(true);
   
   function sortList(filter) {
     store.dispatch(SortSelectionList(filter, selection_list.filter));
@@ -33,26 +37,26 @@ function StudioSearchSort(props) {
       <Container fluid>
         <Row>
           <Col md={6}>
-            <button onClick={()=> sortList('A-Z')} className="studiowatchlist__selection__sort">title <i className="flaticon-arrow-up studiowatchlist__selection__icon"></i></button>
+            {
+              title?
+              <button onClick={()=> { sortList('A-Z'); setTitle(false)}} className="studiowatchlist__selection__sort">title</button>
+              :<button  onClick={()=> { sortList('Z-A'); setTitle(true)}} className="studiowatchlist__selection__sort">title</button>
+            }
           </Col>
 
           <Col md={6}>
-            <button onClick={()=> sortList('0-9')} className="studiowatchlist__selection__sort">year <i className="flaticon-arrow-up studiowatchlist__selection__icon"></i></button>
-          </Col>
 
-          <Col md={6}>
-            <button onClick={()=> sortList('Z-A')} className="studiowatchlist__selection__sort">title <i className="flaticon-arrow-up studiowatchlist__selection__icon--right"></i></button>
-          </Col>
-
-          <Col md={6}>
-            <button onClick={()=> sortList('9-0')} className="studiowatchlist__selection__sort">year <i className="flaticon-arrow-up studiowatchlist__selection__icon--right"></i></button>
+            {
+              year?
+              <button  onClick={()=> { sortList('0-9'); setYear(false)}} className="studiowatchlist__selection__sort">year</button>
+              :<button  onClick={()=> { sortList('9-0'); setYear(true)}} className="studiowatchlist__selection__sort">year</button>
+            }
           </Col>
         </Row>
       </Container>
 
     </div>
   )
-
 
 }
 
