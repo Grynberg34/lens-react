@@ -337,11 +337,16 @@ const getMovieReducer = (movie = null, action) => {
         ...movie,
         credits: action.payload
       };
-      case 'GET_MOVIE_KEYWORDS':
-        return {
-          ...movie,
-          keywords: action.payload
-        };
+    case 'GET_MOVIE_KEYWORDS':
+      return {
+        ...movie,
+        keywords: action.payload
+      };
+    case 'GET_MOVIE_PROVIDERS':
+      return {
+        ...movie,
+        providers: action.payload
+      };
     default:
       return movie;
     }

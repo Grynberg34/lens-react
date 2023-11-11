@@ -2,7 +2,6 @@ import React from "react";
 import { connect } from 'react-redux';
 import { store } from '../../store';
 import { GetMovieInfo } from '../../actions';
-import Menu from '../Menu';
 import "../../icon/font/flaticon_lens.scss";
 import "../../scss/studiowatchlist.scss";
 import Container from 'react-bootstrap/Container';
@@ -28,33 +27,35 @@ function StudioSelectionList(props) {
   }  else {
 
     return (
+
       <div className="studiowatchlist__selection__list">
-  
-        { selection_list.filter.map( (item, index) =>
-  
-          <div key={index} className="studiowatchlist__selection__list__item" style={{backgroundImage: `linear-gradient(to bottom, rgba(151,205,213, 0.9) 0%,rgba(151,205,213,0.9) 100%), url('https://image.tmdb.org/t/p/original/${item.poster_path}')`}}>
-  
-            <Container fluid>
-              <Row>
-  
-                <Col md={6}>
-                  <img className="studiowatchlist__selection__list__item__img" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
-                </Col>
-  
-                <Col md={6}>
-                  <h2 className="studiowatchlist__selection__list__item__title"> {item.title.length > 30 ? <span>{item.title.substring(0,30) + '...'}</span>: <span>{item.title}</span>} ({item.release_date !== undefined ?(item.release_date.substring(0,4)):null})</h2>
-  
-                  <i className="studiowatchlist__selection__list__item__icon flaticon-add-sign"></i>
-                  <i style={{color:movie.info.id === item.id? "#ff9e00": "#023047" }} onClick={()=> getMovie(item.id)} className="studiowatchlist__selection__list__item__icon flaticon-info"></i>
-  
-                </Col>
-              </Row>
-              </Container>
-          </div>
-  
-        )}
-  
+    
+          { selection_list.filter.map( (item, index) =>
+    
+            <div key={index} className="studiowatchlist__selection__list__item" style={{backgroundImage: `linear-gradient(to bottom, rgba(151,205,213, 0.9) 0%,rgba(151,205,213,0.9) 100%), url('https://image.tmdb.org/t/p/original/${item.poster_path}')`}}>
+    
+              <Container fluid>
+                <Row>
+    
+                  <Col md={6}>
+                    <img className="studiowatchlist__selection__list__item__img" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
+                  </Col>
+    
+                  <Col md={6}>
+                    <h2 className="studiowatchlist__selection__list__item__title"> {item.title.length > 30 ? <span>{item.title.substring(0,30) + '...'}</span>: <span>{item.title}</span>} ({item.release_date !== undefined ?(item.release_date.substring(0,4)):null})</h2>
+    
+                    <i className="studiowatchlist__selection__list__item__icon flaticon-add-sign"></i>
+                    <i style={{color:movie.info.id === item.id? "#ff9e00": "#023047" }} onClick={()=> getMovie(item.id)} className="studiowatchlist__selection__list__item__icon flaticon-info"></i>
+    
+                  </Col>
+                </Row>
+                </Container>
+            </div>
+    
+          )}
+    
       </div>
+
     )
 
   }

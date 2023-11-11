@@ -61,7 +61,7 @@
             border: none;
             outline: none;
             padding: 0.5vw;
-            border-radius: 36px;
+            border-radius: 12px;
             font-size: 16px;
             font-weight: 700;
             color: $azul-escuro;
@@ -97,11 +97,9 @@
 
             .studiowatchlist__selection__info__title {
                 text-align: center;
-                margin-bottom: 0.5vw;
                 font-size: 20px;
                 font-weight: 700;
                 color: $amarelo;
-                margin-top: 2vw;
                 margin-bottom: 2vw;
             }
 
@@ -120,6 +118,18 @@
                 font-size: 14px;
                 font-weight: 700;
                 color: $azul-claro;
+            }
+
+            .studiowatchlist__selection__info__gallery {
+                display: flex;
+                justify-content: center;
+
+                .studiowatchlist__selection__info__gallery__img {
+                    display: inline-block;
+                    width: 25%;
+                    padding: 0.5vw;
+                    border-radius: 24px;
+                }
             }
 
             .overview {
@@ -206,6 +216,59 @@
     
         .studiowatchlist__selection__list::-webkit-scrollbar {
             width: 1vw;
+        }
+
+        .studiowatchlist__selection__main {
+            padding-left: 4vw;
+
+            .studiowatchlist__selection__main__label {
+                display: block;
+                font-size: 20px;
+                color: $amarelo;
+                font-weight: 700;
+                margin-bottom: 0.5vw;
+                text-transform: lowercase;
+                margin-right: auto;
+                width: 100%;
+            }
+
+            .studiowatchlist__selection__main__input {
+                display: block;
+                border-radius: 36px;
+                border: none;
+                outline: none;
+                margin-bottom: 2vw;
+                text-align: center;
+                margin-right: auto;
+                width: 100%;
+            }
+
+            .studiowatchlist__selection__main__lenses {
+                margin-bottom: 4vw;
+
+                .studiowatchlist__selection__main__lenses__lens {
+                    padding: 1vw;
+                    border: 2px solid $amarelo;
+                    background-color: $amarelo;
+                    border-radius: 12px;
+                    margin-bottom: 1vw;
+
+                    .studiowatchlist__selection__main__lenses__lens__filter {
+                        display: block;
+                        font-size: 16px;
+                        color: $azul-escuro;
+                        font-weight: 700;
+                        margin-bottom: 0.5vw;
+                        text-transform: lowercase;
+                        text-align: center;
+
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+
+                    }
+                }
+            }
         }
     
     }

@@ -202,6 +202,7 @@ export const CreateLens = (lens, list) => async dispatch => {
         if (typeof lens.date === 'number') {
             var query_date = `&primary_release_year=${lens.date}`;
             query= query + query_date;
+            filter_description.push(`date: ${lens.date}`)
 
         } else {
             var start = lens.date.substring(0,3);
@@ -209,6 +210,8 @@ export const CreateLens = (lens, list) => async dispatch => {
             var query_date = `&primary_release_date.gte=${start + '0'}&primary_release_date.lte=${start+'9'}`;
     
             query= query + query_date;
+
+            filter_description.push(`date: ${lens.date}`)
         }
     }
 
@@ -395,5 +398,13 @@ export const GetMovieInfo= (id) => async dispatch => {
         console.log(err)
     })
 
+
+    await movies.get(`/movie/${id}/watch/providers`, {
+    }).then(function(response){
+        dispatch({ type: 'GET_MOVIE_PROVIDERS', payload: response.data});
+
+    }).catch(function(err){
+        console.log(err)
+    })
 
 };

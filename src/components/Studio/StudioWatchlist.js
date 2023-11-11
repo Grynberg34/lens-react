@@ -5,6 +5,7 @@ import Menu from '../Menu';
 import StudioSearchSort from './StudioSearchSort';
 import StudioMovieInfo from './StudioMovieInfo';
 import StudioSelectionList from './StudioSelectionList';
+import StudioListInfo from './StudioListInfo';
 import { store } from '../../store';
 import { Navigate } from "react-router-dom";
 import { CreateSelectionList } from '../../actions';
@@ -66,19 +67,16 @@ function StudioWatchList(props) {
 
                   <Col md={3}>
 
-
                     <StudioSelectionList></StudioSelectionList>
 
+                  </Col>
+
+                  <Col md={6}>
+
+                    <StudioListInfo></StudioListInfo>
 
                   </Col>
 
-                  <Col md={3}>
-
-                  </Col>
-
-                  <Col md={3}>
-                    
-                  </Col>
 
                 </Row>
               </Container>

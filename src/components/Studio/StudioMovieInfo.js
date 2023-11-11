@@ -4,25 +4,45 @@ import { store } from '../../store';
 import { GetMovieInfo } from '../../actions';
 import "../../icon/font/flaticon_lens.scss";
 import "../../scss/studiowatchlist.scss";
+import useGeoLocation from "react-ipgeolocation";
 
 
 function StudioMovieInfo(props) {
+
+  const location = useGeoLocation();
+  var country = location.country;
   
   var movie = props.movie;
-
   var selection_list = props.selection_list;
 
   if(movie=== null && selection_list !== null) {
     store.dispatch(GetMovieInfo(selection_list.filter[0].id))
-  }
+  }  
 
   if (movie !== null ) {
+
     return (
       <div className="studiowatchlist__selection__info" style={{backgroundImage: `linear-gradient(to bottom, rgba(2,48,71, 0.9) 0%,rgba(2,48,71,0.9) 100%), url('https://image.tmdb.org/t/p/original/${movie.info.poster_path}')`}}>
         
         <h1 className="studiowatchlist__selection__info__title">{movie.info.title}</h1>
 
         <h3 className="studiowatchlist__selection__info__item overview">{movie.info.overview}</h3>
+
+
+        { movie.providers?.results[country]?.flatrate !== undefined?
+          <div>
+            <h2 className="studiowatchlist__selection__info__category">Where to watch ({country})</h2>
+
+            <div className="studiowatchlist__selection__info__gallery">
+              { movie.providers.results[country].flatrate.map( (provider, index) =>
+                <img key={index} className="studiowatchlist__selection__info__gallery__img" src={`https://image.tmdb.org/t/p/original/${provider.logo_path}`} alt="" />
+              )}
+            </div>
+
+          </div>
+          :null
+
+        }
   
         <h2 className="studiowatchlist__selection__info__category">Original title</h2>
         <h3 className="studiowatchlist__selection__info__item">{movie.info.original_title}</h3>
