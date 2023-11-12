@@ -26,94 +26,101 @@ function Studio(props) {
   var list = props.list;
 
   var next = props.next;
-  
-  if (auth === true) {
 
-    if (next === true) {
-      return (
-        <Navigate to="/studio/watchlist" />
-      )
+  if (props.jwt !== null && auth === false) {
+    return (
+      null
+    )
+  } else {
+    if (auth === true) {
+  
+      if (next === true) {
+        return (
+          <Navigate to="/studio/list" />
+        )
+      } else {
+        return (
+          <div id='studio' className="studio" style={{backgroundImage: `url('/images/background.png')`}}>
+          <Menu></Menu>
+    
+            <div className="studio__create">
+  
+              <a href="/studio" className="studio__create__reset">reset</a>
+    
+              <Container fluid>
+                <Row>
+                  <Col md={2}>
+    
+                    <div className="studio__create__section">
+                      <StudioTypeContent></StudioTypeContent>
+                    </div>
+    
+                  </Col>
+    
+                  <Col md={1}></Col>
+    
+                  <Col md={2}>
+    
+                  {(list.type !==null && list.content !== null)?
+                    <div className="studio__create__section">
+                      <StudioFilters></StudioFilters>
+                    </div>
+                  :null
+                  }
+    
+    
+                  </Col>
+    
+                  <Col md={2}>
+    
+                    {(list.type !==null && list.content !== null)?
+                    <div className="studio__create__section">
+                      <StudioFilterSelect></StudioFilterSelect>
+                    </div>
+                    :null
+                    }
+    
+                  </Col>
+    
+                  <Col md={3}>
+    
+                    {(list.type !==null && list.content !== null)?
+                    <div className="studio__create__section">
+                      <StudioLens></StudioLens>
+                    </div>
+                    :null
+                    }
+    
+                  </Col>
+    
+                  <Col md={2}>
+    
+                    {(list.type !==null && list.content !== null)?
+                    <div className="studio__create__section">
+                    <StudioNext></StudioNext>
+                    </div>
+                    :null
+                    }
+    
+                  </Col>
+    
+    
+                </Row>
+              </Container>
+    
+            </div>
+          </div>
+        )
+      }
+  
+  
     } else {
       return (
-        <div id='studio' className="studio" style={{backgroundImage: `url('/images/background.png')`}}>
-        <Menu></Menu>
-  
-          <div className="studio__create">
-
-            <a href="/studio" className="studio__create__reset">reset</a>
-  
-            <Container fluid>
-              <Row>
-                <Col md={2}>
-  
-                  <div className="studio__create__section">
-                    <StudioTypeContent></StudioTypeContent>
-                  </div>
-  
-                </Col>
-  
-                <Col md={1}></Col>
-  
-                <Col md={2}>
-  
-                {(list.type !==null && list.content !== null)?
-                  <div className="studio__create__section">
-                    <StudioFilters></StudioFilters>
-                  </div>
-                :null
-                }
-  
-  
-                </Col>
-  
-                <Col md={2}>
-  
-                  {(list.type !==null && list.content !== null)?
-                  <div className="studio__create__section">
-                    <StudioFilterSelect></StudioFilterSelect>
-                  </div>
-                  :null
-                  }
-  
-                </Col>
-  
-                <Col md={3}>
-  
-                  {(list.type !==null && list.content !== null)?
-                  <div className="studio__create__section">
-                    <StudioLens></StudioLens>
-                  </div>
-                  :null
-                  }
-  
-                </Col>
-  
-                <Col md={2}>
-  
-                  {(list.type !==null && list.content !== null)?
-                  <div className="studio__create__section">
-                  <StudioNext></StudioNext>
-                  </div>
-                  :null
-                  }
-  
-                </Col>
-  
-  
-              </Row>
-            </Container>
-  
-          </div>
-        </div>
+        <Navigate to="/" />
       )
     }
-
-
-  } else {
-    return (
-      <Navigate to="/" />
-    )
   }
+  
 
 
 }

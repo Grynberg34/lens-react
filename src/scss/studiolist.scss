@@ -1,0 +1,37 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#studiolist{
+    background-color: $azul-escuro;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.studiolist {
+
+    .studiolist__selection {
+        padding-left: 10vw;
+        padding-right: 10vw;
+        padding-top: 5vw;
+
+        .studiolist__selection__reset {
+            position: absolute;
+            left: 2%;
+            top: 15%;
+            font-size: 20px;
+            font-weight: 700;
+            color: $azul-claro;;
+            text-decoration: none;
+
+            &:hover {
+                color: $amarelo;
+            }
+
+        }
+
+    }
+
+}

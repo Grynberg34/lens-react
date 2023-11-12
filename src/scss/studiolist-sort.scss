@@ -1,0 +1,57 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#studiolist{
+    background-color: $azul-escuro;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.studiolist {
+
+    .studiolist__selection {
+        .studiolist__selection__label {
+            display: block;
+            font-size: 20px;
+            color: $amarelo;
+            font-weight: 700;
+            margin-bottom: 0.5vw;
+            text-transform: lowercase;
+            width: 80%;
+            margin-right: auto;
+        }
+
+        .studiolist__selection__input {
+            display: block;
+            width: 80%;
+            border-radius: 36px;
+            border: none;
+            outline: none;
+            margin-bottom: 2vw;
+            text-align: center;
+            margin-right: auto;
+        }
+
+        .studiolist__selection__sort {
+            display: block;
+            width: 100%;
+            background-color: $amarelo;
+            border: none;
+            outline: none;
+            padding: 0.5vw;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            color: $azul-escuro;
+            margin-bottom: 1vw;
+    
+            &:hover {
+                background-color: $azul-claro;
+            }
+        }
+    }
+
+}

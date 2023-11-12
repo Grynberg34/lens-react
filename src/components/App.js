@@ -19,7 +19,7 @@ function App(props) {
 
   if (auth === true) {
     return (
-      <Navigate to="/studio" />
+      <Navigate to="/home" />
     )
   } else {
     return (

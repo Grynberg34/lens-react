@@ -85,6 +85,9 @@ export const LogoutUser = () => async dispatch => {
 
 };
 
+
+// STUDIO 
+
 export const SetListType = (type) => async dispatch => {
 
     dispatch({ type: 'SET_TYPE', payload: type});
@@ -200,18 +203,32 @@ export const CreateLens = (lens, list) => async dispatch => {
     if (lens.date !== null) {
 
         if (typeof lens.date === 'number') {
-            var query_date = `&primary_release_year=${lens.date}`;
-            query= query + query_date;
-            filter_description.push(`date: ${lens.date}`)
+            if (list.content === 'movies') {
+                var query_date = `&primary_release_year=${lens.date}`;
+                query= query + query_date;
+                filter_description.push(`date: ${lens.date}`)
+            } else if (list.content === 'series') {
+                var query_date = `&first_air_date_year=${lens.date}`;
+                query= query + query_date;
+                filter_description.push(`date: ${lens.date}`)
+            }
 
         } else {
             var start = lens.date.substring(0,3);
 
-            var query_date = `&primary_release_date.gte=${start + '0'}&primary_release_date.lte=${start+'9'}`;
+            if (list.content === 'movies') {
+                var query_date = `&primary_release_date.gte=${start + '0'}&primary_release_date.lte=${start+'9'}`;
     
-            query= query + query_date;
-
-            filter_description.push(`date: ${lens.date}`)
+                query= query + query_date;
+    
+                filter_description.push(`date: ${lens.date}`)
+            } else if (list.content === 'series') {
+                var query_date = `&first_air_date.gte=${start + '0'}&first_air_date.lte=${start+'9'}`;
+    
+                query= query + query_date;
+    
+                filter_description.push(`date: ${lens.date}`)
+            }
         }
     }
 
@@ -369,9 +386,9 @@ export const SearchCountries = (filter, list) => async dispatch => {
 
 };
 
-export const GetMovieInfo= (id) => async dispatch => {
+export const GetMovieInfo= (id, content) => async dispatch => {
 
-    await movies.get(`/movie/${id}`, {
+    await movies.get(`/${content}/${id}`, {
     }).then(function(response){
 
         dispatch({ type: 'GET_MOVIE_INFO', payload: response.data});
@@ -380,7 +397,15 @@ export const GetMovieInfo= (id) => async dispatch => {
         console.log(err)
     })
 
-    await movies.get(`/movie/${id}/credits`, {
+    await movies.get(`/${content}/${id}/watch/providers`, {
+    }).then(function(response){
+        dispatch({ type: 'GET_MOVIE_PROVIDERS', payload: response.data});
+
+    }).catch(function(err){
+        console.log(err)
+    })
+
+    await movies.get(`/${content}/${id}/credits`, {
     }).then(function(response){
 
         dispatch({ type: 'GET_MOVIE_CREDITS', payload: response.data});
@@ -389,7 +414,7 @@ export const GetMovieInfo= (id) => async dispatch => {
         console.log(err)
     })
 
-    await movies.get(`/movie/${id}/keywords`, {
+    await movies.get(`/${content}/${id}/keywords`, {
     }).then(function(response){
 
         dispatch({ type: 'GET_MOVIE_KEYWORDS', payload: response.data});
@@ -399,12 +424,5 @@ export const GetMovieInfo= (id) => async dispatch => {
     })
 
 
-    await movies.get(`/movie/${id}/watch/providers`, {
-    }).then(function(response){
-        dispatch({ type: 'GET_MOVIE_PROVIDERS', payload: response.data});
-
-    }).catch(function(err){
-        console.log(err)
-    })
 
 };

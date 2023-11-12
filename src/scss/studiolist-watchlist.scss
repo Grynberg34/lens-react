@@ -1,0 +1,72 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#studiolist{
+    background-color: $azul-escuro;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+}
+
+.studiolist {
+
+    .studiolist__selection {
+
+        .studiolist__selection__watchlist {
+            padding-left: 4vw;
+
+            .studiolist__selection__watchlist__label {
+                display: block;
+                font-size: 20px;
+                color: $amarelo;
+                font-weight: 700;
+                margin-bottom: 0.5vw;
+                text-transform: lowercase;
+                margin-right: auto;
+                width: 100%;
+            }
+
+            .studiolist__selection__watchlist__input {
+                display: block;
+                border-radius: 36px;
+                border: none;
+                outline: none;
+                margin-bottom: 2vw;
+                text-align: center;
+                margin-right: auto;
+                width: 100%;
+            }
+
+            .studiolist__selection__watchlist__lenses {
+                margin-bottom: 4vw;
+
+                .studiolist__selection__watchlist__lenses__lens {
+                    padding: 1vw;
+                    border: 2px solid $amarelo;
+                    background-color: $amarelo;
+                    border-radius: 12px;
+                    margin-bottom: 1vw;
+
+                    .studiolist__selection__watchlist__lenses__lens__filter {
+                        display: block;
+                        font-size: 16px;
+                        color: $azul-escuro;
+                        font-weight: 700;
+                        margin-bottom: 0.5vw;
+                        text-transform: lowercase;
+                        text-align: center;
+
+                        &:last-of-type {
+                            margin-bottom: 0;
+                        }
+
+                    }
+                }
+            }
+        }
+    
+    }
+
+}
