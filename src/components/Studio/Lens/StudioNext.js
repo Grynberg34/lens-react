@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { store } from '../../store';
-import { RemoveLens } from '../../actions';
-import { AdvanceListCreation } from '../../actions';
-import "../../icon/font/flaticon_lens.scss";
-import "../../scss/studionext.scss";
+import { store } from '../../../store';
+import { RemoveLens } from '../../../actions';
+import { AdvanceListCreation } from '../../../actions';
+import "../../../icon/font/flaticon_lens.scss";
+import "../../../scss/studionext.scss";
 
 
 function StudioNext(props) {
@@ -29,7 +29,7 @@ function StudioNext(props) {
       { list.lenses.map( (lens, index) =>
         <div key={index} className="next__lens">
           <i onClick={()=> removeLens({index})} className="next__lens__remove flaticon-remove"></i>
-          <h1 className="next__lens__title">Lens {index+1}</h1>
+          <h1 className="next__lens__title">Lens #{index+1}</h1>
           
           { lens.filter_description.map( (filter, index) =>
             <h2 key={index} className="next__lens__description">{filter}</h2>

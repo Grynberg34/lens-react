@@ -110,9 +110,9 @@ const failedNewPasswordReducer = (msg = '', action) => {
   return msg;
 };
 
-//CREATE LENS
+//CREATE LIST
 
-const createListReducer = (list = {title: null, type: null, content: null, uri_content: null, lenses: [] }, action) => {
+const createListReducer = (list = {title: null, description: null, type: null, content: null, content_items: [], uri_content: null, lenses: [] }, action) => {
   switch(action.type){
     case 'SET_TYPE':
       return {
@@ -129,17 +129,46 @@ const createListReducer = (list = {title: null, type: null, content: null, uri_c
         ...list,
         content: action.payload
       };
+    case 'SET_TITLE':
+      return {
+        ...list,
+        title: action.payload
+      };
+    case 'SET_DESCRIPTION':
+      return {
+        ...list,
+        description: action.payload
+      };
     case 'SET_LENS':
       return {
         ...list,
         lenses: [...list.lenses, action.payload]
+      };
+    case 'SET_CONTENT_ITEM':
+      return {
+        ...list,
+        content_items: [...list.content_items, action.payload]
       };
     case 'REMOVE_LENS':
       return {
         ...list,
         lenses: list.lenses.filter((_, index) => index !== action.payload)
       };
-  
+    case 'DELETE_CONTENT_ITEM':
+      return {
+        ...list,
+        content_items: list.content_items.filter((_, index) => index !== action.payload)
+      };
+    case 'CHANGE_ITEM_POSITION':
+    return {
+      ...list,
+      content_items: action.payload
+    };
+    case 'RESET_LIST':
+      return {
+        ...list =  action.payload
+      };
+
     default:
       return list;
     
@@ -347,12 +376,49 @@ const getMovieReducer = (movie = null, action) => {
         ...movie,
         providers: action.payload
       };
+    case 'GET_MOVIE_IMAGES':
+      return {
+        ...movie,
+        images: action.payload
+      };
     default:
       return movie;
     }
   
 };
 
+const createdListReducer = (created = false, action) => {
+
+  if (action.type === 'CREATED_LIST') {
+
+    return action.payload;
+    
+  }
+  
+  return created;  
+  
+};
+
+const createTierReducer = (tiers = [], action) => {
+
+  switch(action.type){
+    case 'CREATE_TIER':
+      return [
+        ...tiers,
+        action.payload
+      ];
+    case 'CHANGE_TIER_POSITION':
+      return action.payload
+    case 'CHANGE_TIER_NAME':
+      return action.payload
+    case 'DELETE_TIER':
+      return tiers.filter((_, index) => index !== action.payload)
+
+    default:
+      return tiers;
+    }
+  
+};
 
 export default combineReducers({
 
@@ -378,6 +444,8 @@ export default combineReducers({
   next: advanceListCreationReducer,
   selection_list: getSelectionListReducer,
   movie: getMovieReducer,
+  created: createdListReducer,
+  tiers: createTierReducer,
   form: formReducer
   
 });

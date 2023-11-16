@@ -1,10 +1,10 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { store } from '../../store';
-import { RemoveFilter } from '../../actions';
-import { CreateLens } from '../../actions';
-import "../../icon/font/flaticon_lens.scss";
-import "../../scss/studiolens.scss";
+import { store } from '../../../store';
+import { RemoveFilter } from '../../../actions';
+import { CreateLens } from '../../../actions';
+import "../../../icon/font/flaticon_lens.scss";
+import "../../../scss/studiolens.scss";
 
 
 function StudioLens(props) {

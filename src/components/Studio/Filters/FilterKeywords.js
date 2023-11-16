@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { SearchKeywords } from '../../actions';
-import { SetLensKeywords } from '../../actions';
-import { store } from '../../store';
-import "../../scss/filterkeywords.scss";
+import { SearchKeywords } from '../../../actions';
+import { SetLensKeywords } from '../../../actions';
+import { store } from '../../../store';
+import "../../../scss/filterkeywords.scss";
 
 
 function FilterKeywords(props) {

@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { SetLensCountry } from '../../actions';
-import { SearchCountries } from '../../actions';
-import { store } from '../../store';
-import "../../scss/filtercountries.scss";
+import { SetLensCountry } from '../../../actions';
+import { SearchCountries } from '../../../actions';
+import { store } from '../../../store';
+import "../../../scss/filtercountries.scss";
 
 
 function FilterCountries(props) {

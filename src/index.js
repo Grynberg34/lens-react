@@ -8,11 +8,10 @@ import Login from './components/User/Login';
 import Redefine from './components/User/Redefine';
 import Studio from './components/Studio/Studio';
 import Home from './components/Home';
-import StudioList from './components/Studio/StudioList';
+import StudioList from './components/Studio/List/StudioList';
 import {store, persistor} from './store.js';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 
 
 ReactDOM.render(

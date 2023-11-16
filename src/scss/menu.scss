@@ -5,6 +5,11 @@
     padding-top: 2vw;
     padding-left: 10vw;
     padding-right: 10vw;
+    padding-bottom: 2vw;
+    background-color: $azul-escuro;
+    position: sticky;
+    top: 0;
+    z-index: 99;
 
     .menu__logo {
         width: 50%;
@@ -49,15 +54,14 @@
         font-size: 16px;
         font-weight: 400;
         text-align: center;
-        color: $azul-escuro;
+        color: $azul-claro;
         text-decoration: none;
-        background-color: $amarelo;
-        padding: 0.5vw;
         border-radius: 36px;
         font-weight: 700;
+        padding-top: 1vw;
 
         &:hover {
-            background-color: $azul-claro;
+            color: $amarelo;
             text-decoration: none;
         }
         

@@ -1,14 +1,14 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { ShowLens } from '../../actions';
+import { ShowLens } from '../../../actions';
 import FilterCountries from './FilterCountries';
 import FilterDate from './FilterDate';
 import FilterGenres from './FilterGenres';
 import FilterCastandCrew from './FilterCastandCrew';
 import FilterKeywords from './FilterKeywords';
-import { store } from '../../store';
-import "../../icon/font/flaticon_lens.scss";
-import "../../scss/studiofilterselect.scss";
+import { store } from '../../../store';
+import "../../../icon/font/flaticon_lens.scss";
+import "../../../scss/studiofilterselect.scss";
 
 
 function StudioFilterSelect(props) {

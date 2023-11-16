@@ -2,11 +2,11 @@ import React from "react";
 import { connect } from 'react-redux';
 import { CheckAuth } from '../../actions';
 import Menu from '../Menu';
-import StudioFilters from './StudioFilters';
-import StudioTypeContent from './StudioTypeContent';
-import StudioFilterSelect from './StudioFilterSelect';
-import StudioLens from './StudioLens';
-import StudioNext from './StudioNext';
+import StudioFilters from './Filters/StudioFilters';
+import StudioTypeContent from './Lens/StudioTypeContent';
+import StudioFilterSelect from './Filters/StudioFilterSelect';
+import StudioLens from './Lens/StudioLens';
+import StudioNext from './Lens/StudioNext';
 import { store } from '../../store';
 import { Navigate } from "react-router-dom";
 import "../../icon/font/flaticon_lens.scss";
@@ -131,7 +131,8 @@ function mapStateToProps(state) {
     auth: state.auth,
     list: state.list,
     filter: state.filter,
-    next: state.next
+    next: state.next,
+    created: state.created
   }
 }
 

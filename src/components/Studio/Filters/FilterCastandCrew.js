@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { SearchCastandCrew } from '../../actions';
-import { SetLensCastandCrew } from '../../actions';
-import { store } from '../../store';
-import "../../scss/filtercastandcrew.scss";
+import { SearchCastandCrew } from '../../../actions';
+import { SetLensCastandCrew } from '../../../actions';
+import { store } from '../../../store';
+import "../../../scss/filtercastandcrew.scss";
 
 
 function FilterCastandCrew(props) {

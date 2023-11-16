@@ -1,18 +1,16 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { CheckAuth } from '../../actions';
-import Menu from '../Menu';
+import { CheckAuth } from '../../../actions';
+import Menu from '../../Menu';
 import StudioSearchSort from './StudioSearchSort';
-import StudioMovieInfo from './StudioMovieInfo';
-import StudioSeriesInfo from './StudioSeriesInfo';
 import StudioSelectionList from './StudioSelectionList';
 import StudioListWatch from './StudioListWatch';
 import StudioListTier from './StudioListTier';
-import { store } from '../../store';
+import { store } from '../../../store';
 import { Navigate } from "react-router-dom";
-import { CreateSelectionList } from '../../actions';
-import "../../icon/font/flaticon_lens.scss";
-import "../../scss/studiolist.scss";
+import { CreateSelectionList } from '../../../actions';
+import "../../../icon/font/flaticon_lens.scss";
+import "../../../scss/studiolist.scss";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -28,16 +26,23 @@ function StudioList(props) {
   var list = props.list;
 
   var next = props.next;
+  
+  var created = props.created;
 
   var selection_list = props.selection_list;
 
   if (auth === true) {
 
-    if (next === false) {
+    if (created === true) {
+      return (
+        <Navigate to="/home" />
+      )
+    }  else  if (next === false) {
       return (
         <Navigate to="/studio" />
       )
-    } else if (next === true) {
+    }
+    else if (next === true) {
 
       if (selection_list === null) {
         store.dispatch(CreateSelectionList(list.lenses))    
@@ -62,16 +67,9 @@ function StudioList(props) {
 
                     <StudioSearchSort></StudioSearchSort>
 
-                    {list.content === 'movies'?
-                      <StudioMovieInfo></StudioMovieInfo>
-                      :<StudioSeriesInfo></StudioSeriesInfo>
-                    }
-
-
                   </Col>
 
                   <Col md={3}>
-
                     <StudioSelectionList></StudioSelectionList>
 
                   </Col>
@@ -80,7 +78,7 @@ function StudioList(props) {
 
                     {list.type === 'watch'?
                       <StudioListWatch></StudioListWatch>  
-                      :null
+                      :<StudioListTier></StudioListTier>
                     }
 
                   </Col>
@@ -117,6 +115,7 @@ function mapStateToProps(state) {
     list: state.list,
     next: state.next,
     selection_list: state.selection_list,
+    created: state.created
   }
 }
 

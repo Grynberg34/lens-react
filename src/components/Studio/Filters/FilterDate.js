@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
-import { SetLensDate } from '../../actions';
-import { store } from '../../store';
-import "../../scss/filterdate.scss";
+import { SetLensDate } from '../../../actions';
+import { store } from '../../../store';
+import "../../../scss/filterdate.scss";
 
 
 function FilterDate(props) {

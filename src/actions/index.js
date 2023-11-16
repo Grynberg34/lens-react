@@ -99,6 +99,42 @@ export const SetListContent = (uri, content) => async dispatch => {
     dispatch({ type: 'SET_CONTENT', payload: content});
 };
 
+export const SetListTitle = (title) => async dispatch => {
+
+    dispatch({ type: 'SET_TITLE', payload: title});
+
+};
+
+export const SetListDescription = (text) => async dispatch => {
+
+    dispatch({ type: 'SET_DESCRIPTION', payload: text});
+
+};
+
+export const SetListItem = (item) => async dispatch => {
+
+    dispatch({ type: 'SET_CONTENT_ITEM', payload: item});
+
+};
+
+export const ChangeItemPosition = (e, items) => async dispatch => {
+
+    var item = items.splice(e.source.index, 1)[0];
+
+    items.splice(e.destination.index, 0, item)
+
+    var new_items = items;
+
+    dispatch({ type: 'CHANGE_ITEM_POSITION', payload: new_items});
+
+};
+
+export const DeleteListItem = (index) => async dispatch => {
+
+    dispatch({ type: 'DELETE_CONTENT_ITEM', payload: index});
+
+};
+
 export const ShowFilter = (filter) => async dispatch => {
 
     if (filter === 'country') {
@@ -192,7 +228,7 @@ export const CreateLens = (lens, list) => async dispatch => {
 
     var query = `/discover/${list.uri_content}?&sort_by=popularity.desc&with_release_type=1|2|3`
 
-    var filter_description = []
+    var filter_description = [];
 
     if (lens.country.iso !== null) {
         var query_country = `&with_origin_country=${lens.country.iso}`;
@@ -362,8 +398,6 @@ export const SortSelectionList = (filter, list) => async dispatch => {
         dispatch({ type: 'FILTER_SELECTION_LIST', payload: filtered_list});
     }
 
-
-
 };
 
 export const SearchSelectionList = (filter, list) => async dispatch => {
@@ -386,7 +420,7 @@ export const SearchCountries = (filter, list) => async dispatch => {
 
 };
 
-export const GetMovieInfo= (id, content) => async dispatch => {
+export const GetMovieInfo = (id, content) => async dispatch => {
 
     await movies.get(`/${content}/${id}`, {
     }).then(function(response){
@@ -423,6 +457,93 @@ export const GetMovieInfo= (id, content) => async dispatch => {
         console.log(err)
     })
 
+    await movies.get(`/${content}/${id}/images`, {
+    }).then(function(response){
+        dispatch({ type: 'GET_MOVIE_IMAGES', payload: response.data});
 
+    }).catch(function(err){
+        console.log(err)
+    })
+
+
+
+
+};
+
+export const CreateList = (token, list, tiers) => async dispatch => {
+
+    var content__ids = [];
+    
+    if (list.description !== null && list.description.length > 500) {
+        
+    } else if (list.title < 1 || list.title > 100) {
+        
+    } else {
+
+        for (var i = 0; i < list.content_items.length; i++) {
+            
+            content__ids.push(list.content_items[i].id);
+
+        }
+
+        var new_list = {
+            title: list.title,
+            description: list.description,
+            type: list.type,
+            content: list.content,
+            items: content__ids,
+            tiers: tiers
+        }
+     
+        await api.post('/user/create/list', new_list, {
+            headers: {
+              'Authorization': `Bearer ${token}` 
+            }
+        }).then(function(){
+
+            dispatch({ type: 'CREATED_LIST', payload: true});
+            dispatch({ type: 'RESET_LIST', payload: {title: null, description: null, type: null, content: null, content_items: [], uri_content: null, lenses: [] }});
+            dispatch({ type: 'ADVANCE_LIST_CREATION', payload: false});
+    
+        })
+        .catch(function(err){
+            console.log(err)
+        })
+    
+    }
+
+};
+
+export const CreateTier = () => async dispatch => {
+        
+    var tier = {
+        title: 'tier'
+    }
+
+    dispatch({ type: 'CREATE_TIER', payload: tier});
+
+};
+
+export const ChangeTierPosition = (e, tiers) => async dispatch => {
+
+    var tier = tiers.splice(e.source.index, 1)[0];
+
+    tiers.splice(e.destination.index, 0, tier)
+
+    var new_tiers = tiers;
+
+    dispatch({ type: 'CHANGE_TIER_POSITION', payload: new_tiers});
+
+};
+
+export const SetTierTitle = (name, index) => async dispatch => {
+
+    dispatch({ type: 'SET_TIER_TITLE', payload: name});
+
+};
+
+export const DeleteTier = (index) => async dispatch => {
+
+    dispatch({ type: 'DELETE_TIER', payload: index});
 
 };

@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { SetListType } from '../../actions';
-import { SetListContent } from '../../actions';
-import { store } from '../../store';
-import "../../scss/studiotypecontent.scss";
+import { SetListType } from '../../../actions';
+import { SetListContent } from '../../../actions';
+import { store } from '../../../store';
+import "../../../scss/studiotypecontent.scss";
 
 function StudioTypeContent(props) {
   

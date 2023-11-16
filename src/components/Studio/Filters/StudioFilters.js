@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { ShowFilter } from '../../actions';
-import { store } from '../../store';
-import "../../icon/font/flaticon_lens.scss";
-import "../../scss/studiofilters.scss";
+import { ShowFilter } from '../../../actions';
+import { store } from '../../../store';
+import "../../../icon/font/flaticon_lens.scss";
+import "../../../scss/studiofilters.scss";
 
 
 function StudioFilters(props) {

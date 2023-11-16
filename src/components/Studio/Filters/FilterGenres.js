@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from 'react-redux';
-import { SetLensGenres } from '../../actions';
-import { store } from '../../store';
-import "../../scss/filtergenres.scss";
+import { SetLensGenres } from '../../../actions';
+import { store } from '../../../store';
+import "../../../scss/filtergenres.scss";
 
 
 function FilterGenres(props) {
@@ -12,7 +12,7 @@ function FilterGenres(props) {
   if (list.uri_content === 'movie') {
     var genres = props.genres.movie
   } else if (list.uri_content === 'tv') {
-    var genres = props.genres.tv
+    var genres = props.genres.tv;
   }
   
   var lens = props.lens;
