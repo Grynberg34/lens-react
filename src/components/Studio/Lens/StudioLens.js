@@ -80,12 +80,12 @@ function StudioLens(props) {
       :null
       }
 
-    {lens.keywords.length > 0?
+    {lens.companies.length > 0?
       <div className="lens__filter">
-        <i onClick={()=> removeFilter('keywords')} className="lens__filter__remove flaticon-remove"></i>
-        <h2 className="lens__filter__title">keywords</h2>
+        <i onClick={()=> removeFilter('companies')} className="lens__filter__remove flaticon-remove"></i>
+        <h2 className="lens__filter__title">companies</h2>
 
-        { lens.keywords.map( (word, index) =>
+        { lens.companies.map( (word, index) =>
           <h3 key={index} className="lens__filter__content--genre">{word.name}</h3>
         )}
 
@@ -93,7 +93,7 @@ function StudioLens(props) {
       :null
       }
 
-      {(lens.country.name !== null || lens.date !== null || lens.genres.length > 0 || lens.castandcrew.length > 0 || lens.keywords.length > 0)?
+      {(lens.country.name !== null || lens.date !== null || lens.genres.length > 0 || lens.castandcrew.length > 0 || lens.companies.length > 0)?
         <button onClick={()=> createLens(lens, list)} className="lens__button">create</button>
         :null
       }

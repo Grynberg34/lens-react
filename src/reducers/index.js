@@ -176,7 +176,7 @@ const createListReducer = (list = {title: null, description: null, type: null, c
   }
 };
 
-const createLensReducer = (lens = {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: null}, action) => {
+const createLensReducer = (lens = {country: {name: null, iso: null}, castandcrew: [], genres: [], companies: [], date: null}, action) => {
   switch(action.type){
     case 'SET_LENS_COUNTRY':
       return {
@@ -208,15 +208,15 @@ const createLensReducer = (lens = {country: {name: null, iso: null}, castandcrew
       ...lens,
       castandcrew: action.payload
     };
-    case 'SET_LENS_KEYWORDS':
+    case 'SET_LENS_COMPANIES':
     return {
       ...lens,
-      keywords: [...lens.keywords, action.payload]
+      companies: [...lens.companies, action.payload]
     };
-    case 'REMOVE_LENS_KEYWORDS':
+    case 'REMOVE_LENS_COMPANIES':
       return {
         ...lens,
-        keywords: action.payload
+        companies: action.payload
       };
     case 'RESET_LENS':
       return {
@@ -265,15 +265,15 @@ const searchCastandCrewReducer = (castandcrew = null, action) => {
 
 };
 
-const searchKeywordsReducer = (keywords = null, action) => {
+const searchCompaniesReducer = (companies = null, action) => {
 
-  if (action.type === 'SEARCH_KEYWORDS') {
+  if (action.type === 'SEARCH_COMPANIES') {
 
     return action.payload;
     
   }
   
-  return keywords;  
+  return companies;  
 
 };
 
@@ -366,10 +366,10 @@ const getMovieReducer = (movie = null, action) => {
         ...movie,
         credits: action.payload
       };
-    case 'GET_MOVIE_KEYWORDS':
+    case 'GET_MOVIE_COMPANIES':
       return {
         ...movie,
-        keywords: action.payload
+        companies: action.payload
       };
     case 'GET_MOVIE_PROVIDERS':
       return {
@@ -409,11 +409,10 @@ const createTierReducer = (tiers = [], action) => {
       ];
     case 'CHANGE_TIER_POSITION':
       return action.payload
-    case 'CHANGE_TIER_NAME':
+    case 'SET_TIER_TITLE':
       return action.payload
     case 'DELETE_TIER':
-      return tiers.filter((_, index) => index !== action.payload)
-
+      return tiers.filter((_, i) => i !== action.payload)
     default:
       return tiers;
     }
@@ -438,7 +437,7 @@ export default combineReducers({
   date: getDateReducer,
   genres: getGenresReducer,
   castandcrew: searchCastandCrewReducer,
-  keywords: searchKeywordsReducer,
+  companies: searchCompaniesReducer,
   lens: createLensReducer,
   lens_fail: showLensFailReducer,
   next: advanceListCreationReducer,

@@ -4,7 +4,6 @@ import "../../scss/loginForm.scss";
 
 let LoginForm = props => {
 
-
   const { handleSubmit } = props
 
 

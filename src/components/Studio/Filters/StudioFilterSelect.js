@@ -5,7 +5,7 @@ import FilterCountries from './FilterCountries';
 import FilterDate from './FilterDate';
 import FilterGenres from './FilterGenres';
 import FilterCastandCrew from './FilterCastandCrew';
-import FilterKeywords from './FilterKeywords';
+import FilterCompanies from './FilterCompanies';
 import { store } from '../../../store';
 import "../../../icon/font/flaticon_lens.scss";
 import "../../../scss/studiofilterselect.scss";
@@ -38,8 +38,8 @@ function StudioFilterSelect(props) {
         :null
       }
 
-      {filter === 'keywords'?
-        <FilterKeywords></FilterKeywords>
+      {filter === 'companies'?
+        <FilterCompanies></FilterCompanies>
         :null
       }
 

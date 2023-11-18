@@ -143,6 +143,8 @@ export const ShowFilter = (filter) => async dispatch => {
         dispatch({ type: 'GET_DATE', payload: filters.date });
     } else if (filter === 'genres') {
         dispatch({ type: 'GET_GENRES', payload: filters.genres });
+    } else if (filter === 'companies') {
+
     }
 
     dispatch({ type: 'SHOW_FILTER', payload: filter});
@@ -162,8 +164,8 @@ export const RemoveFilter = (filter) => async dispatch => {
         dispatch({ type: 'REMOVE_LENS_GENRES', payload: [] });
     } else if (filter === 'cast and crew') {
         dispatch({ type: 'REMOVE_LENS_CAST_CREW', payload: [] });
-    } else if (filter === 'keywords') {
-        dispatch({ type: 'REMOVE_LENS_KEYWORDS', payload: [] });
+    } else if (filter === 'companies') {
+        dispatch({ type: 'REMOVE_LENS_COMPANIES', payload: [] });
     }
 };
 
@@ -204,18 +206,18 @@ export const SearchCastandCrew = (name) => async dispatch => {
     })
 };
 
-export const SetLensKeywords = (name) => async dispatch => {
+export const SetLensCompanies = (name) => async dispatch => {
 
-    dispatch({ type: 'SET_LENS_KEYWORDS', payload: name});
+    dispatch({ type: 'SET_LENS_COMPANIES', payload: name});
 };
 
-export const SearchKeywords = (word) => async dispatch => {
+export const SearchCompanies = (word) => async dispatch => {
 
     var query= word.replace(/ /g, '%20')
 
-    await movies.get(`/search/keyword?query=${query}`, {
+    await movies.get(`/search/company?query=${query}&page=1`, {
     }).then(function(response){
-        dispatch({ type: 'SEARCH_KEYWORDS', payload: response.data });
+        dispatch({ type: 'SEARCH_COMPANIES', payload: response.data });
     }).catch(function(err){
         console.log(err)
     })
@@ -223,7 +225,7 @@ export const SearchKeywords = (word) => async dispatch => {
 
 export const CreateLens = (lens, list) => async dispatch => {
 
-    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: null}});
+    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], companies: [], date: null}});
     dispatch({ type: 'SHOW_FILTER', payload: null});
 
     var query = `/discover/${list.uri_content}?&sort_by=popularity.desc&with_release_type=1|2|3`
@@ -304,22 +306,22 @@ export const CreateLens = (lens, list) => async dispatch => {
         filter_description.push(`Cast and crew: ${castandcrew_string}`)
     }
 
-    if (lens.keywords.length > 0) {
+    if (lens.companies.length > 0) {
 
-        var keywords = [];
+        var companies = [];
 
-        var keywords_string = [];
+        var companies_string = [];
 
-        for (var i=0; i<lens.keywords.length; i++) {
-            keywords.push(lens.keywords[i].id)
-            keywords_string.push(lens.keywords[i].name)
+        for (var i=0; i<lens.companies.length; i++) {
+            companies.push(lens.companies[i].id)
+            companies_string.push(lens.companies[i].name)
         }
 
-        var query_keywords = `&with_keywords=${keywords}`;
+        var query_companies = `&with_companies=${companies}`;
 
-        query = query + query_keywords;
+        query = query + query_companies;
 
-        filter_description.push(`Keywords: ${keywords_string}`)
+        filter_description.push(`Companies: ${companies_string}`)
     }
 
     await movies.get(`${query}`, {
@@ -351,7 +353,7 @@ export const RemoveLens = (index) => async dispatch => {
 };
 
 export const AdvanceListCreation = () => async dispatch => {
-    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], keywords: [], date: []}});
+    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], companies: [], date: []}});
     dispatch({ type: 'ADVANCE_LIST_CREATION', payload: true});
 };
 
@@ -448,14 +450,6 @@ export const GetMovieInfo = (id, content) => async dispatch => {
         console.log(err)
     })
 
-    await movies.get(`/${content}/${id}/keywords`, {
-    }).then(function(response){
-
-        dispatch({ type: 'GET_MOVIE_KEYWORDS', payload: response.data});
-
-    }).catch(function(err){
-        console.log(err)
-    })
 
     await movies.get(`/${content}/${id}/images`, {
     }).then(function(response){
@@ -515,10 +509,8 @@ export const CreateList = (token, list, tiers) => async dispatch => {
 };
 
 export const CreateTier = () => async dispatch => {
-        
-    var tier = {
-        title: 'tier'
-    }
+
+    var tier = ''
 
     dispatch({ type: 'CREATE_TIER', payload: tier});
 
@@ -536,9 +528,19 @@ export const ChangeTierPosition = (e, tiers) => async dispatch => {
 
 };
 
-export const SetTierTitle = (name, index) => async dispatch => {
+export const SetTierTitle = (title, index, tiers) => async dispatch => {
 
-    dispatch({ type: 'SET_TIER_TITLE', payload: name});
+    var new_tiers = [];
+
+    tiers.map((tier, i) => {
+        if (i === index) {
+          new_tiers.push(title)
+        } else {
+          new_tiers.push(tier)
+        }
+    });
+
+    dispatch({ type: 'SET_TIER_TITLE', payload: new_tiers});
 
 };
 

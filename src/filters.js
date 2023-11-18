@@ -1426,7 +1426,7 @@ countries = countries.sort(function(a, b) {
 var filters = {
     genres: genres,
     date: decades,
-    countries: countries
+    countries: countries,
 }
 
 export default filters

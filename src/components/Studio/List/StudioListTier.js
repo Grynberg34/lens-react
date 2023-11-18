@@ -35,10 +35,7 @@ function StudioListTier(props) {
     store.dispatch(SetListDescription(text)) 
   }
 
-  function setTierTitle(title) {
-    store.dispatch(SetTierTitle(title)) 
-  }
-
+  
   function deleteMovie(index) {
     store.dispatch(DeleteListItem(index)) 
   }
@@ -46,13 +43,18 @@ function StudioListTier(props) {
   function onDragEnd(e) {
     store.dispatch(ChangeTierPosition(e, tiers)) 
   }
-
+  
   function createList() {
     store.dispatch(CreateList(jwt, list, tiers)) 
   }
+  
 
   function createTier() {
     store.dispatch(CreateTier()) 
+  }
+  
+  function setTierTitle(title, index) {
+    store.dispatch(SetTierTitle(title, index, tiers)) 
   }
 
   function deleteTier(index) {
@@ -105,7 +107,7 @@ function StudioListTier(props) {
                                     <i  className="studiolist__selection__tierlist__tiers__tier__drag flaticon-drag"></i>
                                     </Col>
                                     <Col md={8}>
-                                      <input  onChange={(e)=> setTierTitle(e.target.value)}  className="studiolist__selection__tierlist__tiers__tier__input" type="text" placeholder="insert title" />
+                                      <input  onChange={(e)=> setTierTitle(e.target.value, index)} name={`${index}`}  className="studiolist__selection__tierlist__tiers__tier__input" type="text" placeholder="insert title" value={tier} />
                                     </Col>
                                     <Col md={2}>
                                       <i onClick={()=> deleteTier(index)} className="studiolist__selection__tierlist__tiers__tier__delete flaticon-delete"></i>
@@ -146,10 +148,10 @@ function StudioListTier(props) {
                           <img className="studiolist__selection__tierlist__create__item__img" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} alt="" />
                         </Col>
                         <Col md={6}>
-                        {list.content === 'movies'?
-                          <h2 className="studiolist__selection__tierlist__create__item__title"> {item.title.length > 30 ? item.title.substring(0,30) + '...': item.title} ({item.release_date !== undefined ?(item.release_date.substring(0,4)):null})</h2>
-                          :<h2 className="studiolist__selection__tierlist__create__item__title"> {item.name.length > 30 ? item.name.substring(0,30) + '...': item.name} ({item.first_air_date!== undefined ?(item.first_air_date.substring(0,4)):null})</h2>
-                        }
+                          {list.content === 'movies'?
+                            <h2 className="studiolist__selection__tierlist__create__item__title"> {item.title.length > 30 ? item.title.substring(0,30) + '...': item.title} ({item.release_date !== undefined ?(item.release_date.substring(0,4)):null})</h2>
+                            :<h2 className="studiolist__selection__tierlist__create__item__title"> {item.name.length > 30 ? item.name.substring(0,30) + '...': item.name} ({item.first_air_date!== undefined ?(item.first_air_date.substring(0,4)):null})</h2>
+                          }
                         </Col>
                         <Col md={2}>
                           <i onClick={()=> deleteMovie(index)} className="studiolist__selection__tierlist__create__item__delete flaticon-delete"></i>

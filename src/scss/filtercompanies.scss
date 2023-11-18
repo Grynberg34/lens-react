@@ -1,10 +1,10 @@
 @import '../scss/colors.scss';
 @import '../scss/font.scss';
 
-#keywords {
+#companies {
     margin-top: 14vw;
     
-    .keywords__title {
+    .companies__title {
         font-size: 18px;
         color: $azul-claro;
         font-weight: 700;
@@ -12,7 +12,7 @@
         text-transform: lowercase;
     }
 
-    .keywords__title {
+    .companies__title {
         font-size: 20px;
         color: $azul-claro;
         font-weight: 700;
@@ -20,7 +20,7 @@
         text-transform: lowercase;
     }
 
-    .keywords__search {
+    .companies__search {
         width: 100%;
         border-radius: 36px;
         border: none;
@@ -29,14 +29,14 @@
         text-align: center;
     }
     
-    .keywords__list {
+    .companies__list {
         list-style: none;
         padding-left: 0;
         height: 15vw;
         overflow-y: auto;
         padding-right: 2vw;
 
-        .keywords__list__word {
+        .companies__list__word {
             display: block;
             font-size: 14px;
             color: $amarelo;
@@ -53,18 +53,18 @@
     }
 
     
-    .keywords__list::-webkit-scrollbar-track {
+    .companies__list::-webkit-scrollbar-track {
         border: 2px solid $amarelo;
         border-radius: 36px;
     }
        
-    .keywords__list::-webkit-scrollbar-thumb {
+    .companies__list::-webkit-scrollbar-thumb {
         background-color: $azul-claro;
         border-radius: 36px;
         outline: none;
     }
 
-    .keywords__list::-webkit-scrollbar {
+    .companies__list::-webkit-scrollbar {
         width: 1vw;
     }
 
