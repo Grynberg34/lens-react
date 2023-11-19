@@ -34,7 +34,7 @@ function FilterCastandCrew(props) {
         { castandcrew.results.map( (person, index) =>
   
           person.profile_path !== null?
-          <li key={index} onClick={()=> selectPerson(person)} style={{backgroundImage: `linear-gradient(to bottom, rgba(2,48,71, 0.7) 0%,rgba(2,48,71,0.7) 100%), url(https://image.tmdb.org/t/p/original/${person.profile_path})`,border:lens.castandcrew.find(item => item.name === person.name)? "2px solid #97cdd5": "", color:lens.castandcrew.find(item => item.name === person.name)? "#97cdd5": "" }} className="castandcrew__list__person">{person.name}</li>
+          <li key={index} onClick={()=> selectPerson(person)} style={{backgroundImage: `linear-gradient(to bottom, rgba(2,48,71, 0.7) 0%,rgba(2,48,71,0.7) 100%), url(https://image.tmdb.org/t/p/original/${person.profile_path})`, border:lens.castandcrew.find(item => item.name === person.name)? "2px solid #97cdd5": "", color:lens.castandcrew.find(item => item.name === person.name)? "#97cdd5": "" }} className="castandcrew__list__person">{person.name}</li>
           :null
            
   

@@ -13,14 +13,29 @@
             position: sticky;
             top: 12vw;
 
-            .studiolist__selection__list__length {
-                font-size: 24px;
-                color: $azul-claro;
-                font-weight: 700;
-                text-transform: lowercase;
-                font-style: italic;
-                margin-bottom: 2vw;
+            .studiolist__selection__list__header {
+                background-color: $azul-escuro;
+                position: sticky;
+                top: 0;
+                padding-bottom: 0.1vw;
+                z-index: 99;
+
+                .studiolist__selection__list__header__length {
+                    font-size: 24px;
+                    color: $azul-escuro;
+                    font-weight: 700;
+                    text-transform: lowercase;
+                    font-style: italic;
+                    margin-bottom: 2vw;
+                    background-color: $amarelo;
+                    text-align: center;
+                    padding: 0.5vw;
+                    border-radius: 36px;
+                    clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+                }
+    
             }
+            
     
             .studiolist__selection__list__item {
                 display: block;
@@ -35,6 +50,7 @@
                 margin-bottom: 2vw;
                 background-size: cover;
                 background-position-y: 20%;
+                clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
 
                 .studiolist__selection__list__item__title {
                     text-align: center;
@@ -61,6 +77,10 @@
                     text-align: center;
                     width: 50%;
 
+                }
+
+                .plus {
+                    font-size: 22px;
                 }
             }
         }

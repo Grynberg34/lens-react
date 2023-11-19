@@ -107,11 +107,12 @@
                     border: none;
                     outline: none;
                     padding: 0.5vw;
-                    border-radius: 36px;
+                    border-radius: 12px;
                     font-size: 16px;
                     font-weight: 700;
                     color: $azul-escuro;
                     margin-bottom: 2vw;
+                    clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
             
                     &:hover {
                         background-color: $azul-claro;
@@ -139,10 +140,11 @@
                     position: relative;
                     padding: 0.5vw;
                     background-color: $azul-claro;
-                    border-radius: 12px;
+                    border-radius: 36px;
                     background-size: cover;
                     background-position-y: 30%;
                     user-select: none;
+                    clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
 
                     .studiolist__selection__tierlist__tiers__tier__img {
                         display: block;
@@ -254,11 +256,12 @@
                     position: relative;
                     padding: 0.5vw;
                     background-color: $amarelo;
-                    border-radius: 12px;
+                    border-radius: 36px;
                     margin-bottom: 1vw;
                     background-size: cover;
                     background-position-y: 30%;
                     user-select: none;
+                    clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
 
                     .studiolist__selection__tierlist__create__item__img {
                         display: block;
@@ -321,6 +324,7 @@
                 margin-bottom: 6vw;
                 margin-left: auto;
                 margin-right: auto;
+                clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
         
                 &:hover {
                     background-color: $azul-claro;

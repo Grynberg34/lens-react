@@ -40,18 +40,18 @@
             display: block;
             font-size: 14px;
             color: $amarelo;
-            border: 2px solid $amarelo;
+            border: 2px solid $azul-escuro;
             padding: 0.5vw;
             font-weight: 700;
             margin-bottom: 1vw;
             border-radius: 36px;
             cursor: pointer;
             text-align: center;
-            text-transform: lowercase;
             user-select: none;
             background-size: cover;
             background-position-y: 30%;
             height: 8vw;
+            clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
 
             .castandcrew__list__person__img {
                 display: block;

@@ -125,10 +125,11 @@
                     position: relative;
                     padding: 0.5vw;
                     background-color: $amarelo;
-                    border-radius: 12px;
+                    border-radius: 36px;
                     background-size: cover;
                     background-position-y: 30%;
                     user-select: none;
+                    clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
 
                     .studiolist__selection__watchlist__create__item__img {
                         display: block;
@@ -191,6 +192,7 @@
                 margin-bottom: 6vw;
                 margin-left: auto;
                 margin-right: auto;
+                clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
         
                 &:hover {
                     background-color: $amarelo;

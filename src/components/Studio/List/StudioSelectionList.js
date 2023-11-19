@@ -40,7 +40,9 @@ function StudioSelectionList(props) {
 
       <div className="studiolist__selection__list">
 
-        <h1 className="studiolist__selection__list__length">{selection_list.filter.length} {list.content}</h1>
+        <div className="studiolist__selection__list__header">
+          <h1 className="studiolist__selection__list__header__length">{selection_list.filter.length} {list.content}</h1>
+        </div>
   
         { selection_list.filter.map( (item, index) =>
   
@@ -53,11 +55,11 @@ function StudioSelectionList(props) {
   
                 <Col md={6}>
                   {list.content === 'movies'?
-                    <h2 className="studiolist__selection__list__item__title"> {item.title.length > 30 ? <span>{item.title.substring(0,30) + '...'}</span>: <span>{item.title}</span>} ({item.release_date !== undefined ?(item.release_date.substring(0,4)):null})</h2>
-                    :<h2 className="studiolist__selection__list__item__title"> {item.name.length > 30 ? <span>{item.name.substring(0,30) + '...'}</span>: <span>{item.name}</span>} ({item.first_air_date!== undefined ?(item.first_air_date.substring(0,4)):null})</h2>
+                    <h2 className="studiolist__selection__list__item__title"> {item.original_title.length > 30 ? <span>{item.original_title.substring(0,30) + '...'}</span>: <span>{item.original_title}</span>} ({item.release_date !== undefined ?(item.release_date.substring(0,4)):null})</h2>
+                    :<h2 className="studiolist__selection__list__item__title"> {item.original_name.length > 30 ? <span>{item.original_name.substring(0,30) + '...'}</span>: <span>{item.original_name}</span>} ({item.first_air_date!== undefined ?(item.first_air_date.substring(0,4)):null})</h2>
                   }
   
-                  <i style={{color:list.content_items.includes(item)? "#ff9e00": "#023047" }} onClick={()=> addMovie(item)} className="studiolist__selection__list__item__icon flaticon-add-sign"></i>
+                  <i style={{color:list.content_items.includes(item)? "#ff9e00": "#023047" }} onClick={()=> addMovie(item)} className="studiolist__selection__list__item__icon plus flaticon-plus"></i>
                   <i style={{color:movie.info.id === item.id? "#ff9e00": "#023047" }} onClick={()=> getMovie(item.id)} className="studiolist__selection__list__item__icon flaticon-info"></i>
   
                 </Col>

@@ -86,7 +86,7 @@ export const LogoutUser = () => async dispatch => {
 };
 
 
-// STUDIO 
+// STUDIO LENS
 
 export const SetListType = (type) => async dispatch => {
 
@@ -97,42 +97,6 @@ export const SetListContent = (uri, content) => async dispatch => {
 
     dispatch({ type: 'SET_CONTENT_URI', payload: uri});
     dispatch({ type: 'SET_CONTENT', payload: content});
-};
-
-export const SetListTitle = (title) => async dispatch => {
-
-    dispatch({ type: 'SET_TITLE', payload: title});
-
-};
-
-export const SetListDescription = (text) => async dispatch => {
-
-    dispatch({ type: 'SET_DESCRIPTION', payload: text});
-
-};
-
-export const SetListItem = (item) => async dispatch => {
-
-    dispatch({ type: 'SET_CONTENT_ITEM', payload: item});
-
-};
-
-export const ChangeItemPosition = (e, items) => async dispatch => {
-
-    var item = items.splice(e.source.index, 1)[0];
-
-    items.splice(e.destination.index, 0, item)
-
-    var new_items = items;
-
-    dispatch({ type: 'CHANGE_ITEM_POSITION', payload: new_items});
-
-};
-
-export const DeleteListItem = (index) => async dispatch => {
-
-    dispatch({ type: 'DELETE_CONTENT_ITEM', payload: index});
-
 };
 
 export const ShowFilter = (filter) => async dispatch => {
@@ -167,6 +131,16 @@ export const RemoveFilter = (filter) => async dispatch => {
     } else if (filter === 'companies') {
         dispatch({ type: 'REMOVE_LENS_COMPANIES', payload: [] });
     }
+};
+
+export const SearchCountries = (filter, list) => async dispatch => {
+
+    var new_filter = filter.toLowerCase();
+
+    var filtered_list_countries = list.filter(value => value.english_name.toLowerCase().includes(new_filter))
+
+    dispatch({ type: 'FILTER_COUNTRIES', payload: filtered_list_countries});
+
 };
 
 export const SetLensCountry = (iso,name) => async dispatch => {
@@ -235,7 +209,7 @@ export const CreateLens = (lens, list) => async dispatch => {
     if (lens.country.iso !== null) {
         var query_country = `&with_origin_country=${lens.country.iso}`;
         query= query + query_country;
-        filter_description.push(`country: ${lens.country.name}`)
+        filter_description.push(`${lens.country.name}`)
     }
 
     if (lens.date !== null) {
@@ -244,11 +218,11 @@ export const CreateLens = (lens, list) => async dispatch => {
             if (list.content === 'movies') {
                 var query_date = `&primary_release_year=${lens.date}`;
                 query= query + query_date;
-                filter_description.push(`date: ${lens.date}`)
+                filter_description.push(`${lens.date}`)
             } else if (list.content === 'series') {
                 var query_date = `&first_air_date_year=${lens.date}`;
                 query= query + query_date;
-                filter_description.push(`date: ${lens.date}`)
+                filter_description.push(`${lens.date}`)
             }
 
         } else {
@@ -259,13 +233,13 @@ export const CreateLens = (lens, list) => async dispatch => {
     
                 query= query + query_date;
     
-                filter_description.push(`date: ${lens.date}`)
+                filter_description.push(`${lens.date}`)
             } else if (list.content === 'series') {
                 var query_date = `&first_air_date.gte=${start + '0'}&first_air_date.lte=${start+'9'}`;
     
                 query= query + query_date;
     
-                filter_description.push(`date: ${lens.date}`)
+                filter_description.push(`${lens.date}`)
             }
         }
     }
@@ -285,7 +259,7 @@ export const CreateLens = (lens, list) => async dispatch => {
 
         query = query + query_genres;
 
-        filter_description.push(`Genres: ${genres_string}`)
+        filter_description.push(`${genres_string}`)
     }
 
     if (lens.castandcrew.length > 0) {
@@ -303,7 +277,7 @@ export const CreateLens = (lens, list) => async dispatch => {
 
         query = query + query_castandcrew;
 
-        filter_description.push(`Cast and crew: ${castandcrew_string}`)
+        filter_description.push(`${castandcrew_string}`)
     }
 
     if (lens.companies.length > 0) {
@@ -321,7 +295,7 @@ export const CreateLens = (lens, list) => async dispatch => {
 
         query = query + query_companies;
 
-        filter_description.push(`Companies: ${companies_string}`)
+        filter_description.push(`${companies_string}`)
     }
 
     await movies.get(`${query}`, {
@@ -357,6 +331,9 @@ export const AdvanceListCreation = () => async dispatch => {
     dispatch({ type: 'ADVANCE_LIST_CREATION', payload: true});
 };
 
+
+// STUDIO LIST
+
 export const CreateSelectionList = (lenses) => async dispatch => {
 
     var list = [];
@@ -382,6 +359,10 @@ export const CreateSelectionList = (lenses) => async dispatch => {
         })
     }
 
+    var new_list = list.filter(item => item.vote_count !== 0)
+
+
+    dispatch({ type: 'GET_SELECTION_LIST', payload: new_list});
 };
 
 export const SortSelectionList = (filter, list) => async dispatch => {
@@ -404,21 +385,35 @@ export const SortSelectionList = (filter, list) => async dispatch => {
 
 export const SearchSelectionList = (filter, list) => async dispatch => {
 
-    filter.toLowerCase();
+    var new_filter = filter.toLowerCase();
 
-    var filtered_list = list.filter(value => value.title.toLowerCase().includes(filter))
+    var filtered_list = list.filter(value => value.title.toLowerCase().includes(new_filter))
 
     dispatch({ type: 'FILTER_SELECTION_LIST', payload: filtered_list});
 
 };
 
-export const SearchCountries = (filter, list) => async dispatch => {
+export const SetListItem = (item) => async dispatch => {
 
-    filter.toLowerCase();
+    dispatch({ type: 'SET_CONTENT_ITEM', payload: item});
 
-    var filtered_list_countries = list.filter(value => value.english_name.toLowerCase().includes(filter))
+};
 
-    dispatch({ type: 'FILTER_COUNTRIES', payload: filtered_list_countries});
+export const ChangeItemPosition = (e, items) => async dispatch => {
+
+    var item = items.splice(e.source.index, 1)[0];
+
+    items.splice(e.destination.index, 0, item)
+
+    var new_items = items;
+
+    dispatch({ type: 'CHANGE_ITEM_POSITION', payload: new_items});
+
+};
+
+export const DeleteListItem = (index) => async dispatch => {
+
+    dispatch({ type: 'DELETE_CONTENT_ITEM', payload: index});
 
 };
 
@@ -461,6 +456,18 @@ export const GetMovieInfo = (id, content) => async dispatch => {
 
 
 
+
+};
+
+export const SetListTitle = (title) => async dispatch => {
+
+    dispatch({ type: 'SET_TITLE', payload: title});
+
+};
+
+export const SetListDescription = (text) => async dispatch => {
+
+    dispatch({ type: 'SET_DESCRIPTION', payload: text});
 
 };
 

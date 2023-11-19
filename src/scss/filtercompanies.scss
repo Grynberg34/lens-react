@@ -36,18 +36,18 @@
         overflow-y: auto;
         padding-right: 2vw;
 
-        .companies__list__word {
+        .companies__list__company {
             display: block;
             font-size: 14px;
             color: $amarelo;
             border: 2px solid $amarelo;
             padding: 0.5vw;
             margin-bottom: 1vw;
-            border-radius: 36px;
+            border-radius: 12px;
             cursor: pointer;
             text-align: center;
-            text-transform: lowercase;
             user-select: none;
+            clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
 
         }
     }

@@ -20,7 +20,7 @@ function StudioMovieInfo(props) {
   
   var movie = props.movie;
   var selection_list = props.selection_list;
-
+  
   if(movie=== null && selection_list !== null) {
     store.dispatch(GetMovieInfo(selection_list.filter[0].id, list.uri_content ))
   }
@@ -31,12 +31,17 @@ function StudioMovieInfo(props) {
       <div className="studiolist__selection__info" style={{backgroundImage: `linear-gradient(to bottom, rgba(2,48,71, 0.9) 0%,rgba(2,48,71,0.9) 100%), url('https://image.tmdb.org/t/p/original/${movie.info.poster_path}')`}}>
         
         <h1 className="studiolist__selection__info__title">{movie.info.original_name}</h1>
+        {
+          movie.info.original_name !== movie.info.name?
+          <h2 className="studiolist__selection__info__subtitle">{movie.info.name}</h2>
+          :null
+        }
 
         <h3 className="studiolist__selection__info__item overview">{movie.info.overview}</h3>
 
         { movie.providers?.results[country]?.flatrate !== undefined?
           <div>
-            <h2 className="studiolist__selection__info__category">Where to watch ({country})</h2>
+            <h2 className="studiolist__selection__info__category">Streaming ({country})</h2>
 
             <div className="studiolist__selection__info__gallery">
               <Container fluid>
@@ -55,9 +60,6 @@ function StudioMovieInfo(props) {
 
         }
 
-        <h2 className="studiolist__selection__info__category">Original title</h2>
-        <h3 className="studiolist__selection__info__item">{movie.info.original_name}</h3>
-
         {movie.info.created_by.length >0?
           <div>
             <h2 className="studiolist__selection__info__category">Created by</h2>
@@ -71,6 +73,9 @@ function StudioMovieInfo(props) {
         <h2 className="studiolist__selection__info__category">Air Date</h2>
 
         <h3 className="studiolist__selection__info__item">{movie.info.first_air_date.substring(0,4)} - {movie.info.last_air_date.substring(0,4)}</h3>
+
+        <h2 className="studiolist__selection__info__category">Status</h2>
+        <h3 className="studiolist__selection__info__item">{movie.info.status}</h3>
         
         <h2 className="studiolist__selection__info__category">Number of seasons</h2>
         <h3 className="studiolist__selection__info__item">{movie.info.number_of_seasons}</h3>
@@ -100,15 +105,24 @@ function StudioMovieInfo(props) {
 
         }
 
-        {movie.keywords !== undefined?
+        {(movie.info.production_companies !== undefined && movie.info.production_companies.length > 0)?
           <div>
-            <h2 className="studiolist__selection__info__category">Keywords</h2>
-            { movie.keywords.results.map( (keyword, index) =>
-              <h3 key={index} className="studiolist__selection__info__item">{keyword.name}</h3>
+            <h2 className="studiolist__selection__info__category">Production Companies</h2>
+            { movie.info.production_companies.map( (company, index) =>
+              <h3 key={index} className="studiolist__selection__info__item">{company.name}</h3>
             )}
           </div>
           :null
+        }
 
+        {(movie.info.production_countries !== undefined && movie.info.production_countries.length > 0)?
+          <div>
+            <h2 className="studiolist__selection__info__category">Production Countries</h2>
+            { movie.info.production_countries.map( (country, index) =>
+              <h3 key={index} className="studiolist__selection__info__item">{country.name}</h3>
+            )}
+          </div>
+          :null
         }
 
       </div>

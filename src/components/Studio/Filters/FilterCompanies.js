@@ -31,9 +31,9 @@ function FilterCompanies(props) {
       {companies !== null?
         <ul className="companies__list">
 
-        { companies.results.map( (word, index) =>
+        { companies.results.map( (company, index) =>
 
-          <li key={index} onClick={()=> selectWord(word)} style={{border:lens.companies.includes(word.name)? "2px solid #97cdd5": "", color:lens.companies.includes(word.name)? "#97cdd5": "" }} className="companies__list__word">{word.name}</li>
+          <li key={index} onClick={()=> selectWord(company)} style={{border:lens.companies.find(item => item.name === company.name)? "2px solid #97cdd5": "", color:lens.companies.find(item => item.name === company.name)? "#97cdd5": "" }} className="companies__list__company">{company.name}</li>
   
         )}
   

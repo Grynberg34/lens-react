@@ -38,6 +38,7 @@
             font-size: 18px;
             font-weight: 500;
             color: $azul-escuro;
+            clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
     
             &:hover {
                 background-color: $azul-claro;

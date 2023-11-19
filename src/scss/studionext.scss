@@ -22,12 +22,13 @@
         border-radius: 36px;
         text-align: center;
         margin-bottom: 2vw;
+        clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
 
         .next__lens__remove {
             position: absolute;
-            top: -15%;
-            right: 0%;
-            color: $amarelo;
+            top: 2.5%;
+            right: 5%;
+            color: $azul-escuro;
             font-weight: 700;
             font-size: 24px;
             cursor: pointer;
@@ -35,11 +36,14 @@
         }
 
         .next__lens__title {
-            font-size: 18px;
+            position: absolute;
+            top: 2.5%;
+            left: 5%;
+            font-size: 30px;
             color: $azul-escuro;
             font-weight: 700;
-            margin-bottom: 1vw;
             text-transform: lowercase;
+            text-align: left;
         }
 
         .next__lens__description {
@@ -48,6 +52,7 @@
             font-weight: 700;
             margin-bottom: 0.5vw;
             text-transform: lowercase;
+            margin-top: 1vw;
         }
 
         .next__lens__length {
@@ -64,6 +69,7 @@
             font-size: 18px;
             font-weight: 700;
             color: $azul-claro;
+            clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
         }
     }
 
@@ -79,6 +85,7 @@
         font-weight: 700;
         color: $azul-escuro;
         margin-bottom: 0;
+        clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
 
         &:hover {
             background-color: $azul-claro;

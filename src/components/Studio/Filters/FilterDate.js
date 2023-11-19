@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { connect } from 'react-redux';
 import { SetLensDate } from '../../../actions';
+import { RemoveFilter } from '../../../actions';
 import { store } from '../../../store';
 import "../../../scss/filterdate.scss";
 
@@ -13,11 +14,15 @@ function FilterDate(props) {
 
   function selectTime(year) {
 
-      store.dispatch(SetLensDate(year))
+    store.dispatch(SetLensDate(year))
 
   }
 
   const [decade, setDecade] = useState(true);
+
+  function removeFilter(filter) {
+    store.dispatch(RemoveFilter(filter))
+  }
   
   return (
     <div id="date" className="date">
@@ -33,14 +38,11 @@ function FilterDate(props) {
         {
           decade?
             <div>
-              {date.years[3] === 2020?
-              <h1 style={{border:lens.date === date.decade? "2px solid #97cdd5": "", color:lens.date === date.decade? "#97cdd5": "" }} className="date__list__decades__decade" onClick={()=> selectTime(date.decade)}>{date.decade}</h1>
-              :<h1 style={{border:lens.date === date.decade? "2px solid #97cdd5": "", color:lens.date === date.decade? "#97cdd5": "" }} className="date__list__decades__decade" onClick={()=> selectTime(date.decade)}>{date.decade}</h1>
-              }
+              <h1 style={{border:lens.date === date.decade? "2px solid #97cdd5": "", color:lens.date === date.decade? "#97cdd5": "" }} className="date__list__decades__decade" onClick={()=> lens.date !== date.decade?selectTime(date.decade):removeFilter('date')}>{date.decade}</h1>
             </div>
            : <div>
               { date.years.map( (year, index) =>
-                <h2 style={{border:lens.date === year? "2px solid #97cdd5": "", color:lens.date === year? "#97cdd5": "" }} key={index} className="date__list__decades__year" onClick={()=> selectTime(year)}>{year}</h2>
+                <h2 style={{border:lens.date === year? "2px solid #97cdd5": "", color:lens.date === year? "#97cdd5": "" }} key={index} className="date__list__decades__year" onClick={()=> lens.date !== year? selectTime(year):removeFilter('date')}>{year}</h2>
               )}
             </div>
            

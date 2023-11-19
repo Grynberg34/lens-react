@@ -23,13 +23,13 @@ function StudioNext(props) {
     <div id="next" className="next">
 
       <div className="next__add">
-        <h3 className="next__add__title">advance to list</h3>
+        <h3 className="next__add__title">advance</h3>
       </div>
 
       { list.lenses.map( (lens, index) =>
         <div key={index} className="next__lens">
           <i onClick={()=> removeLens({index})} className="next__lens__remove flaticon-remove"></i>
-          <h1 className="next__lens__title">Lens #{index+1}</h1>
+          <h1 className="next__lens__title">#{index+1}</h1>
           
           { lens.filter_description.map( (filter, index) =>
             <h2 key={index} className="next__lens__description">{filter}</h2>

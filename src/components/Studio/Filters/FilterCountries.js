@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from 'react-redux';
 import { SetLensCountry } from '../../../actions';
 import { SearchCountries } from '../../../actions';
+import { RemoveFilter } from '../../../actions';
 import { store } from '../../../store';
 import "../../../scss/filtercountries.scss";
 
@@ -14,6 +15,10 @@ function FilterCountries(props) {
 
   function selectCountry(iso,name) {
     store.dispatch(SetLensCountry(iso,name))
+  }
+
+  function removeFilter(filter) {
+    store.dispatch(RemoveFilter(filter))
   }
 
   function searchCountry(filter) {
@@ -30,7 +35,7 @@ function FilterCountries(props) {
 
       { countries.filter.map( (country, index) =>
 
-        <li key={index} onClick={()=> selectCountry(country.iso_3166_1, country.english_name)} style={{border:lens.country.iso === country.iso_3166_1? "2px solid #97cdd5": "", color:lens.country.iso === country.iso_3166_1? "#97cdd5": "" }} className="countries__list__country">{country.english_name}</li>
+        <li key={index} onClick={() => lens.country.iso !== country.iso_3166_1 ?  selectCountry(country.iso_3166_1, country.english_name) : removeFilter('country')} style={{border:lens.country.iso === country.iso_3166_1? "2px solid #97cdd5": "", color:lens.country.iso === country.iso_3166_1? "#97cdd5": "" }} className="countries__list__country">{country.english_name}</li>
 
       )}
 
