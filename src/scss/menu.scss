@@ -23,6 +23,7 @@
         font-weight: 400;
         text-align: center;
         text-decoration: none;
+        user-select: none;
 
         &:hover {
             color: $amarelo;

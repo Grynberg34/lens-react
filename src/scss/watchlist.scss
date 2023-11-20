@@ -1,0 +1,129 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#watchlist{
+    background-color: $azul-escuro;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .menu {
+
+        background-color: $verde-medio;
+    
+    
+        .menu__link {
+
+            color: $azul-escuro;
+
+            &:hover {
+                color: $vermelho;
+            }
+        }
+    
+        .menu__button {
+            font-size: 20px;
+            color: $vermelho;
+            &:hover {
+                color: $azul-escuro;
+            }
+        }
+        
+        .active {
+            color: $amarelo;
+        }
+    
+        .credit {
+
+            color: $azul-escuro;
+    
+            &:hover {
+                color: $vermelho;
+                text-decoration: none;
+            }
+            
+        }
+    }
+    
+}
+
+.watchlist {
+    min-height: 100vh;  
+    
+    .watchlist__content {
+        padding-top: 8vw;
+        padding-left: 8vw;
+        padding-right: 8vw;
+
+        .watchlist__content__header {
+            position: sticky;
+            top: 16vw;
+
+    
+            .watchlist__content__header__title {
+                font-size: 24px;
+                font-weight: 700;
+                color: $azul-escuro;
+                margin-bottom: 1vw;
+            }
+
+            .watchlist__content__header__author {
+                font-size: 14px;
+                font-weight: 500;
+                font-style: italic;
+                color: $azul-escuro;
+                margin-bottom: 2vw;
+            }
+
+            .watchlist__content__header__text {
+                font-size: 16px;
+                font-weight: 500;
+                color: $azul-escuro;
+                margin-bottom: 2vw;
+                text-align: justify;
+                line-height: 2;
+            }
+        }
+
+        .watchlist__content__items {
+            padding-left: 4vw;
+            margin-bottom: 10vw;
+
+            .watchlist__content__items__item {
+                padding: 1vw;
+                margin-bottom: 2vw;
+                background-color: $azul-claro;
+                border-radius: 36px;
+                clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
+                background-size: cover;
+                cursor: pointer;
+
+                .watchlist__content__items__item__img {
+                    width: 100%;
+                    border-radius: 36px;
+                    clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+                }
+
+                .watchlist__content__items__item__title {
+                    margin-top: 2vw;
+                    font-size: 24px;
+                    font-weight: 700;
+                    color: $vermelho;
+                    margin-bottom: 1vw;
+                    text-align: center;
+                }
+
+                .watchlist__content__items__item__subtitle {
+                    font-size: 18px;
+                    font-weight: 700;
+                    color: $azul-escuro;
+                    margin-bottom: 1vw;
+                    text-align: center;
+                    font-style: italic;
+                }
+
+            }
+        }
+    }
+}

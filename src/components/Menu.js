@@ -13,6 +13,8 @@ function Menu(props) {
   function logout() {
     store.dispatch(LogoutUser())
   }
+
+  var menu = props.menu;
   
   return (
     <div id="menu" className="menu">
@@ -20,7 +22,11 @@ function Menu(props) {
         <Row>
 
           <Col md={2}>
-            <NavLink to="/home"><img src="/images/logo/logo.png" className="menu__logo" alt="" /></NavLink>
+            {
+              menu === true ?
+              <NavLink to="/home"><img src="/images/logo/logo.png" className="menu__logo" alt="" /></NavLink>
+              : <NavLink to="/home"><img src="/images/logo/logo2.png" className="menu__logo" alt="" /></NavLink>
+            }
           </Col>
 
           <Col md={1}></Col>
@@ -62,6 +68,7 @@ function mapStateToProps(state) {
   return {
     jwt: state.jwt,
     auth: state.auth,
+    menu: state.menu
   }
 }
 

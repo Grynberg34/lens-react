@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { CheckAuth } from '../actions';
+import { CheckMenu } from '../actions';
 import Menu from './Menu';
 import { store } from '../store';
 import { Navigate } from "react-router-dom";
@@ -17,6 +18,12 @@ function Home(props) {
   }
 
   var auth =  props.auth;
+
+  var menu = props.menu;
+
+  if (menu === false) {
+    store.dispatch(CheckMenu('yellow'))
+  }
 
   
   if (auth === true) {
@@ -40,6 +47,7 @@ function mapStateToProps(state) {
   return {
     jwt: state.jwt,
     auth: state.auth,
+    menu: state.menu
   }
 }
 

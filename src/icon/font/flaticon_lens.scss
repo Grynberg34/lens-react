@@ -2,11 +2,11 @@ $flaticon_lens-font: "flaticon_lens";
 
 @font-face {
     font-family: $flaticon_lens-font;
-    src: url("./flaticon_lens.ttf?75fc6d25ef58a7780ec6b8fafba2df35") format("truetype"),
-url("./flaticon_lens.woff?75fc6d25ef58a7780ec6b8fafba2df35") format("woff"),
-url("./flaticon_lens.woff2?75fc6d25ef58a7780ec6b8fafba2df35") format("woff2"),
-url("./flaticon_lens.eot?75fc6d25ef58a7780ec6b8fafba2df35#iefix") format("embedded-opentype"),
-url("./flaticon_lens.svg?75fc6d25ef58a7780ec6b8fafba2df35#flaticon_lens") format("svg");
+    src: url("./flaticon_lens.ttf?6102e05fde04d72db0916ccd2f354c7d") format("truetype"),
+url("./flaticon_lens.woff?6102e05fde04d72db0916ccd2f354c7d") format("woff"),
+url("./flaticon_lens.woff2?6102e05fde04d72db0916ccd2f354c7d") format("woff2"),
+url("./flaticon_lens.eot?6102e05fde04d72db0916ccd2f354c7d#iefix") format("embedded-opentype"),
+url("./flaticon_lens.svg?6102e05fde04d72db0916ccd2f354c7d#flaticon_lens") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
@@ -21,37 +21,16 @@ i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
 }
 
 $flaticon_lens-map: (
-    "pyramid": "\f101",
-    "eye": "\f102",
-    "film": "\f103",
-    "film-1": "\f104",
-    "clapperboard": "\f105",
-    "television": "\f106",
-    "remove": "\f107",
-    "drag": "\f108",
-    "delete": "\f109",
-    "info": "\f10a",
-    "plus": "\f10b",
+    "remove": "\f101",
+    "drag": "\f102",
+    "delete": "\f103",
+    "info": "\f104",
+    "plus": "\f105",
+    "visible-opened-eye-interface-option": "\f106",
+    "lens": "\f107",
+    "lens-1": "\f108",
 );
 
-.flaticon-pyramid:before {
-    content: map-get($flaticon_lens-map, "pyramid");
-}
-.flaticon-eye:before {
-    content: map-get($flaticon_lens-map, "eye");
-}
-.flaticon-film:before {
-    content: map-get($flaticon_lens-map, "film");
-}
-.flaticon-film-1:before {
-    content: map-get($flaticon_lens-map, "film-1");
-}
-.flaticon-clapperboard:before {
-    content: map-get($flaticon_lens-map, "clapperboard");
-}
-.flaticon-television:before {
-    content: map-get($flaticon_lens-map, "television");
-}
 .flaticon-remove:before {
     content: map-get($flaticon_lens-map, "remove");
 }
@@ -66,4 +45,13 @@ $flaticon_lens-map: (
 }
 .flaticon-plus:before {
     content: map-get($flaticon_lens-map, "plus");
+}
+.flaticon-visible-opened-eye-interface-option:before {
+    content: map-get($flaticon_lens-map, "visible-opened-eye-interface-option");
+}
+.flaticon-lens:before {
+    content: map-get($flaticon_lens-map, "lens");
+}
+.flaticon-lens-1:before {
+    content: map-get($flaticon_lens-map, "lens-1");
 }

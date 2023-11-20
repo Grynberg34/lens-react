@@ -65,6 +65,16 @@ export const CheckAuth = (token) => async dispatch => {
 
 };
 
+export const CheckMenu = (color) => async dispatch => {
+
+    if (color === 'yellow') {
+        dispatch({ type: 'SET_MENU_COLOR', payload: true });
+    } else if (color === 'red') {
+        dispatch({ type: 'SET_MENU_COLOR', payload: false });
+    }
+ 
+};
+
 export const AuthGoogle = (googleUser) => async dispatch => {
 
     await api.post('/auth/google/signin', {
@@ -455,8 +465,6 @@ export const GetMovieInfo = (id, content) => async dispatch => {
     })
 
 
-
-
 };
 
 export const SetListTitle = (title) => async dispatch => {
@@ -493,6 +501,7 @@ export const CreateList = (token, list, tiers) => async dispatch => {
             type: list.type,
             content: list.content,
             items: content__ids,
+            uri_content: list.uri_content,
             tiers: tiers
         }
      
@@ -554,5 +563,58 @@ export const SetTierTitle = (title, index, tiers) => async dispatch => {
 export const DeleteTier = (index) => async dispatch => {
 
     dispatch({ type: 'DELETE_TIER', payload: index});
+
+};
+
+// WATCHLIST
+
+export const GetWatchlist = (token, id) => async dispatch => {
+
+    await api.get(`/user/watch/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+    }).then(async function(response){
+
+        dispatch({ type: 'GET_WATCHLIST', payload: response.data});
+
+        var items = [];
+
+        for (var i = 0; i < response.data.items.length; i++) {
+            
+
+
+            var item = {
+                info: null,
+                credits: null
+            }
+
+            await movies.get(`/${response.data.uri_content}/${response.data.items[i].movie_id}`, {
+            }).then(async function(response){
+                
+                item.info = response.data
+    
+        
+            }).catch(function(err){
+                console.log(err)
+            })
+
+            await movies.get(`/${response.data.uri_content}/${response.data.items[i].movie_id}/credits`, {
+            }).then(function(response){
+
+                item.credits = response.data
+                            
+            }).catch(function(err){
+                console.log(err)
+            })
+
+            items.push(item)
+        }
+
+        dispatch({ type: 'GET_LIST_ITEMS', payload: items});
+    })
+    .catch(function(err){
+        console.log(err)
+    })
 
 };

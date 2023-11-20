@@ -1,0 +1,109 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+.watchlist {
+
+    .watchlist__content {
+
+        .watchlist__content__info {
+            position: sticky;
+            top: 16vw;
+
+            .watchlist__content__info__movie {
+                display: block;
+                padding: 2vw;
+                border-radius: 36px;
+                height: 60vh;
+                margin-top: 0.5vw;
+                background-size: cover;
+                overflow-y: auto;
+                margin-right: 1vw;
+                padding-right: 2vw;
+                background-position-x: 50%;
+                margin-left: 4vw;
+    
+    
+                .watchlist__content__info__movie__title {
+                    text-align: center;
+                    font-size: 20px;
+                    font-weight: 700;
+                    color: $vermelho;
+                    margin-bottom: 0.5vw;
+                }
+    
+                .watchlist__content__info__movie__img {
+                    display: block;
+                    margin-top: 2vw;
+                    width: 90%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    border-radius: 12px;
+                }
+    
+                
+                .watchlist__content__info__movie__subtitle {
+                    text-align: center;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: $vermelho;
+                    font-style: italic;
+                }
+    
+                .watchlist__content__info__movie__category {
+                    text-align: center;
+                    margin-bottom: 1vw;
+                    margin-top: 2vw;
+                    padding-top: 2vw;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: $vermelho;
+                    font-style: italic;
+                    border-top: 2px solid $azul-escuro;
+                }
+    
+                .watchlist__content__info__movie__item {
+                    text-align: center;
+                    margin-bottom: 1vw;
+                    font-size: 16px;
+                    font-weight: 700;
+                    color: $azul-escuro;
+                }
+    
+                .watchlist__content__info__movie__gallery {
+    
+                    .watchlist__content__info__movie__gallery__img {
+                        display: inline-block;
+                        width: 100%;
+                        border-radius: 12px;
+                        margin-top: 1vw;
+                    }
+                }
+    
+                .overview {
+                    text-align: justify;
+                    line-height: 2;
+                    margin-top: 2vw;
+                    padding-left: 1vw;
+                    padding-right: 1vw;
+                }
+    
+            }
+    
+            .watchlist__content__info__movie::-webkit-scrollbar-track {
+                border: none;
+            }
+               
+            .watchlist__content__info__movie::-webkit-scrollbar-thumb {
+                background-color: $azul-escuro;
+                border-radius: 36px;
+                outline: none;
+            }
+        
+            .watchlist__content__info__movie::-webkit-scrollbar {
+                width: 1vw;
+            }
+
+        }
+
+    }
+}

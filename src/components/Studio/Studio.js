@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from 'react-redux';
 import { CheckAuth } from '../../actions';
+import { CheckMenu } from '../../actions';
 import Menu from '../Menu';
 import StudioFilters from './Filters/StudioFilters';
 import StudioTypeContent from './Lens/StudioTypeContent';
@@ -26,6 +27,13 @@ function Studio(props) {
   var list = props.list;
 
   var next = props.next;
+
+  var menu = props.menu;
+
+  if (menu === false) {
+    store.dispatch(CheckMenu('yellow'))
+  }
+
 
   if (props.jwt !== null && auth === false) {
     return (
@@ -132,7 +140,8 @@ function mapStateToProps(state) {
     list: state.list,
     filter: state.filter,
     next: state.next,
-    created: state.created
+    created: state.created,
+    menu: state.menu
   }
 }
 

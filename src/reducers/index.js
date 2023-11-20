@@ -110,6 +110,15 @@ const failedNewPasswordReducer = (msg = '', action) => {
   return msg;
 };
 
+const checkMenuColorReducer = (menu = true, action) => {
+  if (action.type === 'SET_MENU_COLOR') {
+
+    return action.payload;
+  }
+  
+  return menu;
+};
+
 //CREATE LIST
 
 const createListReducer = (list = {title: null, description: null, type: null, content: null, content_items: [], uri_content: null, lenses: [] }, action) => {
@@ -419,6 +428,31 @@ const createTierReducer = (tiers = [], action) => {
   
 };
 
+const getWatchlistReducer = (watchlist = null, action) => {
+
+  if (action.type === 'GET_WATCHLIST') {
+
+    return action.payload;
+    
+  }
+  
+  return watchlist;  
+  
+};
+
+const getItemsReducer = (items = null, action) => {
+
+  if (action.type === 'GET_LIST_ITEMS') {
+
+    return action.payload;
+    
+  }
+  
+  return items;  
+  
+};
+
+
 export default combineReducers({
 
   jwt: userLogInReducer,
@@ -431,6 +465,7 @@ export default combineReducers({
   failRedefine: failedRedefineReducer,
   newpass: defineNewPasswordReducer,
   failNewpass: failedNewPasswordReducer,
+  menu: checkMenuColorReducer,
   list: createListReducer,
   filter: showFilterReducer,
   countries: getCountriesReducer,
@@ -445,6 +480,8 @@ export default combineReducers({
   movie: getMovieReducer,
   created: createdListReducer,
   tiers: createTierReducer,
+  watchlist: getWatchlistReducer,
+  items: getItemsReducer,
   form: formReducer
   
 });
