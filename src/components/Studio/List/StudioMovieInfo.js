@@ -21,7 +21,15 @@ function StudioMovieInfo(props) {
 
   var selection_list = props.selection_list;
 
+  if (selection_list === null && movie !== null) {
+
+    store.dispatch(GetMovieInfo(null ))
+
+  }
+
+
   if(movie=== null && selection_list !== null) {
+
     store.dispatch(GetMovieInfo(selection_list.filter[0].id, list.uri_content ))
   }  
 

@@ -27,7 +27,7 @@ function StudioLens(props) {
     <div id="lens" className="lens">
 
       <div className="lens__add">
-        <h1 className="lens__add__title">create lens</h1>
+        <h1 className="lens__add__title">lens</h1>
         <h2 className="lens__add__number"></h2>
       </div>
 

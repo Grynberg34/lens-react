@@ -337,7 +337,7 @@ export const RemoveLens = (index) => async dispatch => {
 };
 
 export const AdvanceListCreation = () => async dispatch => {
-    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], companies: [], date: []}});
+    dispatch({ type: 'RESET_LENS', payload: {country: {name: null, iso: null}, castandcrew: [], genres: [], companies: [], date: null}});
     dispatch({ type: 'ADVANCE_LIST_CREATION', payload: true});
 };
 
@@ -427,7 +427,17 @@ export const DeleteListItem = (index) => async dispatch => {
 
 };
 
+export const DeleteListItemSelection = (item) => async dispatch => {
+
+    dispatch({ type: 'DELETE_CONTENT_ITEM_SELECTION', payload: item});
+
+};
+
 export const GetMovieInfo = (id, content) => async dispatch => {
+
+    if (id === null) {
+        dispatch({ type: 'SET_MOVIE_INITIAL', payload: null});
+    }
 
     await movies.get(`/${content}/${id}`, {
     }).then(function(response){
@@ -582,8 +592,6 @@ export const GetWatchlist = (token, id) => async dispatch => {
 
         for (var i = 0; i < response.data.items.length; i++) {
             
-
-
             var item = {
                 info: null,
                 credits: null
@@ -609,12 +617,66 @@ export const GetWatchlist = (token, id) => async dispatch => {
             })
 
             items.push(item)
+        
+            dispatch({ type: 'GET_LIST_ITEMS', payload: items});
         }
 
-        dispatch({ type: 'GET_LIST_ITEMS', payload: items});
+        
     })
     .catch(function(err){
         console.log(err)
     })
+
+};
+
+// TIERLIST
+
+export const GetTierlist = (token, id) => async dispatch => {
+
+    await api.get(`/user/tier/${id}`, {
+        headers: {
+          'Authorization': `Bearer ${token}` 
+        }
+    }).then(async function(response){
+
+        dispatch({ type: 'GET_TIERLIST', payload: response.data});
+
+        console.log(response.data);
+
+        var items = [];
+
+        for (var i = 0; i < response.data.items.length; i++) {
+            
+            var item = {
+                info: null,
+                credits: null
+            }
+
+            await movies.get(`/${response.data.uri_content}/${response.data.items[i].movie_id}`, {
+            }).then(async function(response){
+                
+                item.info = response.data
+    
+        
+            }).catch(function(err){
+                console.log(err)
+            })
+
+            items.push(item)
+        
+            dispatch({ type: 'GET_LIST_ITEMS', payload: items});
+        }
+
+        
+    })
+    .catch(function(err){
+        console.log(err)
+    })
+
+};
+
+export const ChangerItemTier = (token, id) => async dispatch => {
+
+    
 
 };

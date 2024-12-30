@@ -5,6 +5,7 @@ import { SetListTitle } from '../../../actions';
 import { SetListDescription } from '../../../actions';
 import { DeleteListItem } from '../../../actions';
 import { ChangeItemPosition } from '../../../actions';
+import { GetMovieInfo } from '../../../actions';
 import { CreateList } from '../../../actions';
 import "../../../icon/font/flaticon_lens.scss";
 import "../../../scss/studiolist-watchlist.scss";
@@ -40,6 +41,11 @@ function StudioListWatch(props) {
     store.dispatch(CreateList(jwt, list)) 
   }
 
+  function getMovie(id) {
+    store.dispatch(GetMovieInfo(id, list.uri_content))
+  }
+
+
   return (
     <div className="studiolist__selection__watchlist">
 
@@ -51,19 +57,11 @@ function StudioListWatch(props) {
         :null  
       }
 
-      <label className="studiolist__selection__watchlist__label description">description </label>
-      <textarea rows='3' onChange={(e)=> setListDescription(e.target.value)} className="studiolist__selection__watchlist__text" type="text" placeholder="optional" maxLength="500"></textarea>
-      
-      {list.description !==null?
-        <p className="studiolist__selection__watchlist__length">{500 - list.description.length>0? (500 -list.description.length):'0'} characters left</p>
-        :null  
-      }
-
       { list.content_items.length > 0?
         <div className="studiolist__selection__watchlist__create">
 
           <h1 className="studiolist__selection__watchlist__create__title">watchlist</h1>
-          <h2 className="studiolist__selection__watchlist__create__subtitle">drag and drop to change order</h2>
+          <h2 className="studiolist__selection__watchlist__create__subtitle">drag and drop to change order | click to movie info</h2>
 
           <DragDropContext onDragEnd={(e)=> onDragEnd(e)}>
             <Droppable droppableId="droppable-1" >
@@ -72,7 +70,7 @@ function StudioListWatch(props) {
                   {list.content_items.map((item, index) =>
                     <Draggable key={item.id} draggableId={item.id.toString()} index={index}>
                       {(provided) => (
-                        <div className="studiolist__selection__watchlist__create__drag" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
+                        <div onClick={()=> getMovie(item.id)} className="studiolist__selection__watchlist__create__drag" ref={provided.innerRef} {...provided.draggableProps} {...provided.dragHandleProps}>
                           <div className="studiolist__selection__watchlist__create__item" style={{backgroundImage: `linear-gradient(to bottom, rgba(255,158,0, 0.8) 0%,rgba(255,158,0,0.8) 100%), url('https://image.tmdb.org/t/p/original/${item.backdrop_path}')`}}>
                             <Container fluid>
                               <Row>

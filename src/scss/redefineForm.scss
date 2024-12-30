@@ -10,7 +10,7 @@
 
         .redefineForm__field__label {
             display: block;
-            font-size: 20px;
+            font-size: 1vw;
             text-align: center;
             margin-bottom: 0.5vw;
             font-weight: 400;
@@ -38,12 +38,12 @@
         padding: 0.5vw;
         background-color: $amarelo;
         color: $azul-escuro;
-        font-size: 20px;
+        font-size: 1vw;
         font-weight: 700;
         width: 50%;
         border: none;
         outline: none;
-        border-radius: 36px;
+        border-radius: 1.87vw;
         
         &:hover {
             background-color: $azul-claro

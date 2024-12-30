@@ -10,6 +10,7 @@ import Studio from './components/Studio/Studio';
 import Home from './components/Home';
 import StudioList from './components/Studio/List/StudioList';
 import Watchlist from './components/Watchlist/Watchlist';
+import Tierlist from './components/Tierlist/Tierlist';
 import {store, persistor} from './store.js';
 import { PersistGate } from 'redux-persist/integration/react';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -28,6 +29,7 @@ ReactDOM.render(
           <Route path="studio" element={<Studio />}></Route>
           <Route path="studio/list" element={<StudioList />}></Route>
           <Route path="profile/:user/watch/:id" element={<Watchlist />}></Route>
+          <Route path="profile/:user/tier/:id" element={<Tierlist />}></Route>
         </Routes>
       </BrowserRouter>
     </PersistGate>

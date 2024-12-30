@@ -23,7 +23,7 @@ function StudioNext(props) {
     <div id="next" className="next">
 
       <div className="next__add">
-        <h3 className="next__add__title">advance</h3>
+        <h3 className="next__add__title">pool</h3>
       </div>
 
       { list.lenses.map( (lens, index) =>

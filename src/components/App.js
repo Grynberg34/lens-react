@@ -34,11 +34,15 @@ function App(props) {
              <Container fluid>
                 <Row>
 
-                  <Col md={6}>
+                  <Col md={4}>
                     <Link className='home__link' to="/register">register</Link>
                   </Col>
 
-                  <Col md={6}>
+                  <Col md={4}>
+                    <Link className='home__link' to="/login">login</Link>
+                  </Col>
+
+                  <Col md={4}>
                     <Link className='home__link' to="/login">login</Link>
                   </Col>
 

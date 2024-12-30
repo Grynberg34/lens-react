@@ -168,6 +168,11 @@ const createListReducer = (list = {title: null, description: null, type: null, c
         ...list,
         content_items: list.content_items.filter((_, index) => index !== action.payload)
       };
+    case 'DELETE_CONTENT_ITEM_SELECTION':
+      return {
+        ...list,
+        content_items: list.content_items.filter(item => item !== action.payload)
+      };
     case 'CHANGE_ITEM_POSITION':
     return {
       ...list,
@@ -390,6 +395,8 @@ const getMovieReducer = (movie = null, action) => {
         ...movie,
         images: action.payload
       };
+    case 'SET_MOVIE_INITIAL':
+      return action.payload;
     default:
       return movie;
     }
@@ -440,6 +447,18 @@ const getWatchlistReducer = (watchlist = null, action) => {
   
 };
 
+const getTierlistReducer = (tierlist = null, action) => {
+
+  if (action.type === 'GET_TIERLIST') {
+
+    return action.payload;
+    
+  }
+  
+  return tierlist;  
+  
+};
+
 const getItemsReducer = (items = null, action) => {
 
   if (action.type === 'GET_LIST_ITEMS') {
@@ -481,6 +500,7 @@ export default combineReducers({
   created: createdListReducer,
   tiers: createTierReducer,
   watchlist: getWatchlistReducer,
+  tierlist: getTierlistReducer,
   items: getItemsReducer,
   form: formReducer
   

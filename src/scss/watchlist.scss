@@ -23,7 +23,7 @@
         }
     
         .menu__button {
-            font-size: 20px;
+            font-size: 1vw;
             color: $vermelho;
             &:hover {
                 color: $azul-escuro;
@@ -57,19 +57,17 @@
         padding-right: 8vw;
 
         .watchlist__content__header {
-            position: sticky;
-            top: 16vw;
 
     
             .watchlist__content__header__title {
-                font-size: 24px;
+                font-size: 1.25vw;
                 font-weight: 700;
                 color: $azul-escuro;
                 margin-bottom: 1vw;
             }
 
             .watchlist__content__header__author {
-                font-size: 14px;
+                font-size: 0.73vw;
                 font-weight: 500;
                 font-style: italic;
                 color: $azul-escuro;
@@ -77,7 +75,7 @@
             }
 
             .watchlist__content__header__text {
-                font-size: 16px;
+                font-size: 0.83vw;
                 font-weight: 500;
                 color: $azul-escuro;
                 margin-bottom: 2vw;
@@ -94,28 +92,28 @@
                 padding: 1vw;
                 margin-bottom: 2vw;
                 background-color: $azul-claro;
-                border-radius: 36px;
+                border-radius: 1.87vw;
                 clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
                 background-size: cover;
                 cursor: pointer;
 
                 .watchlist__content__items__item__img {
                     width: 100%;
-                    border-radius: 36px;
+                    border-radius: 1.87vw;
                     clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
                 }
 
                 .watchlist__content__items__item__title {
                     margin-top: 2vw;
-                    font-size: 24px;
+                    font-size: 1.25vw;
                     font-weight: 700;
                     color: $vermelho;
-                    margin-bottom: 1vw;
+                    margin-bottom: 2vw;
                     text-align: center;
                 }
 
                 .watchlist__content__items__item__subtitle {
-                    font-size: 18px;
+                    font-size: 0.94vw;
                     font-weight: 700;
                     color: $azul-escuro;
                     margin-bottom: 1vw;

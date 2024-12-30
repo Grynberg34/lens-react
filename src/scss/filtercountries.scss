@@ -5,7 +5,7 @@
     margin-top: 14vw;
     
     .countries__title {
-        font-size: 18px;
+        font-size: 0.94vw;
         color: $azul-claro;
         font-weight: 700;
         margin-bottom: 2vw;
@@ -14,7 +14,7 @@
 
     .countries__label {
         display: block;
-        font-size: 20px;
+        font-size: 1vw;
         color: $amarelo;
         font-weight: 700;
         margin-bottom: 0.5vw;
@@ -26,7 +26,7 @@
     .countries__input {
         display: block;
         width: 80%;
-        border-radius: 36px;
+        border-radius: 1.87vw;
         border: none;
         outline: none;
         margin-bottom: 2vw;
@@ -43,12 +43,12 @@
 
         .countries__list__country {
             display: block;
-            font-size: 14px;
+            font-size: 0.73vw;
             color: $amarelo;
-            border: 2px solid $amarelo;
+            border: 0.1vw solid $amarelo;
             padding: 0.5vw;
             margin-bottom: 1vw;
-            border-radius: 12px;
+            border-radius: 0.62vw;
             cursor: pointer;
             text-align: center;
             user-select: none;
@@ -58,13 +58,13 @@
 
     
     .countries__list::-webkit-scrollbar-track {
-        border: 2px solid $amarelo;
-        border-radius: 36px;
+        border: 0.1vw solid $amarelo;
+        border-radius: 1.87vw;
     }
        
     .countries__list::-webkit-scrollbar-thumb {
         background-color: $azul-claro;
-        border-radius: 36px;
+        border-radius: 1.87vw;
         outline: none;
     }
 

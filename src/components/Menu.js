@@ -29,10 +29,8 @@ function Menu(props) {
             }
           </Col>
 
-          <Col md={1}></Col>
+          <Col md={6}>
 
-          <Col md={3}>
-             <a target='_blank' rel="noreferrer" href="https://www.linkedin.com/in/francisco-grynberg/" className='credit'>created by Francisco Grynberg</a>
           </Col>
 
           <Col md={1}></Col>
@@ -43,14 +41,6 @@ function Menu(props) {
 
           <Col md={1}>
             <NavLink to='/studio' className="menu__link">studio</NavLink>
-          </Col>
-
-          <Col md={1}>
-            <Link to='/social' className="menu__link">social</Link>
-          </Col>
-
-          <Col md={1}>
-            <Link to='/focus' className="menu__link">focus</Link>
           </Col>
 
           <Col md={1}>

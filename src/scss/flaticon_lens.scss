@@ -2,11 +2,11 @@ $flaticon_lens-font: "flaticon_lens";
 
 @font-face {
     font-family: $flaticon_lens-font;
-    src: url("./flaticon_lens.ttf?6102e05fde04d72db0916ccd2f354c7d") format("truetype"),
-url("./flaticon_lens.woff?6102e05fde04d72db0916ccd2f354c7d") format("woff"),
-url("./flaticon_lens.woff2?6102e05fde04d72db0916ccd2f354c7d") format("woff2"),
-url("./flaticon_lens.eot?6102e05fde04d72db0916ccd2f354c7d#iefix") format("embedded-opentype"),
-url("./flaticon_lens.svg?6102e05fde04d72db0916ccd2f354c7d#flaticon_lens") format("svg");
+    src: url("./flaticon_lens.ttf?7b2d560c5db981fd0a3d440588d3f248") format("truetype"),
+url("./flaticon_lens.woff?7b2d560c5db981fd0a3d440588d3f248") format("woff"),
+url("./flaticon_lens.woff2?7b2d560c5db981fd0a3d440588d3f248") format("woff2"),
+url("./flaticon_lens.eot?7b2d560c5db981fd0a3d440588d3f248#iefix") format("embedded-opentype"),
+url("./flaticon_lens.svg?7b2d560c5db981fd0a3d440588d3f248#flaticon_lens") format("svg");
 }
 
 i[class^="flaticon-"]:before, i[class*=" flaticon-"]:before {
@@ -29,6 +29,7 @@ $flaticon_lens-map: (
     "visible-opened-eye-interface-option": "\f106",
     "lens": "\f107",
     "lens-1": "\f108",
+    "minus": "\f109",
 );
 
 .flaticon-remove:before {
@@ -54,4 +55,7 @@ $flaticon_lens-map: (
 }
 .flaticon-lens-1:before {
     content: map-get($flaticon_lens-map, "lens-1");
+}
+.flaticon-minus:before {
+    content: map-get($flaticon_lens-map, "minus");
 }

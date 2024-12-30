@@ -7,7 +7,7 @@
 
     .lens__add {
         .lens__add__title {
-            font-size: 24px;
+            font-size: 1.25vw;
             color: $amarelo;
             font-weight: 700;
             margin-bottom: 2vw;
@@ -16,7 +16,7 @@
     }
 
     .lens__fail {
-        font-size: 20px;
+        font-size: 1vw;
         color: $azul-claro;
         font-weight: 700;
         margin-bottom: 2vw;
@@ -27,9 +27,9 @@
     .lens__filter {
         display: block;
         position: relative;
-        border: 2px solid $amarelo;
+        border: 0.1vw solid $amarelo;
         padding: 0.5vw;
-        border-radius: 12px;
+        border-radius: 0.62vw;
         text-align: center;
         margin-bottom: 1vw;
         clip-path: polygon(2% 0, 100% 0, 98% 100%, 0% 100%);
@@ -40,14 +40,14 @@
             right: 5%;
             color: $amarelo;
             font-weight: 700;
-            font-size: 24px;
+            font-size: 1.25vw;
             cursor: pointer;
             z-index: 99;
         }
 
 
         .lens__filter__title {
-            font-size: 18px;
+            font-size: 0.94vw;
             color: $amarelo;
             font-weight: 700;
             margin-bottom: 0.5vw;
@@ -55,18 +55,16 @@
         }
 
         .lens__filter__content {
-            font-size: 16px;
+            font-size: 0.83vw;
             color: $azul-claro;
             font-weight: 400;
-            text-transform: lowercase;
             margin-bottom: 0;
         }
 
         .lens__filter__content--genre {
-            font-size: 16px;
+            font-size: 0.83vw;
             color: $azul-claro;
             font-weight: 400;
-            text-transform: lowercase;
             margin-bottom: 0.5vw;
 
             &:last-of-type {
@@ -83,8 +81,8 @@
         border: none;
         outline: none;
         padding: 0.5vw;
-        border-radius: 36px;
-        font-size: 20px;
+        border-radius: 1.87vw;
+        font-size: 1vw;
         font-weight: 700;
         color: $azul-escuro;
         margin-bottom: 0;

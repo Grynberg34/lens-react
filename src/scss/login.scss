@@ -21,7 +21,7 @@
     }
 
     .login__msg {
-        font-size: 16px;
+        font-size: 0.83vw;
         color: $amarelo;
         font-weight: 400;
         margin-top: 2vw;
@@ -32,7 +32,7 @@
         margin-top: 2vw;
         display: block;
         text-align: center;
-        font-size: 30px;
+        font-size: 1.56vw;
         color: $azul-claro;
         text-decoration: none;
 
@@ -46,7 +46,7 @@
         width: 50%;
         margin-left: auto;
         margin-right: auto;
-        font-size: 14px;
+        font-size: 0.73vw;
         padding: 0.5vw;
         margin-top: 2vw;
         color: $preto;
@@ -54,7 +54,7 @@
         outline: none;
         border: none;
         margin-bottom: 1vw;
-        border-radius: 36px;
+        border-radius: 1.87vw;
     
         .login__google__img {
             display: inline-block;

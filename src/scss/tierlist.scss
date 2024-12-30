@@ -1,0 +1,103 @@
+@import '../scss/colors.scss';
+@import '../scss/font.scss';
+
+#tierlist{
+    background-color: $azul-escuro;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .menu {
+
+        background-color: $verde-medio;
+    
+    
+        .menu__link {
+
+            color: $azul-escuro;
+
+            &:hover {
+                color: $vermelho;
+            }
+        }
+    
+        .menu__button {
+            font-size: 1vw;
+            color: $vermelho;
+            &:hover {
+                color: $azul-escuro;
+            }
+        }
+        
+        .active {
+            color: $amarelo;
+        }
+    
+        .credit {
+
+            color: $azul-escuro;
+    
+            &:hover {
+                color: $vermelho;
+                text-decoration: none;
+            }
+            
+        }
+    }
+    
+}
+
+.tierlist {
+    
+    .tierlist__content {
+        padding-top: 4vw;
+        padding-left: 8vw;
+        padding-right: 8vw;
+        padding-bottom: 20vw;
+
+        .tierlist__content__tiers {
+            .tierlist__content__tiers__tier {
+                height: 6vw;
+                border-bottom:  0.25vw solid $azul-escuro;
+
+                .tierlist__content__tiers__tier__title {
+                    padding-top: 2vw;
+
+                    .tierlist__content__tiers__tier__title__text {
+                        font-size: 1.25vw;
+                        font-weight: 700;
+                        color: $azul-escuro;
+                        text-align: center;
+                        margin-bottom: 0;
+                        text-align: center;
+                        
+                    }
+                    
+                }
+
+                .tierlist__content__tiers__tier__drop {
+                    height: 5vw;
+                    padding-top: 1vw;
+                    padding-bottom: 1vw;
+                }
+            }
+        }
+
+        .tierlist__content__items {
+            margin-top: 4vw;
+            background-color: $azul-claro;
+            padding-top: 1vw;
+
+
+            .tierlist__content__items__item {
+
+                .tierlist__content__items__item__img {
+                    width: 100%;
+                    margin-bottom: 1vw;
+                    border-radius: 0.62vw;
+                }
+            }
+        }
+    }
+}

@@ -1,15 +1,14 @@
 @import '../scss/colors.scss';
 @import '../scss/font.scss';
 
-.watchlist {
+.tierlist {
 
-    .watchlist__content {
+    .tierlist__content {
 
-        .watchlist__content__info {
-            position: sticky;
-            top: 16vw;
+        .tierlist__content__info {
+            padding-top: 2vw;
 
-            .watchlist__content__info__movie {
+            .tierlist__content__info__movie {
                 display: block;
                 padding: 2vw;
                 border-radius: 1.87vw;
@@ -22,7 +21,7 @@
                 margin-left: 4vw;
     
     
-                .watchlist__content__info__movie__title {
+                .tierlist__content__info__movie__title {
                     text-align: center;
                     font-size: 1vw;
                     font-weight: 700;
@@ -30,7 +29,7 @@
                     margin-bottom: 0.5vw;
                 }
     
-                .watchlist__content__info__movie__img {
+                .tierlist__content__info__movie__img {
                     display: block;
                     margin-top: 2vw;
                     width: 90%;
@@ -40,7 +39,7 @@
                 }
     
                 
-                .watchlist__content__info__movie__subtitle {
+                .tierlist__content__info__movie__subtitle {
                     text-align: center;
                     font-size: 0.83vw;
                     font-weight: 400;
@@ -48,7 +47,7 @@
                     font-style: italic;
                 }
     
-                .watchlist__content__info__movie__category {
+                .tierlist__content__info__movie__category {
                     text-align: center;
                     margin-bottom: 1vw;
                     margin-top: 2vw;
@@ -60,7 +59,7 @@
                     border-top: 2px solid $azul-escuro;
                 }
     
-                .watchlist__content__info__movie__item {
+                .tierlist__content__info__movie__item {
                     text-align: center;
                     margin-bottom: 1vw;
                     font-size: 0.83vw;
@@ -68,9 +67,9 @@
                     color: $azul-escuro;
                 }
     
-                .watchlist__content__info__movie__gallery {
+                .tierlist__content__info__movie__gallery {
     
-                    .watchlist__content__info__movie__gallery__img {
+                    .tierlist__content__info__movie__gallery__img {
                         display: inline-block;
                         width: 100%;
                         border-radius: 0.62vw;
@@ -88,17 +87,17 @@
     
             }
     
-            .watchlist__content__info__movie::-webkit-scrollbar-track {
+            .tierlist__content__info__movie::-webkit-scrollbar-track {
                 border: none;
             }
                
-            .watchlist__content__info__movie::-webkit-scrollbar-thumb {
+            .tierlist__content__info__movie::-webkit-scrollbar-thumb {
                 background-color: $azul-escuro;
                 border-radius: 1.87vw;
                 outline: none;
             }
         
-            .watchlist__content__info__movie::-webkit-scrollbar {
+            .tierlist__content__info__movie::-webkit-scrollbar {
                 width: 1vw;
             }
 

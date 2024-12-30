@@ -5,7 +5,7 @@
     margin-top: 14vw;
     
     .castandcrew__title {
-        font-size: 18px;
+        font-size: 0.94vw;
         color: $azul-claro;
         font-weight: 700;
         margin-bottom: 2vw;
@@ -13,7 +13,7 @@
     }
 
     .castandcrew__title {
-        font-size: 20px;
+        font-size: 1vw;
         color: $azul-claro;
         font-weight: 700;
         margin-bottom: 0.5vw;
@@ -22,7 +22,7 @@
 
     .castandcrew__search {
         width: 100%;
-        border-radius: 36px;
+        border-radius: 1.87vw;
         border: none;
         outline: none;
         margin-bottom: 2vw;
@@ -38,13 +38,13 @@
 
         .castandcrew__list__person {
             display: block;
-            font-size: 14px;
+            font-size: 0.73vw;
             color: $amarelo;
-            border: 2px solid $azul-escuro;
+            border: 0.1vw solid $azul-escuro;
             padding: 0.5vw;
             font-weight: 700;
             margin-bottom: 1vw;
-            border-radius: 36px;
+            border-radius: 1.87vw;
             cursor: pointer;
             text-align: center;
             user-select: none;
@@ -64,13 +64,13 @@
 
     
     .castandcrew__list::-webkit-scrollbar-track {
-        border: 2px solid $amarelo;
-        border-radius: 36px;
+        border: 0.1vw solid $amarelo;
+        border-radius: 1.87vw;
     }
        
     .castandcrew__list::-webkit-scrollbar-thumb {
         background-color: $azul-claro;
-        border-radius: 36px;
+        border-radius: 1.87vw;
         outline: none;
     }
 

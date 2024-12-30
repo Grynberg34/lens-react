@@ -21,7 +21,7 @@
                 z-index: 99;
 
                 .studiolist__selection__list__header__length {
-                    font-size: 24px;
+                    font-size: 1.25vw;
                     color: $azul-escuro;
                     font-weight: 700;
                     text-transform: lowercase;
@@ -30,7 +30,7 @@
                     background-color: $amarelo;
                     text-align: center;
                     padding: 0.5vw;
-                    border-radius: 36px;
+                    border-radius: 1.87vw;
                     clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
                 }
     
@@ -40,12 +40,12 @@
             .studiolist__selection__list__item {
                 display: block;
                 position: relative;
-                border: 2px solid $azul-escuro;
+                border: 0.1vw solid $azul-escuro;
                 background-color: $azul-claro;
                 padding: 0.5vw;
                 padding-top: 1vw;
                 padding-bottom: 1vw;
-                border-radius: 36px;
+                border-radius: 1.87vw;
                 cursor: pointer;
                 margin-bottom: 2vw;
                 background-size: cover;
@@ -55,7 +55,7 @@
                 .studiolist__selection__list__item__title {
                     text-align: center;
                     margin-bottom: 0.5vw;
-                    font-size: 14px;
+                    font-size: 0.73vw;
                     font-weight: 700;
                     color: $azul-escuro;
                 }
@@ -65,34 +65,35 @@
                     width: 100%;
                     margin-left: auto;
                     margin-right: auto;
-                    border-radius: 12px;
+                    border-radius: 0.62vw;
                 }
 
                 .studiolist__selection__list__item__icon {
                     display: inline-block;
                     text-align: center;
-                    font-size: 24px;
-                    color: $azul-escuro;
+                    font-size: 0.5vw;
+                    padding: 0.1vw;
+                    padding-top: 0.5vw;
+                    color: $azul-claro;
                     margin-top: 0.5vw;
                     text-align: center;
-                    width: 50%;
+                    width: 100%;
+                    border-radius: 1.87vw;
+                    clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
+                    background-color: $azul-escuro;
 
-                }
-
-                .plus {
-                    font-size: 22px;
                 }
             }
         }
 
         .studiolist__selection__list::-webkit-scrollbar-track {
-            border: 2px solid $amarelo;
-            border-radius: 36px;
+            border: 0.1vw solid $amarelo;
+            border-radius: 1.87vw;
         }
            
         .studiolist__selection__list::-webkit-scrollbar-thumb {
             background-color: $azul-claro;
-            border-radius: 36px;
+            border-radius: 1.87vw;
             outline: none;
         }
     

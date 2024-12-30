@@ -5,7 +5,7 @@
 
     .next__add {
         .next__add__title {
-            font-size: 24px;
+            font-size: 1.25vw;
             color: $amarelo;
             font-weight: 700;
             margin-bottom: 2vw;
@@ -16,10 +16,10 @@
     .next__lens {
         display: block;
         position: relative;
-        border: 2px solid $azul-claro;
+        border: 0.1vw solid $azul-claro;
         background-color: $azul-claro;
         padding: 0.5vw;
-        border-radius: 36px;
+        border-radius: 1.87vw;
         text-align: center;
         margin-bottom: 2vw;
         clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
@@ -30,7 +30,7 @@
             right: 5%;
             color: $azul-escuro;
             font-weight: 700;
-            font-size: 24px;
+            font-size: 1.25vw;
             cursor: pointer;
             z-index: 99;
         }
@@ -39,7 +39,7 @@
             position: absolute;
             top: 2.5%;
             left: 5%;
-            font-size: 30px;
+            font-size: 1.56vw;
             color: $azul-escuro;
             font-weight: 700;
             text-transform: lowercase;
@@ -47,7 +47,7 @@
         }
 
         .next__lens__description {
-            font-size: 14px;
+            font-size: 0.73vw;
             color: $azul-escuro;
             font-weight: 700;
             margin-bottom: 0.5vw;
@@ -65,8 +65,8 @@
             border: none;
             outline: none;
             padding: 0.5vw;
-            border-radius: 36px;
-            font-size: 18px;
+            border-radius: 1.87vw;
+            font-size: 0.94vw;
             font-weight: 700;
             color: $azul-claro;
             clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
@@ -80,8 +80,8 @@
         border: none;
         outline: none;
         padding: 0.5vw;
-        border-radius: 36px;
-        font-size: 20px;
+        border-radius: 1.87vw;
+        font-size: 1vw;
         font-weight: 700;
         color: $azul-escuro;
         margin-bottom: 0;

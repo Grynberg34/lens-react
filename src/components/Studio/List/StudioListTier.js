@@ -7,6 +7,7 @@ import { SetTierTitle } from '../../../actions';
 import { DeleteTier } from '../../../actions';
 import { DeleteListItem } from '../../../actions';
 import { ChangeTierPosition } from '../../../actions';
+import { GetMovieInfo } from '../../../actions';
 import { CreateTier } from '../../../actions';
 import { CreateList } from '../../../actions';
 import "../../../icon/font/flaticon_lens.scss";
@@ -59,6 +60,10 @@ function StudioListTier(props) {
 
   function deleteTier(index) {
     store.dispatch(DeleteTier(index)) 
+  }
+
+  function getMovie(id) {
+    store.dispatch(GetMovieInfo(id, list.uri_content))
   }
 
   return (
@@ -134,12 +139,12 @@ function StudioListTier(props) {
             <div className="studiolist__selection__tierlist__create">
 
               <h1 className="studiolist__selection__tierlist__create__title">{list.content} to rank</h1>
-              <h2 className="studiolist__selection__tierlist__create__subtitle">drag and drop to change order</h2>
+              <h2 className="studiolist__selection__tierlist__create__subtitle">click to movie info</h2>
 
               <div>
                 {list.content_items.map((item, index) =>
 
-                  <div key={index} className="studiolist__selection__tierlist__create__item" style={{backgroundImage: `linear-gradient(to bottom, rgba(255,158,0, 0.8) 0%,rgba(255,158,0,0.8) 100%), url('https://image.tmdb.org/t/p/original/${item.backdrop_path}')`}}>
+                  <div onClick={()=> getMovie(item.id)}  key={index} className="studiolist__selection__tierlist__create__item" style={{backgroundImage: `linear-gradient(to bottom, rgba(255,158,0, 0.8) 0%,rgba(255,158,0,0.8) 100%), url('https://image.tmdb.org/t/p/original/${item.backdrop_path}')`}}>
                     <Container fluid>
                       <Row>
                         <Col md={2}>

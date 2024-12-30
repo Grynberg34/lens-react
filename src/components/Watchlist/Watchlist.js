@@ -70,18 +70,11 @@ function Watchlist(props) {
               <Menu></Menu>
   
               <div className="watchlist__content">
+
                 <Container fluid>
                   <Row>
     
-                    <Col md={2}>
-                      <div className="watchlist__content__header">
-          
-                        <h1 className="watchlist__content__header__title">{watchlist.title}</h1>
-
-                        <h1 className="watchlist__content__header__text">{watchlist.description}</h1>
-                      </div>
-                    </Col>
-                    <Col md={6}>
+                    <Col md={8}>
     
                       {
                         items !== null ?
@@ -95,12 +88,14 @@ function Watchlist(props) {
                                     <img className="watchlist__content__items__item__img" src={`https://image.tmdb.org/t/p/original/${item.info.backdrop_path}`} alt="" />
                                   </Col>
 
-                                  <Col md={6}>
+                                  <Col md={4}>
                                     <h1 className="watchlist__content__items__item__title">{item.info.original_title}</h1>
 
                                     <h2 className="watchlist__content__items__item__subtitle">
                                       { item.credits?.crew.map( (person, index) =><span key={index}> {person.job === 'Director' ?person.name+' | ':null}</span>)}
-                                      {watchlist.content === 'movies'? <span>{item.info.release_date !== undefined ?item.info.release_date.substring(0,4):null}</span>:<span>{item.info.first_air_date!== undefined ?(item.info.first_air_date.substring(0,4)):null}</span>}
+                                      {watchlist.content === 'movies'? 
+                                        <span>{item.info.release_date !== undefined ?item.info.release_date.substring(0,4):null}</span>
+                                        :<span>{item.info.first_air_date!== undefined ?(item.info.first_air_date.substring(0,4)):null}</span>}
                                     </h2>
 
                                   </Col>

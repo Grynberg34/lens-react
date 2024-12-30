@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { store } from '../../../store';
 import { GetMovieInfo } from '../../../actions';
 import { SetListItem } from '../../../actions';
+import { DeleteListItemSelection } from '../../../actions';
 import "../../../icon/font/flaticon_lens.scss";
 import "../../../scss/studiolist-selection.scss";
 import Container from 'react-bootstrap/Container';
@@ -17,6 +18,10 @@ function StudioSelectionList(props) {
   var movie = props.movie;
 
   var list = props.list;
+
+  function deleteMovie(item) {
+    store.dispatch(DeleteListItemSelection(item)) 
+  }
 
   function getMovie(id) {
     store.dispatch(GetMovieInfo(id, list.uri_content))
@@ -46,7 +51,7 @@ function StudioSelectionList(props) {
   
         { selection_list.filter.map( (item, index) =>
   
-          <div key={index} className="studiolist__selection__list__item" style={{backgroundImage: `linear-gradient(to bottom, rgba(151,205,213, 0.85) 0%,rgba(151,205,213,0.85) 100%), url('https://image.tmdb.org/t/p/original/${item.backdrop_path}')`}}>
+          <div onClick={()=> getMovie(item.id)} key={index} className="studiolist__selection__list__item" style={{backgroundImage: `linear-gradient(to bottom, rgba(151,205,213, 0.85) 0%,rgba(151,205,213,0.85) 100%), url('https://image.tmdb.org/t/p/original/${item.backdrop_path}')`}}>
             <Container fluid>
               <Row>
                 <Col md={6}>
@@ -59,8 +64,12 @@ function StudioSelectionList(props) {
                     :<h2 className="studiolist__selection__list__item__title"> {item.original_name.length > 30 ? <span>{item.original_name.substring(0,30) + '...'}</span>: <span>{item.original_name}</span>} ({item.first_air_date!== undefined ?(item.first_air_date.substring(0,4)):null})</h2>
                   }
   
-                  <i style={{color:list.content_items.includes(item)? "#ff9e00": "#023047" }} onClick={()=> addMovie(item)} className="studiolist__selection__list__item__icon plus flaticon-plus"></i>
-                  <i style={{color:movie.info.id === item.id? "#ff9e00": "#023047" }} onClick={()=> getMovie(item.id)} className="studiolist__selection__list__item__icon flaticon-info"></i>
+                  {
+                    list.content_items.includes(item)?
+                    <i  style={{backgroundColor: "#ff9e00", color: "#023047" }} onClick={()=> deleteMovie(item)} className="studiolist__selection__list__item__icon plus flaticon-minus"></i>
+                    :<i style={{backgroundColor: "#023047", color: "#97cdd5" }} onClick={()=> addMovie(item)} className="studiolist__selection__list__item__icon plus flaticon-plus"></i>
+
+                  }
   
                 </Col>
               </Row>

@@ -5,7 +5,7 @@
     margin-top: 14vw;
     
     .genres__title {
-        font-size: 18px;
+        font-size: 0.94vw;
         color: $azul-claro;
         font-weight: 700;
         margin-bottom: 2vw;
@@ -21,12 +21,12 @@
 
         .genres__list__genre {
             display: block;
-            font-size: 14px;
+            font-size: 0.73vw;
             color: $amarelo;
-            border: 2px solid $amarelo;
+            border: 0.1vw solid $amarelo;
             padding: 0.5vw;
             margin-bottom: 1vw;
-            border-radius: 12px;
+            border-radius: 0.62vw;
             cursor: pointer;
             text-align: center;
             user-select: none;
@@ -36,13 +36,13 @@
 
     
     .genres__list::-webkit-scrollbar-track {
-        border: 2px solid $amarelo;
-        border-radius: 36px;
+        border: 0.1vw solid $amarelo;
+        border-radius: 1.87vw;
     }
        
     .genres__list::-webkit-scrollbar-thumb {
         background-color: $azul-claro;
-        border-radius: 36px;
+        border-radius: 1.87vw;
         outline: none;
     }
 

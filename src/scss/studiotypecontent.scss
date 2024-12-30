@@ -2,22 +2,26 @@
 @import '../scss/font.scss';
 
 #typecontent {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 10vw;
+
 
     .typecontent__add {
         .typecontent__add__title {
-            font-size: 24px;
+            font-size: 1.25vw;
             color: $amarelo;
             font-weight: 700;
             margin-bottom: 2vw;
             text-transform: lowercase;
+            padding-left: 2vw;
         }
     }
 
     .typecontent__section {
-        border: 4px solid $amarelo;
-        border-radius: 36px;
         padding: 1vw;
         margin-bottom: 2vw;
+        width: 20vw;
     
         .typecontent__section__bold {
             font-weight: 700;
@@ -34,8 +38,8 @@
             border: none;
             outline: none;
             padding: 1vw;
-            border-radius: 36px;
-            font-size: 18px;
+            border-radius: 1.87vw;
+            font-size: 0.94vw;
             font-weight: 500;
             color: $azul-escuro;
             clip-path: polygon(4% 0, 100% 0, 96% 100%, 0% 100%);
