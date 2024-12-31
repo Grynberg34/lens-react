@@ -1,8 +1,8 @@
 
-# Bolão Copa do Mundo 2022 (Aplicação React)
+# Lens (Aplicação React em desenvolvimento)
 
 **Descrição:**  
-Aplicação desenvolvida em React de solução para elaboração de listas de filmes/séries. As listas são feitas a partir de filtragem inicial com parâmetros definidos pelo usuário. Os dados e informações dos filmes e séries são obtidos através de comunicação com a API do The Movie Database (TMDB).
+Aplicação em desenvolvimento em React de solução para elaboração de listas de filmes/séries. As listas são feitas a partir de filtragem inicial com parâmetros definidos pelo usuário. Os dados e informações dos filmes e séries são obtidos através de comunicação com a API do The Movie Database (TMDB).
 
 ---
 
